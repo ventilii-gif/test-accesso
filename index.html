@@ -3858,7 +3858,132 @@ const EXAM=[
   e:'Tra le 400 viti difettose, 100 vengono da A: \\(\\frac{100}{400}=25\\%\\). Da non confondere con \\(P(D\\mid A)=\\frac{100}{2500}=4\\%\\).'},
  {s:'sta',q:'In un cassetto ci sono 12 paia di guanti bianchi e 8 paia di guanti neri, destri e sinistri sparsi alla rinfusa. Al buio, quanti guanti bisogna prendere per essere certi di avere un paio nero?',
   o:['17','25','29','33','41'],c:3,
-  e:'Caso peggiore: tutti i 24 guanti bianchi, poi gli 8 neri di una stessa mano, infine il decisivo: \\(24+8+1=33\\).'}
+  e:'Caso peggiore: tutti i 24 guanti bianchi, poi gli 8 neri di una stessa mano, infine il decisivo: \\(24+8+1=33\\).'},
+
+ /* ================================================================== */
+ /*   ARCHIVIO AMPLIATO — quesiti aggiuntivi da cui l'estrazione pesca   */
+ /*   a caso: ripetendo il quiz finale non compaiono sempre gli stessi.  */
+ /* ================================================================== */
+
+ /* -------- INSIEMI, LOGICA, PERCENTUALI -------- */
+ {s:'ins',q:'In una scuola di 300 studenti, 180 studiano inglese, 140 studiano francese e 60 studiano entrambe le lingue. Quanti studenti non studiano nessuna delle due?',
+  o:['20','40','60','80','100'],c:1,
+  e:'Chi studia almeno una lingua è \\(180+140-60=260\\); quindi \\(300-260=40\\) non ne studiano nessuna.'},
+ {s:'ins',q:'Un prezzo aumenta prima del 20% e poi, sul nuovo valore, di un altro 10%. Di quanto è aumentato complessivamente rispetto al prezzo iniziale?',
+  o:['30%','32%','18%','2%','15%'],c:1,
+  e:'Gli aumenti percentuali non si sommano: \\(1{,}20\\cdot1{,}10=1{,}32\\), cioè un aumento del 32%.'},
+ {s:'ins',q:'Uno sconto porta il prezzo di un articolo da 80 € a 60 €. A quale percentuale di sconto corrisponde?',
+  o:['20%','25%','30%','33%','15%'],c:1,
+  e:'Il ribasso è di 20 € su 80: \\(\\dfrac{20}{80}=0{,}25=25\\%\\).'},
+ {s:'ins',q:'Sapendo che «tutti gli studenti che studiano superano l\'esame» e che «Marco non ha superato l\'esame», si può concludere che:',
+  o:['Marco ha studiato','Marco non ha studiato','Marco ha studiato ma poco','non si può concludere nulla','tutti i bocciati hanno studiato'],c:1,
+  e:'Per contronominale, se \\(\\text{studia}\\Rightarrow\\text{supera}\\) allora \\(\\text{non supera}\\Rightarrow\\text{non studia}\\).'},
+ {s:'ins',q:'Un insieme è formato da 4 elementi. Quanti sono in tutto i suoi sottoinsiemi, compresi l\'insieme vuoto e l\'insieme stesso?',
+  o:['8','12','16','24','32'],c:2,
+  e:'I sottoinsiemi di un insieme di \\(n\\) elementi sono \\(2^{n}\\): qui \\(2^{4}=16\\).'},
+ {s:'ins',q:'Qual è la corretta negazione dell\'affermazione «tutti gli studenti hanno superato l\'esame»?',
+  o:['Nessuno studente ha superato l\'esame','Almeno uno studente non ha superato l\'esame','La maggior parte degli studenti è stata bocciata','Qualche studente ha superato l\'esame','Tutti gli studenti sono stati bocciati'],c:1,
+  e:'La negazione di «tutti» è «almeno uno no»: basta un solo controesempio per smentire un\'affermazione universale.'},
+
+ /* -------- EQUAZIONI -------- */
+ {s:'alg',q:'Quali sono le soluzioni dell\'equazione \\(x^{2}-7x+12=0\\)?',
+  o:['2 e 6','3 e 4','1 e 12','\\(-3\\) e \\(-4\\)','2 e 5'],c:1,
+  e:'Si scompone in \\((x-3)(x-4)=0\\): le radici sono 3 e 4 (somma 7, prodotto 12).'},
+ {s:'alg',q:'Quanto vale il prodotto delle soluzioni dell\'equazione \\(x^{2}-2x-15=0\\)?',
+  o:['\\(-15\\)','15','2','\\(-2\\)','8'],c:0,
+  e:'Per le relazioni di Viète il prodotto delle radici vale \\(c/a=-15\\) (le radici sono 5 e \\(-3\\)).'},
+ {s:'alg',q:'Qual è la soluzione dell\'equazione \\(2^{x+1}=16\\)?',
+  o:['\\(x=3\\)','\\(x=4\\)','\\(x=8\\)','\\(x=15\\)','\\(x=7\\)'],c:0,
+  e:'\\(16=2^{4}\\), quindi \\(x+1=4\\) e \\(x=3\\).'},
+ {s:'alg',q:'Qual è la soluzione dell\'equazione \\(\\log_3(2x-1)=2\\)?',
+  o:['\\(x=5\\)','\\(x=4\\)','\\(x=3\\)','\\(x=9\\)','\\(x=1\\)'],c:0,
+  e:'\\(2x-1=3^{2}=9\\Rightarrow x=5\\); il valore rende l\'argomento positivo, quindi è accettabile.'},
+ {s:'alg',q:'Qual è la soluzione dell\'equazione \\(\\dfrac{x}{2}+\\dfrac{x}{3}=5\\)?',
+  o:['\\(x=6\\)','\\(x=5\\)','\\(x=10\\)','\\(x=15\\)','\\(x=3\\)'],c:0,
+  e:'Riducendo allo stesso denominatore: \\(\\dfrac{3x+2x}{6}=\\dfrac{5x}{6}=5\\Rightarrow x=6\\).'},
+ {s:'alg',q:'Per quale valore di \\(k\\) l\'equazione \\(x^{2}+kx+9=0\\) ha due soluzioni reali coincidenti?',
+  o:['\\(k=3\\)','\\(k=\\pm3\\)','\\(k=6\\)','\\(k=\\pm6\\)','\\(k=9\\)'],c:3,
+  e:'Radici coincidenti quando \\(\\Delta=k^{2}-36=0\\), cioè \\(k=\\pm6\\).'},
+
+ /* -------- FUNZIONI, ESPONENZIALI E LOGARITMI -------- */
+ {s:'fun',q:'Quanto vale \\(\\log_2 32\\)?',
+  o:['4','5','6','16','8'],c:1,
+  e:'\\(2^{5}=32\\), quindi il logaritmo vale 5.'},
+ {s:'fun',q:'Applicando le proprietà dei logaritmi, quanto vale \\(\\log 8+\\log 125\\) (logaritmi in base 10)?',
+  o:['3','2','1000','\\(\\log 133\\)','5'],c:0,
+  e:'La somma di logaritmi è il logaritmo del prodotto: \\(\\log(8\\cdot125)=\\log 1000=3\\).'},
+ {s:'fun',q:'Qual è il dominio della funzione \\(y=\\sqrt{x-4}\\)?',
+  o:['\\(x&gt;4\\)','\\(x\\ge4\\)','\\(x\\le4\\)','tutti i numeri reali','\\(x\\neq4\\)'],c:1,
+  e:'Il radicando di una radice quadrata deve essere non negativo: \\(x-4\\ge0\\).'},
+ {s:'fun',q:'Qual è la funzione inversa di \\(y=2^{x}\\)?',
+  o:['\\(y=\\log_2 x\\)','\\(y=x^{2}\\)','\\(y=2^{-x}\\)','\\(y=\\dfrac{x}{2}\\)','\\(y=\\sqrt{x}\\)'],c:0,
+  e:'L\'inversa di un\'esponenziale è il logaritmo nella stessa base: \\(y=\\log_2 x\\).'},
+ {s:'fun',q:'Sapendo che \\(\\log_{10}2\\approx0{,}30\\), quanto vale \\(\\log_{10}8\\)?',
+  o:['0,60','0,90','0,30','1,20','2,40'],c:1,
+  e:'\\(\\log 8=\\log 2^{3}=3\\log 2\\approx3\\cdot0{,}30=0{,}90\\).'},
+ {s:'fun',q:'Per quali valori di \\(x\\) è definita la funzione \\(y=\\log(x^{2}-1)\\)?',
+  o:['\\(-1&lt;x&lt;1\\)','\\(x&lt;-1\\) oppure \\(x&gt;1\\)','\\(x&gt;1\\)','\\(x\\neq\\pm1\\)','tutti i numeri reali'],c:1,
+  e:'L\'argomento del logaritmo deve essere positivo: \\(x^{2}-1&gt;0\\Rightarrow x&lt;-1\\) oppure \\(x&gt;1\\).'},
+
+ /* -------- GEOMETRIA -------- */
+ {s:'geo',q:'Una circonferenza ha raggio 5 cm. Qual è l\'area del cerchio, in cm²?',
+  o:['\\(10\\pi\\)','\\(25\\pi\\)','\\(5\\pi\\)','\\(50\\pi\\)','\\(100\\pi\\)'],c:1,
+  e:'\\(A=\\pi r^{2}=\\pi\\cdot5^{2}=25\\pi\\) cm².'},
+ {s:'geo',q:'Un triangolo equilatero ha lato 6 cm. Quanto misura la sua altezza?',
+  o:['\\(3\\sqrt3\\) cm','\\(6\\sqrt3\\) cm','3 cm','\\(3\\sqrt2\\) cm','9 cm'],c:0,
+  e:'L\'altezza dell\'equilatero è \\(h=\\dfrac{l\\sqrt3}{2}=\\dfrac{6\\sqrt3}{2}=3\\sqrt3\\) cm.'},
+ {s:'geo',q:'In un triangolo rettangolo i due cateti misurano 6 cm e 8 cm. Quanto misura l\'ipotenusa?',
+  o:['10 cm','12 cm','14 cm','\\(\\sqrt{28}\\) cm','48 cm'],c:0,
+  e:'Per il teorema di Pitagora \\(\\sqrt{6^{2}+8^{2}}=\\sqrt{100}=10\\) cm.'},
+ {s:'geo',q:'Qual è il volume di un cubo di spigolo 4 cm, in cm³?',
+  o:['16','48','64','96','256'],c:2,
+  e:'\\(V=l^{3}=4^{3}=64\\) cm³.'},
+ {s:'geo',q:'Un rettangolo ha perimetro 20 cm e base 6 cm. Qual è la sua area, in cm²?',
+  o:['24','36','40','16','60'],c:0,
+  e:'Il semiperimetro è 10, quindi l\'altezza è \\(10-6=4\\); l\'area vale \\(6\\cdot4=24\\) cm².'},
+ {s:'geo',q:'In una circonferenza di raggio 10 cm, quanto è lunga una corda che dista 6 cm dal centro?',
+  o:['8 cm','12 cm','16 cm','\\(2\\sqrt{136}\\) cm','10 cm'],c:2,
+  e:'La metà della corda vale \\(\\sqrt{10^{2}-6^{2}}=8\\); la corda intera misura \\(2\\cdot8=16\\) cm.'},
+
+ /* -------- GONIOMETRIA -------- */
+ {s:'gon',q:'Quanto vale \\(\\sin 30°\\)?',
+  o:['\\(\\dfrac12\\)','\\(\\dfrac{\\sqrt2}{2}\\)','\\(\\dfrac{\\sqrt3}{2}\\)','1','0'],c:0,
+  e:'Valore notevole: \\(\\sin30°=\\dfrac12\\), mentre \\(\\cos30°=\\dfrac{\\sqrt3}{2}\\).'},
+ {s:'gon',q:'Quanto vale \\(\\tan 45°\\)?',
+  o:['0','\\(\\dfrac12\\)','1','\\(\\sqrt3\\)','indefinita'],c:2,
+  e:'A 45° seno e coseno sono uguali, quindi la loro tangente vale 1.'},
+ {s:'gon',q:'A quanti radianti corrisponde un angolo di 90°?',
+  o:['\\(\\pi\\)','\\(\\dfrac{\\pi}{2}\\)','\\(\\dfrac{\\pi}{3}\\)','\\(2\\pi\\)','\\(\\dfrac{\\pi}{4}\\)'],c:1,
+  e:'L\'angolo giro (360°) è \\(2\\pi\\), quindi 90° — un quarto di giro — è \\(\\dfrac{\\pi}{2}\\).'},
+ {s:'gon',q:'Se \\(\\sin\\alpha=\\dfrac{3}{5}\\) e \\(\\alpha\\) appartiene al primo quadrante, quanto vale \\(\\cos\\alpha\\)?',
+  o:['\\(\\dfrac45\\)','\\(\\dfrac35\\)','\\(\\dfrac54\\)','\\(\\dfrac25\\)','\\(-\\dfrac45\\)'],c:0,
+  e:'Dall\'identità fondamentale \\(\\cos\\alpha=\\sqrt{1-\\sin^{2}\\alpha}=\\sqrt{1-\\tfrac{9}{25}}=\\dfrac45\\), positivo nel primo quadrante.'},
+ {s:'gon',q:'In un triangolo rettangolo l\'ipotenusa misura 10 cm e uno degli angoli acuti vale 30°. Quanto misura il cateto opposto a quell\'angolo?',
+  o:['5 cm','\\(5\\sqrt3\\) cm','10 cm','\\(\\dfrac{10}{\\sqrt3}\\) cm','\\(5\\sqrt2\\) cm'],c:0,
+  e:'Cateto opposto \\(=\\) ipotenusa \\(\\cdot\\sin30°=10\\cdot\\dfrac12=5\\) cm.'},
+ {s:'gon',q:'Per qualunque angolo \\(\\alpha\\), l\'espressione \\(\\sin^{2}\\alpha+\\cos^{2}\\alpha\\) vale:',
+  o:['0','1','2','\\(\\sin 2\\alpha\\)','dipende da \\(\\alpha\\)'],c:1,
+  e:'È l\'identità fondamentale della goniometria: \\(\\sin^{2}\\alpha+\\cos^{2}\\alpha=1\\) per ogni \\(\\alpha\\).'},
+
+ /* -------- PROBABILITÀ, DATI E CONTEGGIO -------- */
+ {s:'sta',q:'Lanciando un dado equo, qual è la probabilità che esca un numero maggiore di 4?',
+  o:['\\(\\dfrac16\\)','\\(\\dfrac13\\)','\\(\\dfrac12\\)','\\(\\dfrac23\\)','\\(\\dfrac14\\)'],c:1,
+  e:'Favorevoli \\(\\{5,6\\}\\), possibili 6: \\(\\dfrac{2}{6}=\\dfrac13\\).'},
+ {s:'sta',q:'Lanciando due dadi equi, qual è la probabilità che la somma dei due punteggi sia 7?',
+  o:['\\(\\dfrac{1}{6}\\)','\\(\\dfrac{1}{12}\\)','\\(\\dfrac{7}{36}\\)','\\(\\dfrac{1}{9}\\)','\\(\\dfrac{5}{36}\\)'],c:0,
+  e:'Le coppie che danno 7 sono 6 su 36 casi: \\(\\dfrac{6}{36}=\\dfrac16\\). È la somma più probabile.'},
+ {s:'sta',q:'In quanti modi diversi 5 persone possono disporsi in fila?',
+  o:['20','60','120','24','720'],c:2,
+  e:'Sono le permutazioni di 5 elementi: \\(5!=120\\).'},
+ {s:'sta',q:'In un girone all\'italiana con 6 squadre, in cui ogni squadra incontra ogni altra una sola volta, quante partite si giocano in tutto?',
+  o:['12','15','30','36','21'],c:1,
+  e:'È il numero di coppie di squadre: \\(\\dbinom{6}{2}=\\dfrac{6\\cdot5}{2}=15\\).'},
+ {s:'sta',q:'Un\'urna contiene 4 palline rosse e 6 nere. Estraendone 2 senza reimmissione, qual è la probabilità che siano entrambe rosse?',
+  o:['\\(\\dfrac{2}{15}\\)','\\(\\dfrac{4}{25}\\)','\\(\\dfrac{2}{5}\\)','\\(\\dfrac{1}{6}\\)','\\(\\dfrac{3}{20}\\)'],c:0,
+  e:'\\(\\dfrac{4}{10}\\cdot\\dfrac{3}{9}=\\dfrac{12}{90}=\\dfrac{2}{15}\\): la seconda frazione cambia perché non si reimmette.'},
+ {s:'sta',q:'Lanciando 3 monete eque, qual è la probabilità di ottenere almeno una testa?',
+  o:['\\(\\dfrac{7}{8}\\)','\\(\\dfrac{1}{8}\\)','\\(\\dfrac{3}{8}\\)','\\(\\dfrac{1}{2}\\)','\\(\\dfrac{5}{8}\\)'],c:0,
+  e:'Conviene il contrario: \\(1-P(\\text{nessuna testa})=1-\\left(\\dfrac12\\right)^{3}=1-\\dfrac18=\\dfrac78\\).'}
 ];
 </script>
 <script>
@@ -3878,14 +4003,34 @@ const examState={
   revFilter:'all'
 };
 const EXAM_MINUTI=45;
+const EXAM_PER_FILONE=6;   /* quesiti estratti da ciascun filone per ogni prova */
 const host=()=>document.getElementById('examHost');
+
+/* Estrazione casuale senza rimpiazzo: ogni prova pesca EXAM_PER_FILONE quesiti
+   da ciascun filone dell'archivio EXAM. Così l'archivio può essere molto più
+   ampio dei 36 quesiti mostrati, e ripetendo il quiz non si ritrovano sempre
+   le stesse domande. L'ordine dei filoni (blocchi) resta quello del test. */
+function sampleN(arr,n){
+  const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i];a[i]=a[j];a[j]=t; }
+  return a.slice(0,Math.min(n,a.length));
+}
+function examDraw(){
+  const out=[];
+  Object.keys(STRANDS).forEach(k=>{
+    const banca=EXAM.filter(q=>q.s===k);
+    sampleN(banca, EXAM_PER_FILONE).forEach(q=>out.push(q));
+  });
+  return out;
+}
 
 function examStart(timed){
   examState.phase='run';
   examState.cur=0;
-  examState.items=EXAM.map(shuffleMC);   /* ordine delle alternative diverso a ogni prova */
-  examState.given=new Array(EXAM.length).fill(null);
-  examState.flag=new Array(EXAM.length).fill(false);
+  const prova=examDraw();                /* estrae un sottoinsieme diverso a ogni prova */
+  examState.items=prova.map(shuffleMC);  /* ...e ne mescola le alternative */
+  examState.given=new Array(prova.length).fill(null);
+  examState.flag=new Array(prova.length).fill(false);
   examState.timed=timed;
   examState.left=EXAM_MINUTI*60;
   examState.revFilter='all';
@@ -3923,15 +4068,17 @@ function renderExam(){
 
 /* ------------------------- schermata iniziale ------------------------- */
 function renderExamIntro(h){
-  const perFilone={};
-  EXAM.forEach(q=>{ perFilone[q.s]=(perFilone[q.s]||0)+1; });
+  const filoni=Object.keys(STRANDS).filter(k=>EXAM.some(q=>q.s===k));
+  const perProva=filoni.length*EXAM_PER_FILONE;   /* quesiti nella singola prova */
+  const banca=EXAM.length;                        /* archivio complessivo */
   let pills='';
-  Object.keys(STRANDS).forEach(k=>{ if(perFilone[k]) pills+='<span class="pill">'+STRANDS[k].nome+' · '+perFilone[k]+'</span>'; });
+  filoni.forEach(k=>{ pills+='<span class="pill">'+STRANDS[k].nome+' · '+EXAM_PER_FILONE+'</span>'; });
 
   h.innerHTML=
   '<div class="exam-intro">'+
     '<h2 style="margin-top:0">Quiz riepilogativo finale</h2>'+
-    '<p class="lead">'+EXAM.length+' quesiti misti sui sei filoni, cinque alternative ciascuno, come al test vero. '+
+    '<p class="lead">'+perProva+' quesiti misti sui sei filoni, cinque alternative ciascuno, come al test vero. '+
+    'Ogni prova <strong>estrae quesiti diversi</strong> da un archivio di '+banca+': ripetendo il quiz non ritroverai sempre le stesse domande. '+
     'Qui <strong>non vedrai alcun esito durante la prova</strong>: le risposte corrette, le spiegazioni e il punteggio compaiono solo alla consegna. '+
     'È il modo giusto per misurarti — all\'esame nessuno ti dirà se hai "indovinato".</p>'+
     '<div class="exam-rules">'+
