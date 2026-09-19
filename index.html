@@ -332,6 +332,7 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
     <button data-sec="des">Statistica</button>
     <button data-sec="rad">Radicali e potenze</button>
     <button data-sec="rag">Logica e comprensione</button>
+    <button data-sec="fis">Fisica</button>
     <button data-sec="exam" class="exam">Quiz finale</button>
   </div>
 </nav>
@@ -2046,6 +2047,67 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
 </section>
 
 <!-- ============================================================ -->
+<!-- ============= 12 · FISICA ================================ -->
+<!-- ============================================================ -->
+<section class="section" id="sec-fis">
+  <div class="subnav" data-group="fis">
+    <button data-sub="fis-teo" class="active">Teoria</button>
+    <button data-sub="fis-sim">Simulazione</button>
+    <button data-sub="fis-ese">Esercizi</button>
+    <button data-sub="fis-quiz">Test</button>
+  </div>
+  <div class="subpanel active" id="fis-teo">
+    <h2>Fisica</h2>
+    <p class="lead">Al test la fisica è soprattutto <strong>meccanica</strong>: come si muovono i corpi (cinematica), perché si muovono (dinamica) e come si contabilizza tutto con l'energia. Poche leggi, ma da usare con le <strong>unità giuste</strong> — metà degli errori nasce lì.</p>
+    <div class="card">
+      <h3>Cinematica: descrivere il moto</h3>
+      <p>La <strong>velocità</strong> è lo spazio percorso nell'unità di tempo; l'<strong>accelerazione</strong> è la variazione di velocità nell'unità di tempo.</p>
+      <div class="formula-box">\[ v=\frac{\Delta s}{\Delta t}\quad(\text{m/s}), \qquad a=\frac{\Delta v}{\Delta t}\quad(\text{m/s}^2) \]</div>
+      <div class="tbl-wrap"><table class="data">
+        <tr><th>Moto</th><th class="c">Velocità</th><th class="c">Spazio</th></tr>
+        <tr><td>rettilineo <strong>uniforme</strong> (\(a=0\))</td><td class="c">\(v=\) costante</td><td class="c">\(s=v\,t\)</td></tr>
+        <tr><td>uniformemente <strong>accelerato</strong></td><td class="c">\(v=v_0+a\,t\)</td><td class="c">\(s=v_0\,t+\tfrac12 a\,t^2\)</td></tr>
+      </table></div>
+      <div class="callout"><div class="lbl">Caduta libera</div>Un corpo che cade (trascurando l'aria) è un moto uniformemente accelerato con \(a=g\approx9{,}8\ \text{m/s}^2\): dopo \(t\) secondi la velocità è \(v=g\,t\) e lo spazio \(s=\tfrac12 g\,t^2\). L'area sotto il grafico velocità-tempo è sempre lo spazio percorso: lo vedrai nella simulazione.</div>
+    </div>
+    <div class="card">
+      <h3>Dinamica: le tre leggi di Newton</h3>
+      <ul>
+        <li><strong>1ª (inerzia)</strong>: senza forze, un corpo resta fermo o si muove di moto rettilineo uniforme;</li>
+        <li><strong>2ª (legge fondamentale)</strong>: una forza produce un'accelerazione proporzionale, \(F=m\,a\) (in newton, \(1\ \text{N}=1\ \text{kg·m/s}^2\));</li>
+        <li><strong>3ª (azione-reazione)</strong>: a ogni forza corrisponde una forza uguale e contraria.</li>
+      </ul>
+      <div class="callout warn"><div class="lbl">Massa e peso non sono la stessa cosa</div>La <strong>massa</strong> \(m\) è la quantità di materia, si misura in <strong>kg</strong> ed è la stessa ovunque. Il <strong>peso</strong> è la forza con cui la Terra la attrae, \(P=m\,g\), si misura in <strong>newton</strong> e cambia con \(g\). Un corpo di 10 kg pesa circa 98 N sulla Terra.</div>
+    </div>
+    <div class="card">
+      <h3>Lavoro ed energia</h3>
+      <p>Una forza compie <strong>lavoro</strong> quando sposta il suo punto di applicazione: \(L=F\,s\) (se forza e spostamento sono paralleli), in <strong>joule</strong>. L'energia è la capacità di compiere lavoro; in meccanica contano due forme:</p>
+      <div class="formula-box">\[ E_c=\tfrac12 m\,v^2\ (\text{cinetica}), \qquad E_p=m\,g\,h\ (\text{potenziale}) \]</div>
+      <p>In assenza di attriti l'energia meccanica totale \(E_c+E_p\) <strong>si conserva</strong>: è il principio che spiega perché un oggetto che cade acquista velocità mentre perde quota.</p>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('fis','fis-sim')">Vai alla simulazione →</button></div>
+  </div>
+  <div class="subpanel" id="fis-sim">
+    <h2>Simulazione · Il grafico velocità-tempo</h2>
+    <p class="lead">Imposta velocità iniziale \(v_0\), accelerazione \(a\) e durata \(t\): il grafico mostra la retta della velocità e, in evidenza, l'<strong>area sottostante</strong>, che è lo <strong>spazio percorso</strong>. Con \(a=0\) l'area è un rettangolo (moto uniforme); con \(a&gt;0\) un trapezio (moto accelerato).</p>
+    <div class="sim">
+      <div class="controls">
+        <div class="ctrl"><label>velocità iniziale \(v_0\) (m/s) <span class="val" id="fisV0V">0</span></label><input type="range" id="fisV0" min="0" max="20" value="0" step="1"></div>
+        <div class="ctrl"><label>accelerazione \(a\) (m/s²) <span class="val" id="fisAV">2</span></label><input type="range" id="fisA" min="0" max="4" value="2" step="0.5"></div>
+        <div class="ctrl"><label>durata \(t\) (s) <span class="val" id="fisTV">5</span></label><input type="range" id="fisT" min="1" max="10" value="5" step="1"></div>
+      </div>
+      <div class="canvas-wrap"><canvas id="fisCanvas" height="320"></canvas></div>
+      <div class="formula-box" id="fisFormula" style="text-align:center"></div>
+      <div class="readout" id="fisReadout"></div>
+      <div class="hint-txt">Porta \(a\) a zero: la retta diventa orizzontale e l'area un rettangolo di spazio \(s=v_0 t\). Rialza \(a\): la retta si inclina e l'area (lo spazio) cresce come \(t^2\).</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('fis','fis-ese')">Passa agli esercizi →</button></div>
+  </div>
+  <div class="subpanel" id="fis-ese"><h2>Esercizi guidati</h2><p class="lead">Difficoltà crescente. Scrivi solo il numero, nell'unità indicata dal testo (con la virgola se serve).</p><div id="fis-ese-list"></div></div>
+  <div class="subpanel" id="fis-quiz"><h2>Test · Fisica</h2><p class="lead">Una domanda alla volta, con esito immediato. Controlla sempre le unità di misura.</p><div class="quiz-wizard" id="fis-quizbox"></div></div>
+</section>
+
+<!-- ============================================================ -->
 <!-- ============= QUIZ RIEPILOGATIVO FINALE =================== -->
 <!-- ============================================================ -->
 <section class="section" id="sec-exam">
@@ -3271,6 +3333,40 @@ if(natSim){ [natP,natS,natE].forEach(el=>el.addEventListener('input',drawNat)); 
    ESERCIZI GUIDATI · DATI
    ================================================================== */
 const EXERCISES={
+ fis:[
+  {d:1,tag:'Moto uniforme',
+   q:'Un\'auto viaggia a velocità costante di 10 m/s per 5 secondi. Quanti metri percorre?',
+   ans:50,tol:0.5,hints:['Moto rettilineo uniforme: \\(s=v\\,t\\).','\\(10\\cdot5\\).'],
+   sol:'\\(s=v\\,t=10\\cdot5=50\\) m.'},
+  {d:1,tag:'Accelerazione',
+   q:'Un corpo passa da 0 a 20 m/s in 4 secondi. Qual è la sua accelerazione, in m/s²?',
+   ans:5,tol:0.1,hints:['\\(a=\\dfrac{\\Delta v}{\\Delta t}\\).','\\(\\dfrac{20-0}{4}\\).'],
+   sol:'\\(a=\\dfrac{20}{4}=5\\ \\text{m/s}^2\\).'},
+  {d:1,tag:'Peso',
+   q:'Qual è il peso, in newton, di un corpo di massa 10 kg? (usa \\(g=9{,}8\\ \\text{m/s}^2\\))',
+   ans:98,tol:0.5,hints:['\\(P=m\\,g\\).','\\(10\\cdot9{,}8\\).'],
+   sol:'\\(P=10\\cdot9{,}8=98\\) N.'},
+  {d:2,tag:'Moto accelerato',
+   q:'Un corpo parte da fermo con accelerazione \\(2\\ \\text{m/s}^2\\). Quanti metri percorre in 3 secondi?',
+   ans:9,tol:0.5,hints:['Da fermo: \\(s=\\tfrac12 a\\,t^2\\).','\\(\\tfrac12\\cdot2\\cdot3^2\\).'],
+   sol:'\\(s=\\tfrac12\\cdot2\\cdot9=9\\) m.'},
+  {d:2,tag:'Velocità finale',
+   q:'Un corpo ha velocità iniziale 5 m/s e accelera a \\(3\\ \\text{m/s}^2\\). Qual è la sua velocità dopo 4 secondi, in m/s?',
+   ans:17,tol:0.5,hints:['\\(v=v_0+a\\,t\\).','\\(5+3\\cdot4\\).'],
+   sol:'\\(v=5+3\\cdot4=17\\) m/s.'},
+  {d:2,tag:'Energia cinetica',
+   q:'Qual è l\'energia cinetica, in joule, di un corpo di massa 2 kg che si muove a 3 m/s?',
+   ans:9,tol:0.5,hints:['\\(E_c=\\tfrac12 m\\,v^2\\).','\\(\\tfrac12\\cdot2\\cdot3^2\\).'],
+   sol:'\\(E_c=\\tfrac12\\cdot2\\cdot9=9\\) J.'},
+  {d:3,tag:'Caduta libera',
+   q:'Un sasso è lasciato cadere da fermo. Qual è la sua velocità dopo 2 secondi, in m/s? (usa \\(g=9{,}8\\ \\text{m/s}^2\\))',
+   ans:19.6,tol:0.2,hints:['In caduta libera \\(v=g\\,t\\).','\\(9{,}8\\cdot2\\).'],
+   sol:'\\(v=9{,}8\\cdot2=19{,}6\\) m/s.'},
+  {d:3,tag:'Lavoro',
+   q:'Una forza di 10 N sposta un oggetto di 5 m nella propria direzione. Qual è il lavoro compiuto, in joule?',
+   ans:50,tol:0.5,hints:['\\(L=F\\,s\\) quando forza e spostamento sono paralleli.','\\(10\\cdot5\\).'],
+   sol:'\\(L=F\\,s=10\\cdot5=50\\) J.'}
+ ],
  rag:[
   {d:1,tag:'Serie: +3',
    q:'Completa la serie: \\(3,\\;6,\\;9,\\;12,\\;\\dots\\) Qual è il numero successivo?',
@@ -3873,6 +3969,34 @@ function buildExercises(group){
    TEST PER SCHEDA · DATI
    ================================================================== */
 const QUIZ={
+ fis:{
+  theory:[
+   {q:'La velocità media di un corpo è definita come:',
+    o:['\\(\\dfrac{\\Delta s}{\\Delta t}\\)','\\(\\Delta s\\cdot\\Delta t\\)','\\(\\dfrac{\\Delta t}{\\Delta s}\\)','\\(\\Delta v\\cdot\\Delta t\\)'],c:0,
+    e:'Spazio percorso diviso il tempo impiegato.'},
+   {q:'Nel moto rettilineo uniforme:',
+    o:['la velocità cresce','la velocità è costante e l\'accelerazione è nulla','l\'accelerazione è costante','il corpo è fermo'],c:1,
+    e:'«Uniforme» significa velocità costante, quindi \\(a=0\\).'},
+   {q:'La seconda legge della dinamica di Newton è:',
+    o:['\\(F=m\\,v\\)','\\(F=m\\,a\\)','\\(F=\\dfrac{m}{a}\\)','\\(F=m\\,g\\,h\\)'],c:1,
+    e:'La forza è massa per accelerazione: \\(F=m\\,a\\).'},
+   {q:'Il peso di un corpo si calcola come:',
+    o:['\\(P=m\\,g\\)','\\(P=\\dfrac{m}{g}\\)','\\(P=m\\,v\\)','\\(P=\\tfrac12 m\\,v^2\\)'],c:0,
+    e:'Il peso è la forza \\(P=m\\,g\\), in newton; la massa è in kg.'},
+   {q:'L\'energia cinetica di un corpo è:',
+    o:['\\(m\\,g\\,h\\)','\\(\\tfrac12 m\\,v^2\\)','\\(m\\,a\\)','\\(F\\,s\\)'],c:1,
+    e:'\\(E_c=\\tfrac12 m\\,v^2\\): dipende dal quadrato della velocità.'},
+   {q:'L\'accelerazione si misura in:',
+    o:['m/s','m/s²','m','newton'],c:1,
+    e:'È una variazione di velocità nel tempo: metri al secondo quadrato.'}
+  ],
+  num:[
+   {q:'Un\'auto viaggia a 8 m/s costanti per 6 s: quanti metri percorre?',a:48,tol:0.5,e:'\\(s=v\\,t=8\\cdot6=48\\) m.'},
+   {q:'Qual è la forza (in N) necessaria per dare a una massa di 5 kg un\'accelerazione di 4 m/s²?',a:20,tol:0.5,e:'\\(F=m\\,a=5\\cdot4=20\\) N.'},
+   {q:'Energia cinetica (in J) di un corpo di 4 kg a 5 m/s?',a:50,tol:0.5,e:'\\(\\tfrac12\\cdot4\\cdot5^2=50\\) J.'},
+   {q:'In caduta libera da fermo, quale velocità (in m/s) dopo 3 s? (usa \\(g=9{,}8\\))',a:29.4,tol:0.3,e:'\\(v=g\\,t=9{,}8\\cdot3=29{,}4\\) m/s.'}
+  ]
+ },
  rag:{
   theory:[
    {q:'La negazione di «tutti gli X sono Y» è:',
@@ -4406,7 +4530,8 @@ const STRANDS={
   suc:{nome:'Successioni e progressioni',     sec:'suc'},
   des:{nome:'Statistica descrittiva',         sec:'des'},
   rad:{nome:'Radicali e potenze',             sec:'rad'},
-  rag:{nome:'Logica e comprensione',          sec:'rag'}
+  rag:{nome:'Logica e comprensione',          sec:'rag'},
+  fis:{nome:'Fisica',                         sec:'fis'}
 };
 
 const EXAM=[
@@ -5071,7 +5196,37 @@ const EXAM=[
   e:'Ogni multiplo di 4 è pari (necessaria), ma 6 è pari e non divisibile per 4 (non sufficiente).'},
  {s:'rag',q:'Se oggi è lunedì, che giorno della settimana sarà tra 100 giorni?',
   o:['martedì','mercoledì','giovedì','lunedì','venerdì'],c:1,
-  e:'\\(100=14\\cdot7+2\\): avanzano 2 giorni oltre le settimane intere, quindi da lunedì si arriva a mercoledì.'}
+  e:'\\(100=14\\cdot7+2\\): avanzano 2 giorni oltre le settimane intere, quindi da lunedì si arriva a mercoledì.'},
+
+ /* ================================================================== */
+ /*   FISICA                                                           */
+ /* ================================================================== */
+ {s:'fis',q:'Un\'auto viaggia a velocità costante di 10 m/s per 6 secondi. Quanti metri percorre?',
+  o:['16 m','60 m','600 m','1,67 m','10 m'],c:1,e:'Moto uniforme: \\(s=v\\,t=10\\cdot6=60\\) m.'},
+ {s:'fis',q:'Un corpo passa da 0 a 30 m/s in 5 secondi. Qual è la sua accelerazione?',
+  o:['5 m/s²','6 m/s²','25 m/s²','150 m/s²','35 m/s²'],c:1,e:'\\(a=\\dfrac{30-0}{5}=6\\ \\text{m/s}^2\\).'},
+ {s:'fis',q:'La seconda legge della dinamica di Newton è:',
+  o:['\\(F=m\\,v\\)','\\(F=m\\,a\\)','\\(F=\\dfrac{m}{a}\\)','\\(F=m\\,g\\,h\\)','\\(F=\\tfrac12 m\\,v^2\\)'],c:1,
+  e:'La forza è massa per accelerazione.'},
+ {s:'fis',q:'Qual è il peso di un corpo di massa 5 kg? (usa \\(g\\approx9{,}8\\ \\text{m/s}^2\\))',
+  o:['5 N','49 N','9,8 N','500 N','0,5 N'],c:1,e:'\\(P=m\\,g=5\\cdot9{,}8=49\\) N.'},
+ {s:'fis',q:'Qual è l\'energia cinetica di un corpo di massa 2 kg che si muove a 4 m/s?',
+  o:['8 J','16 J','32 J','4 J','64 J'],c:1,e:'\\(E_c=\\tfrac12 m\\,v^2=\\tfrac12\\cdot2\\cdot16=16\\) J.'},
+ {s:'fis',q:'In quale unità di misura si esprime l\'accelerazione?',
+  o:['m/s','m/s²','m','N','J'],c:1,e:'È una variazione di velocità nel tempo: metri al secondo quadrato.'},
+ {s:'fis',q:'Nel moto rettilineo uniforme la velocità è:',
+  o:['crescente','costante','decrescente','nulla','variabile'],c:1,e:'«Uniforme» significa velocità costante e accelerazione nulla.'},
+ {s:'fis',q:'Un corpo parte da fermo con accelerazione \\(2\\ \\text{m/s}^2\\). Qual è la sua velocità dopo 3 secondi?',
+  o:['2 m/s','6 m/s','9 m/s','3 m/s','12 m/s'],c:1,e:'\\(v=v_0+a\\,t=0+2\\cdot3=6\\) m/s.'},
+ {s:'fis',q:'Un corpo parte da fermo con accelerazione \\(2\\ \\text{m/s}^2\\). Quanti metri percorre in 3 secondi?',
+  o:['6 m','9 m','18 m','3 m','12 m'],c:1,e:'\\(s=\\tfrac12 a\\,t^2=\\tfrac12\\cdot2\\cdot9=9\\) m.'},
+ {s:'fis',q:'Qual è la differenza tra massa e peso?',
+  o:['sono la stessa cosa','la massa si misura in kg, il peso in newton','la massa in newton, il peso in kg','entrambi in kg','entrambi in newton'],c:1,
+  e:'La massa (kg) è la quantità di materia; il peso (N) è la forza \\(P=m\\,g\\).'},
+ {s:'fis',q:'Qual è il lavoro compiuto da una forza di 10 N che sposta un corpo di 4 m nella propria direzione?',
+  o:['2,5 J','40 J','14 J','400 J','10 J'],c:1,e:'\\(L=F\\,s=10\\cdot4=40\\) J.'},
+ {s:'fis',q:'In caduta libera da fermo (\\(g\\approx9{,}8\\ \\text{m/s}^2\\)), qual è la velocità dopo 2 secondi?',
+  o:['9,8 m/s','19,6 m/s','4,9 m/s','2 m/s','39,2 m/s'],c:1,e:'\\(v=g\\,t=9{,}8\\cdot2=19{,}6\\) m/s.'}
 ];
 </script>
 <script>
@@ -5091,24 +5246,36 @@ const examState={
   revFilter:'all'
 };
 const EXAM_MINUTI=45;
-const EXAM_PER_FILONE=6;   /* quesiti estratti da ciascun filone per ogni prova */
+const EXAM_TOTALE=36;   /* il quiz finale è SEMPRE di 36 quesiti, col cronometro */
 const host=()=>document.getElementById('examHost');
 
-/* Estrazione casuale senza rimpiazzo: ogni prova pesca EXAM_PER_FILONE quesiti
-   da ciascun filone dell'archivio EXAM. Così l'archivio può essere molto più
-   ampio dei 36 quesiti mostrati, e ripetendo il quiz non si ritrovano sempre
-   le stesse domande. L'ordine dei filoni (blocchi) resta quello del test. */
+/* Estrazione casuale senza rimpiazzo. La prova è sempre di EXAM_TOTALE quesiti
+   (36), distribuiti nel modo più uniforme possibile tra i filoni presenti:
+   aggiungendo nuovi filoni la prova NON si allunga, cambia solo quanti quesiti
+   toccano a ciascuno. L'archivio resta molto più ampio dei 36 mostrati, quindi
+   ripetendo il quiz non si ritrovano sempre le stesse domande. */
 function sampleN(arr,n){
   const a=arr.slice();
   for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i];a[i]=a[j];a[j]=t; }
   return a.slice(0,Math.min(n,a.length));
 }
+/* quanti quesiti per ciascun filone in questa prova: base uguale per tutti,
+   più un quesito extra assegnato a caso ad alcuni filoni finché si arriva a 36 */
+function examPerFilone(){
+  const filoni=Object.keys(STRANDS).filter(k=>EXAM.some(q=>q.s===k));
+  const F=filoni.length||1;
+  const base=Math.floor(EXAM_TOTALE/F);
+  const extra=EXAM_TOTALE-base*F;
+  const bonus=filoni.slice();
+  for(let i=bonus.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=bonus[i];bonus[i]=bonus[j];bonus[j]=t; }
+  const count={}; filoni.forEach(k=>count[k]=base);
+  for(let i=0;i<extra;i++) count[bonus[i]]++;
+  return {filoni,count,base,extra};
+}
 function examDraw(){
+  const {filoni,count}=examPerFilone();
   const out=[];
-  Object.keys(STRANDS).forEach(k=>{
-    const banca=EXAM.filter(q=>q.s===k);
-    sampleN(banca, EXAM_PER_FILONE).forEach(q=>out.push(q));
-  });
+  filoni.forEach(k=>{ sampleN(EXAM.filter(q=>q.s===k), count[k]).forEach(q=>out.push(q)); });
   return out;
 }
 
@@ -5120,7 +5287,7 @@ function examStart(timed){
   examState.given=new Array(prova.length).fill(null);
   examState.flag=new Array(prova.length).fill(false);
   examState.timed=timed;
-  examState.left=examState.items.length*60;   /* un minuto a quesito: scala coi filoni */
+  examState.left=EXAM_MINUTI*60;   /* tempo fisso: 45 minuti per i 36 quesiti */
   examState.revFilter='all';
   if(examState.timer) clearInterval(examState.timer);
   if(timed){
@@ -5156,11 +5323,11 @@ function renderExam(){
 
 /* ------------------------- schermata iniziale ------------------------- */
 function renderExamIntro(h){
-  const filoni=Object.keys(STRANDS).filter(k=>EXAM.some(q=>q.s===k));
-  const perProva=filoni.length*EXAM_PER_FILONE;   /* quesiti nella singola prova */
+  const {filoni,count}=examPerFilone();
+  const perProva=EXAM_TOTALE;                     /* la prova è sempre di 36 quesiti */
   const banca=EXAM.length;                        /* archivio complessivo */
   let pills='';
-  filoni.forEach(k=>{ pills+='<span class="pill">'+STRANDS[k].nome+' · '+EXAM_PER_FILONE+'</span>'; });
+  filoni.forEach(k=>{ pills+='<span class="pill">'+STRANDS[k].nome+' · '+count[k]+'</span>'; });
 
   h.innerHTML=
   '<div class="exam-intro">'+
@@ -5179,7 +5346,7 @@ function renderExamIntro(h){
     '<div class="callout"><div class="lbl">Un consiglio prima di cominciare</div>'+
       'Non fermarti sul quesito difficile: segnalo e vai avanti. Il tempo speso male sul numero 7 è tempo tolto al numero 30, che magari sapevi risolvere in venti secondi.</div>'+
     '<div class="ractions" style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.2rem">'+
-      '<button class="btn amber" data-act="start-timed">Inizia la prova cronometrata ('+perProva+' minuti)</button>'+
+      '<button class="btn amber" data-act="start-timed">Inizia la prova cronometrata ('+EXAM_MINUTI+' minuti)</button>'+
       '<button class="btn ghost" data-act="start-free">Inizia senza cronometro</button>'+
     '</div>'+
   '</div>';
@@ -5492,6 +5659,47 @@ function drawRag(){
 }
 if(ragSim){ ragType.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ ragType.querySelectorAll('button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); ragRel=b.dataset.r; drawRag(); })); }
 
+/* ==================================================================
+   SIM · GRAFICO VELOCITÀ-TEMPO (area = spazio percorso)
+   ================================================================== */
+const fisSim=setupCanvas('fisCanvas',drawFis);
+const fisV0=document.getElementById('fisV0'), fisA=document.getElementById('fisA'), fisT=document.getElementById('fisT');
+function drawFis(){
+  if(!fisSim||!fisSim.W) return;
+  const {ctx,W,H}=fisSim; ctx.clearRect(0,0,W,H);
+  const v0=+fisV0.value, a=+fisA.value, T=+fisT.value;
+  document.getElementById('fisV0V').textContent=v0;
+  document.getElementById('fisAV').textContent=fmt(a,1);
+  document.getElementById('fisTV').textContent=T;
+  const tmax=10, vT=v0+a*T;
+  const vmax=Math.max(10, Math.ceil((Math.max(vT,v0)+2)/10)*10);
+  const padL=36,padR=14,padT=16,padB=28;
+  const X=t=>padL+(t/tmax)*(W-padL-padR);
+  const Y=v=>H-padB-(v/vmax)*(H-padT-padB);
+  for(let t=0;t<=tmax;t++) line(ctx,X(t),padT,X(t),Y(0),css('--line'),1);
+  for(let v=0;v<=vmax;v+=5) line(ctx,padL,Y(v),X(tmax),Y(v),css('--line'),1);
+  line(ctx,X(0),Y(0),X(tmax),Y(0),css('--line-strong'),1.6);
+  line(ctx,X(0),padT,X(0),Y(0),css('--line-strong'),1.6);
+  for(let v=10;v<=vmax;v+=10) label(ctx,String(v),padL-5,Y(v)+3,css('--muted'),9,'right');
+  for(let t=2;t<=tmax;t+=2) label(ctx,String(t),X(t),Y(0)+12,css('--muted'),9,'center');
+  label(ctx,'v (m/s)',padL+3,padT+4,css('--muted'),10,'left');
+  label(ctx,'t (s)',X(tmax)-3,Y(0)+13,css('--muted'),10,'right');
+  ctx.save(); ctx.beginPath(); ctx.moveTo(X(0),Y(0)); ctx.lineTo(X(0),Y(v0)); ctx.lineTo(X(T),Y(vT)); ctx.lineTo(X(T),Y(0)); ctx.closePath(); ctx.fillStyle=css('--ray-glow'); ctx.fill(); ctx.restore();
+  line(ctx,X(0),Y(v0),X(T),Y(vT),css('--accent'),2.8);
+  if(T<tmax) line(ctx,X(T),Y(vT),X(tmax),Y(v0+a*tmax),css('--accent'),1.4,[5,4]);
+  dot(ctx,X(T),Y(vT),5,css('--accent2'));
+  label(ctx,'spazio = area',X(T/2),Y(Math.max(v0,vT)*0.42)+4,css('--accent2'),11,'center','bold');
+  const s=v0*T+0.5*a*T*T;
+  const fb=document.getElementById('fisFormula'), ro=document.getElementById('fisReadout'); if(!fb||!ro) return;
+  fb.innerHTML='\\[ s=v_0\\,t+\\tfrac12 a\\,t^2 = '+v0+'\\cdot'+T+' + \\tfrac12\\cdot'+fmt(a,1)+'\\cdot'+T+'^2 = '+fmt(s,1)+'\\ \\text{m} \\]';
+  ro.innerHTML='<span class="chip">\\(v_0=\\) <b>'+v0+'</b> m/s</span>'+
+    '<span class="chip">\\(a=\\) <b>'+fmt(a,1)+'</b> m/s²</span>'+
+    '<span class="chip">\\(v\\) dopo '+T+' s: <b>'+fmt(vT,1)+'</b> m/s</span>'+
+    '<span class="chip hl">spazio percorso <b>'+fmt(s,1)+'</b> m</span>';
+  typesetEl(fb); typesetEl(ro);
+}
+if(fisSim){ [fisV0,fisA,fisT].forEach(el=>el&&el.addEventListener('input',drawFis)); }
+
 </script>
 <script>
 /* ==================================================================
@@ -5582,11 +5790,11 @@ if(anaSim){
 /* ==================================================================
    INIZIALIZZAZIONE
    ================================================================== */
-['ins','alg','fun','geo','gon','sta','ana','suc','des','rad','rag'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
+['ins','alg','fun','geo','gon','sta','ana','suc','des','rad','rag','fis'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
 renderExam();
 
 function drawAllSims(){
-  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat,drawAna,drawSuc,drawDes,drawRad,drawRag]
+  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat,drawAna,drawSuc,drawDes,drawRad,drawRag,drawFis]
     .forEach(fn=>{ try{ fn && fn(); }catch(e){} });
 }
 window.addEventListener('load',()=>{
