@@ -328,6 +328,9 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
     <button data-sec="gon">Goniometria</button>
     <button data-sec="sta">Probabilità e dati</button>
     <button data-sec="ana">Geometria analitica</button>
+    <button data-sec="suc">Successioni</button>
+    <button data-sec="des">Statistica</button>
+    <button data-sec="rad">Radicali e potenze</button>
     <button data-sec="exam" class="exam">Quiz finale</button>
   </div>
 </nav>
@@ -1827,6 +1830,158 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
 </section>
 
 <!-- ============================================================ -->
+<!-- ============= 8 · SUCCESSIONI E PROGRESSIONI ============= -->
+<!-- ============================================================ -->
+<section class="section" id="sec-suc">
+  <div class="subnav" data-group="suc">
+    <button data-sub="suc-teo" class="active">Teoria</button>
+    <button data-sub="suc-sim">Simulazione</button>
+    <button data-sub="suc-ese">Esercizi</button>
+    <button data-sub="suc-quiz">Test</button>
+  </div>
+  <div class="subpanel active" id="suc-teo">
+    <h2>Successioni e progressioni</h2>
+    <p class="lead">Una <strong>successione</strong> è un elenco ordinato di numeri, uno per ogni posto: \(a_1,a_2,a_3,\dots\) Due tipi tornano di continuo al test, perché seguono una regola semplice e prevedibile: le progressioni <strong>aritmetiche</strong> (si somma sempre lo stesso numero) e <strong>geometriche</strong> (si moltiplica sempre per lo stesso numero).</p>
+    <div class="card">
+      <h3>Progressione aritmetica</h3>
+      <p>Ogni termine si ottiene sommando al precedente una costante \(d\), la <strong>ragione</strong>. Esempio: \(2,5,8,11,\dots\) con \(d=3\).</p>
+      <div class="formula-box">\[ a_n=a_1+(n-1)\,d, \qquad S_n=\frac{(a_1+a_n)\,n}{2} \]</div>
+      <p>La formula della somma è l'idea del piccolo Gauss: sommare il primo e l'ultimo termine, moltiplicare per il numero di termini, dividere per due. Così \(1+2+\dots+100=\dfrac{(1+100)\cdot100}{2}=5050\).</p>
+    </div>
+    <div class="card">
+      <h3>Progressione geometrica</h3>
+      <p>Ogni termine si ottiene moltiplicando il precedente per una costante \(q\), la ragione. Esempio: \(3,6,12,24,\dots\) con \(q=2\).</p>
+      <div class="formula-box">\[ a_n=a_1\cdot q^{\,n-1}, \qquad S_n=a_1\,\frac{q^{\,n}-1}{q-1}\quad(q\neq1) \]</div>
+      <div class="callout"><div class="lbl">Aritmetica o geometrica?</div>Guarda come si passa da un termine al successivo: se <strong>sommi</strong> sempre lo stesso numero è aritmetica (le differenze sono costanti); se <strong>moltiplichi</strong> sempre per lo stesso numero è geometrica (i rapporti sono costanti). In \(2,4,8,16\) i rapporti valgono 2: è geometrica, non aritmetica.</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('suc','suc-sim')">Vai alla simulazione →</button></div>
+  </div>
+  <div class="subpanel" id="suc-sim">
+    <h2>Simulazione · Progressioni a confronto</h2>
+    <p class="lead">Scegli il tipo di progressione e muovi i parametri: vedrai i primi termini disegnarsi e leggerai il termine \(a_n\) e la somma \(S_n\). Confronta come cresce «a gradini uguali» un'aritmetica e come «esplode» una geometrica.</p>
+    <div class="sim">
+      <div class="controls">
+        <div class="ctrl" style="flex:1 1 100%"><label style="margin-bottom:.4rem">Tipo</label>
+          <div class="seg" id="sucType"><button data-t="arit" class="active">Aritmetica (\(+d\))</button><button data-t="geom">Geometrica (\(\times q\))</button></div>
+        </div>
+        <div class="ctrl"><label>primo termine \(a_1\) <span class="val" id="sucA1V">2</span></label><input type="range" id="sucA1" min="1" max="6" value="2" step="1"></div>
+        <div class="ctrl" id="sucDCtrl"><label>ragione \(d\) <span class="val" id="sucDV">3</span></label><input type="range" id="sucD" min="-3" max="5" value="3" step="1"></div>
+        <div class="ctrl" id="sucQCtrl" style="display:none"><label>ragione \(q\) <span class="val" id="sucQV">2</span></label><input type="range" id="sucQ" min="2" max="4" value="2" step="1"></div>
+        <div class="ctrl"><label>numero di termini \(n\) <span class="val" id="sucNV">6</span></label><input type="range" id="sucN" min="3" max="8" value="6" step="1"></div>
+      </div>
+      <div class="canvas-wrap"><canvas id="sucCanvas" height="300"></canvas></div>
+      <div class="formula-box" id="sucFormula" style="text-align:center"></div>
+      <div class="readout" id="sucReadout"></div>
+      <div class="hint-txt">Con la geometrica prova \(a_1=1,\;q=2\): ottieni \(1,2,4,8,16,\dots\), le potenze di 2. La somma dei primi \(n\) termini è sempre «il termine successivo meno 1».</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('suc','suc-ese')">Passa agli esercizi →</button></div>
+  </div>
+  <div class="subpanel" id="suc-ese"><h2>Esercizi guidati</h2><p class="lead">Difficoltà crescente. Riconosci prima il tipo di progressione, poi applica la formula giusta.</p><div id="suc-ese-list"></div></div>
+  <div class="subpanel" id="suc-quiz"><h2>Test · Successioni e progressioni</h2><p class="lead">Una domanda alla volta, con esito immediato.</p><div class="quiz-wizard" id="suc-quizbox"></div></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ============= 9 · STATISTICA DESCRITTIVA ================= -->
+<!-- ============================================================ -->
+<section class="section" id="sec-des">
+  <div class="subnav" data-group="des">
+    <button data-sub="des-teo" class="active">Teoria</button>
+    <button data-sub="des-sim">Simulazione</button>
+    <button data-sub="des-ese">Esercizi</button>
+    <button data-sub="des-quiz">Test</button>
+  </div>
+  <div class="subpanel active" id="des-teo">
+    <h2>Statistica descrittiva</h2>
+    <p class="lead">Riassumere tanti dati con pochi numeri: dove stanno «al centro» (indici di posizione) e quanto sono «sparpagliati» (indici di dispersione). Sono i due gruppi di domande che il test pone quasi sempre.</p>
+    <div class="card">
+      <h3>Dove sta il centro: media, mediana, moda</h3>
+      <ul>
+        <li>la <strong>media aritmetica</strong> è la somma dei valori divisa per quanti sono: \(\bar x=\dfrac{x_1+x_2+\dots+x_n}{n}\);</li>
+        <li>la <strong>mediana</strong> è il valore <strong>centrale</strong> quando i dati sono messi in ordine (se sono pari, è la media dei due centrali);</li>
+        <li>la <strong>moda</strong> è il valore che compare <strong>più spesso</strong>.</li>
+      </ul>
+      <div class="callout"><div class="lbl">Perché a volte si preferisce la mediana</div>La media risente molto dei valori estremi: un solo stipendio altissimo alza la media di tutti. La mediana no — resta «in mezzo». Per questo i redditi si riassumono spesso con la mediana. Lo vedrai muovendo l'outlier nella simulazione.</div>
+    </div>
+    <div class="card">
+      <h3>Quanto sono sparpagliati: range e deviazione standard</h3>
+      <p>Il <strong>campo di variazione</strong> (range) è la differenza tra il valore massimo e il minimo. La <strong>varianza</strong> è la media dei quadrati degli scarti dalla media, e la <strong>deviazione standard</strong> \(\sigma\) è la sua radice: misura quanto in media i dati si discostano dal centro.</p>
+      <div class="formula-box">\[ \text{range}=x_{\max}-x_{\min}, \qquad \sigma=\sqrt{\frac{1}{n}\sum_{i}(x_i-\bar x)^2} \]</div>
+      <p>Una <strong>media pesata</strong> serve quando i valori «contano» diversamente: \(\bar x=\dfrac{\sum n_i x_i}{\sum n_i}\). È il caso di due classi di diversa numerosità: non si fa la media delle medie, si pesano per il numero di studenti.</p>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('des','des-sim')">Vai alla simulazione →</button></div>
+  </div>
+  <div class="subpanel" id="des-sim">
+    <h2>Simulazione · Media contro mediana</h2>
+    <p class="lead">Un piccolo insieme di dati, con un valore che puoi spostare a piacere: è l'<strong>outlier</strong>. Osserva la linea della <strong>media</strong> inseguire l'outlier mentre la <strong>mediana</strong> resta quasi ferma. È il motivo per cui, con dati «storti», la mediana descrive meglio il centro.</p>
+    <div class="sim">
+      <div class="controls">
+        <div class="ctrl" style="flex:1 1 100%"><label>valore dell'outlier <span class="val" id="desXV">8</span></label><input type="range" id="desX" min="0" max="20" value="8" step="1"></div>
+      </div>
+      <div class="canvas-wrap"><canvas id="desCanvas" height="300"></canvas></div>
+      <div class="readout" id="desReadout"></div>
+      <div class="legend"><span><i style="background:var(--accent)"></i> media</span><span><i style="background:var(--accent2)"></i> mediana</span></div>
+      <div class="hint-txt">Porta l'outlier a 20: la media schizza in alto, la mediana si muove appena. Riportalo vicino agli altri: le due misure quasi coincidono. Quando media e mediana sono lontane, i dati sono asimmetrici.</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('des','des-ese')">Passa agli esercizi →</button></div>
+  </div>
+  <div class="subpanel" id="des-ese"><h2>Esercizi guidati</h2><p class="lead">Difficoltà crescente. Quando la risposta ha decimali, usa la virgola (ad esempio \(6{,}5\)).</p><div id="des-ese-list"></div></div>
+  <div class="subpanel" id="des-quiz"><h2>Test · Statistica descrittiva</h2><p class="lead">Una domanda alla volta, con esito immediato.</p><div class="quiz-wizard" id="des-quizbox"></div></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ============= 10 · RADICALI E POTENZE ==================== -->
+<!-- ============================================================ -->
+<section class="section" id="sec-rad">
+  <div class="subnav" data-group="rad">
+    <button data-sub="rad-teo" class="active">Teoria</button>
+    <button data-sub="rad-sim">Simulazione</button>
+    <button data-sub="rad-ese">Esercizi</button>
+    <button data-sub="rad-quiz">Test</button>
+  </div>
+  <div class="subpanel active" id="rad-teo">
+    <h2>Radicali e potenze</h2>
+    <p class="lead">Le potenze sono una scrittura compatta per le moltiplicazioni ripetute, e i radicali ne sono l'operazione inversa. Poche proprietà, sempre le stesse: chi le padroneggia risolve a mente quesiti che sembrano lunghi.</p>
+    <div class="card">
+      <h3>Le proprietà delle potenze</h3>
+      <div class="tbl-wrap"><table class="data">
+        <tr><th>Regola</th><th class="c">Formula</th></tr>
+        <tr><td>stesso numero, si sommano gli esponenti</td><td class="c">\(a^m\cdot a^n=a^{m+n}\)</td></tr>
+        <tr><td>quoziente: si sottraggono</td><td class="c">\(a^m:a^n=a^{m-n}\)</td></tr>
+        <tr><td>potenza di potenza: si moltiplicano</td><td class="c">\((a^m)^n=a^{m\cdot n}\)</td></tr>
+        <tr><td>esponente zero</td><td class="c">\(a^0=1\quad(a\neq0)\)</td></tr>
+        <tr><td>esponente negativo: reciproco</td><td class="c">\(a^{-n}=\dfrac{1}{a^n}\)</td></tr>
+        <tr><td>esponente frazionario: radice</td><td class="c">\(a^{1/n}=\sqrt[n]{a}\)</td></tr>
+      </table></div>
+      <div class="callout warn"><div class="lbl">Attenzione</div>Gli esponenti si sommano <strong>solo</strong> se la base è la stessa: \(2^3\cdot2^2=2^5\), ma \(2^3\cdot3^2\) non si semplifica così. E \(a^{-n}\) non è un numero negativo: è il <strong>reciproco</strong>, quindi \(2^{-3}=\dfrac18\), non \(-8\).</div>
+    </div>
+    <div class="card">
+      <h3>I radicali</h3>
+      <p>La radice \(n\)-esima è l'esponente frazionario \(\tfrac1n\); valgono quindi le stesse proprietà.</p>
+      <div class="formula-box">\[ \sqrt{a\cdot b}=\sqrt a\cdot\sqrt b, \qquad \sqrt{\frac{a}{b}}=\frac{\sqrt a}{\sqrt b}, \qquad \sqrt{a^2\,b}=a\sqrt b \]</div>
+      <p>Due mosse ricorrono al test: <strong>portar fuori</strong> un fattore (\(\sqrt{72}=\sqrt{36\cdot2}=6\sqrt2\)) e <strong>razionalizzare</strong> il denominatore, cioè togliere la radice da sotto la frazione moltiplicando sopra e sotto per essa:</p>
+      <div class="formula-box">\[ \frac{1}{\sqrt a}=\frac{1}{\sqrt a}\cdot\frac{\sqrt a}{\sqrt a}=\frac{\sqrt a}{a} \]</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('rad','rad-sim')">Vai alla simulazione →</button></div>
+  </div>
+  <div class="subpanel" id="rad-sim">
+    <h2>Simulazione · La funzione potenza</h2>
+    <p class="lead">Muovi l'esponente \(n\) e osserva la curva \(y=x^{\,n}\) per \(x\ge0\): con \(n=2\) è una parabola, con \(n=\tfrac12\) è una radice quadrata (la parabola «coricata»), con \(n=1\) una retta. Comunque scelga \(n\), la curva passa sempre per \((1,1)\).</p>
+    <div class="sim">
+      <div class="controls">
+        <div class="ctrl"><label>esponente \(n\) <span class="val" id="radNV">2</span></label><input type="range" id="radN" min="0.5" max="3" value="2" step="0.5"></div>
+      </div>
+      <div class="canvas-wrap"><canvas id="radCanvas" height="320"></canvas></div>
+      <div class="formula-box" id="radFormula" style="text-align:center"></div>
+      <div class="readout" id="radReadout"></div>
+      <div class="hint-txt">Confronta \(n=2\) e \(n=\tfrac12\): sono una l'inversa dell'altra, simmetriche rispetto alla retta \(y=x\), perché elevare al quadrato e fare la radice quadrata sono operazioni opposte.</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('rad','rad-ese')">Passa agli esercizi →</button></div>
+  </div>
+  <div class="subpanel" id="rad-ese"><h2>Esercizi guidati</h2><p class="lead">Difficoltà crescente. Se la risposta è un decimale, usa la virgola (ad esempio \(0{,}125\)).</p><div id="rad-ese-list"></div></div>
+  <div class="subpanel" id="rad-quiz"><h2>Test · Radicali e potenze</h2><p class="lead">Una domanda alla volta, con esito immediato.</p><div class="quiz-wizard" id="rad-quizbox"></div></div>
+</section>
+
+<!-- ============================================================ -->
 <!-- ============= QUIZ RIEPILOGATIVO FINALE =================== -->
 <!-- ============================================================ -->
 <section class="section" id="sec-exam">
@@ -3052,6 +3207,108 @@ if(natSim){ [natP,natS,natE].forEach(el=>el.addEventListener('input',drawNat)); 
    ESERCIZI GUIDATI · DATI
    ================================================================== */
 const EXERCISES={
+ suc:[
+  {d:1,tag:'Ragione aritmetica',
+   q:'Nella progressione \\(2,5,8,11,\\dots\\) qual è la ragione (la differenza costante)?',
+   ans:3,tol:0.05,hints:['Sottrai un termine dal successivo.','\\(5-2\\).'],
+   sol:'La differenza è costante: \\(5-2=3\\).'},
+  {d:1,tag:'Termine aritmetico',
+   q:'In una progressione aritmetica \\(a_1=3\\) e ragione \\(d=5\\). Quanto vale \\(a_{10}\\)?',
+   ans:48,tol:0.05,hints:['\\(a_n=a_1+(n-1)d\\).','\\(3+9\\cdot5\\).'],
+   sol:'\\(a_{10}=3+(10-1)\\cdot5=3+45=48\\).'},
+  {d:1,tag:'Termine geometrico',
+   q:'In una progressione geometrica \\(a_1=2\\) e ragione \\(q=3\\). Quanto vale \\(a_4\\)?',
+   ans:54,tol:0.05,hints:['\\(a_n=a_1\\cdot q^{n-1}\\).','\\(2\\cdot3^{3}\\).'],
+   sol:'\\(a_4=2\\cdot3^{3}=2\\cdot27=54\\).'},
+  {d:2,tag:'Somma aritmetica',
+   q:'Quanto vale la somma dei primi 10 numeri naturali \\(1+2+\\dots+10\\)?',
+   ans:55,tol:0.05,hints:['\\(S_n=\\dfrac{(a_1+a_n)\\,n}{2}\\).','\\(\\dfrac{(1+10)\\cdot10}{2}\\).'],
+   sol:'\\(S_{10}=\\dfrac{(1+10)\\cdot10}{2}=55\\).'},
+  {d:2,tag:'Numeri dispari',
+   q:'La successione dei numeri dispari è \\(1,3,5,\\dots\\) (aritmetica con \\(d=2\\)). Quanto vale il 20° termine?',
+   ans:39,tol:0.05,hints:['\\(a_1=1,\\ d=2\\): \\(a_n=1+(n-1)\\cdot2\\).','\\(1+19\\cdot2\\).'],
+   sol:'\\(a_{20}=1+19\\cdot2=39\\).'},
+  {d:2,tag:'Termine geometrico',
+   q:'Nella progressione \\(3,6,12,24,\\dots\\) quanto vale il 6° termine?',
+   ans:96,tol:0.05,hints:['È geometrica con \\(q=2\\): \\(a_n=3\\cdot2^{n-1}\\).','\\(3\\cdot2^{5}\\).'],
+   sol:'\\(a_6=3\\cdot2^{5}=3\\cdot32=96\\).'},
+  {d:3,tag:'Somma geometrica',
+   q:'Quanto vale la somma dei primi 5 termini della progressione geometrica \\(1,2,4,8,16\\)?',
+   ans:31,tol:0.05,hints:['Somma diretta, oppure \\(S_n=a_1\\dfrac{q^n-1}{q-1}\\).','\\(1+2+4+8+16\\), cioè \\(2^5-1\\).'],
+   sol:'\\(1+2+4+8+16=31=2^{5}-1\\).'},
+  {d:3,tag:'Ricavare la ragione',
+   q:'In una progressione aritmetica \\(a_1=5\\) e \\(a_7=29\\). Quanto vale la ragione \\(d\\)?',
+   ans:4,tol:0.05,hints:['\\(a_7=a_1+6d\\).','\\(29=5+6d\\).'],
+   sol:'\\(29=5+6d\\Rightarrow 6d=24\\Rightarrow d=4\\).'}
+ ],
+ des:[
+  {d:1,tag:'Media',
+   q:'Qual è la media aritmetica dei valori \\(4,6,8,10\\)?',
+   ans:7,tol:0.05,hints:['Somma diviso quanti sono.','\\(\\dfrac{4+6+8+10}{4}\\).'],
+   sol:'\\(\\dfrac{28}{4}=7\\).'},
+  {d:1,tag:'Mediana (dispari)',
+   q:'Qual è la mediana dei valori \\(3,5,7,9,11\\)?',
+   ans:7,tol:0.05,hints:['Ordina i dati e prendi il valore centrale.','Il terzo di cinque.'],
+   sol:'Il valore centrale è 7.'},
+  {d:1,tag:'Moda',
+   q:'Qual è la moda dei valori \\(2,3,3,5,7\\)?',
+   ans:3,tol:0.05,hints:['La moda è il valore più frequente.','Quale numero compare due volte?'],
+   sol:'Il 3 compare due volte: è la moda.'},
+  {d:2,tag:'Campo di variazione',
+   q:'Qual è il campo di variazione (range) dei valori \\(4,9,2,7,10\\)?',
+   ans:8,tol:0.05,hints:['Range \\(=\\) massimo \\(-\\) minimo.','\\(10-2\\).'],
+   sol:'\\(10-2=8\\).'},
+  {d:2,tag:'Mediana (pari)',
+   q:'Qual è la mediana dei quattro valori \\(2,4,6,10\\)? (usa la virgola se serve)',
+   ans:5,tol:0.05,hints:['Con un numero pari di dati, è la media dei due centrali.','\\(\\dfrac{4+6}{2}\\).'],
+   sol:'\\(\\dfrac{4+6}{2}=5\\).'},
+  {d:2,tag:'Media pesata',
+   q:'In una classe di 20 studenti la media è 6, in un\'altra di 30 studenti è 7. Qual è la media dei 50 studenti? (usa la virgola)',
+   ans:6.6,tol:0.05,hints:['Non è la media delle medie: pesa per la numerosità.','\\(\\dfrac{20\\cdot6+30\\cdot7}{50}\\).'],
+   sol:'\\(\\dfrac{120+210}{50}=6{,}6\\).'},
+  {d:3,tag:'Ricavare un dato',
+   q:'La media di cinque numeri è 8; quattro di essi sono \\(6,7,9,10\\). Quanto vale il quinto?',
+   ans:8,tol:0.05,hints:['La somma dei cinque è \\(5\\cdot8=40\\).','\\(40-(6+7+9+10)\\).'],
+   sol:'\\(40-32=8\\).'},
+  {d:3,tag:'Effetto dell\'outlier',
+   q:'I dati \\(4,4,4,4\\) hanno media 4. Aggiungendo il valore 24, quanto diventa la nuova media?',
+   ans:8,tol:0.05,hints:['Nuova somma su nuovo numero di dati.','\\(\\dfrac{16+24}{5}\\).'],
+   sol:'\\(\\dfrac{4\\cdot4+24}{5}=\\dfrac{40}{5}=8\\): un solo valore estremo raddoppia la media.'}
+ ],
+ rad:[
+  {d:1,tag:'Prodotto di potenze',
+   q:'Quanto vale \\(2^{3}\\cdot2^{2}\\)?',
+   ans:32,tol:0.05,hints:['Stessa base: si sommano gli esponenti.','\\(2^{3+2}=2^{5}\\).'],
+   sol:'\\(2^{5}=32\\).'},
+  {d:1,tag:'Potenza di potenza',
+   q:'Quanto vale \\((3^{2})^{2}\\)?',
+   ans:81,tol:0.05,hints:['Si moltiplicano gli esponenti.','\\(3^{2\\cdot2}=3^{4}\\).'],
+   sol:'\\(3^{4}=81\\).'},
+  {d:1,tag:'Radice quadrata',
+   q:'Quanto vale \\(\\sqrt{16}\\)?',
+   ans:4,tol:0.05,hints:['Quale numero al quadrato dà 16?','\\(4^2=16\\).'],
+   sol:'\\(\\sqrt{16}=4\\).'},
+  {d:2,tag:'Esponente negativo',
+   q:'Quanto vale \\(2^{-3}\\)? (scrivi il decimale, es. \\(0{,}125\\))',
+   ans:0.125,tol:0.005,hints:['\\(a^{-n}=\\dfrac{1}{a^{n}}\\), non è un numero negativo.','\\(\\dfrac{1}{2^{3}}=\\dfrac18\\).'],
+   sol:'\\(2^{-3}=\\dfrac{1}{8}=0{,}125\\).'},
+  {d:2,tag:'Quoziente di radici',
+   q:'Quanto vale \\(\\dfrac{\\sqrt{50}}{\\sqrt{2}}\\)?',
+   ans:5,tol:0.05,hints:['\\(\\dfrac{\\sqrt a}{\\sqrt b}=\\sqrt{\\dfrac ab}\\).','\\(\\sqrt{50/2}=\\sqrt{25}\\).'],
+   sol:'\\(\\sqrt{\\dfrac{50}{2}}=\\sqrt{25}=5\\).'},
+  {d:2,tag:'Quoziente di potenze',
+   q:'Quanto vale \\(10^{2}\\cdot10^{-1}\\)?',
+   ans:10,tol:0.05,hints:['Somma gli esponenti: \\(2+(-1)\\).','\\(10^{1}\\).'],
+   sol:'\\(10^{2-1}=10^{1}=10\\).'},
+  {d:3,tag:'Esponente frazionario',
+   q:'Quanto vale \\(8^{2/3}\\)?',
+   ans:4,tol:0.05,hints:['\\(8^{2/3}=\\left(\\sqrt[3]{8}\\right)^{2}\\).','\\(\\sqrt[3]{8}=2\\), poi \\(2^{2}\\).'],
+   sol:'\\(\\left(\\sqrt[3]{8}\\right)^{2}=2^{2}=4\\).'},
+  {d:3,tag:'Somma di radici',
+   q:'Quanto vale \\(\\sqrt[3]{27}+\\sqrt{16}\\)?',
+   ans:7,tol:0.05,hints:['Calcola le due radici separatamente.','\\(\\sqrt[3]{27}=3\\) e \\(\\sqrt{16}=4\\).'],
+   sol:'\\(3+4=7\\).'}
+ ],
  ana:[
   {d:1,tag:'Distanza tra due punti',
    q:'Qual è la distanza tra i punti \\(A(1,2)\\) e \\(B(4,6)\\)?',
@@ -3518,6 +3775,90 @@ function buildExercises(group){
    TEST PER SCHEDA · DATI
    ================================================================== */
 const QUIZ={
+ suc:{
+  theory:[
+   {q:'In una progressione aritmetica il termine generale è:',
+    o:['\\(a_1\\cdot q^{n-1}\\)','\\(a_1+(n-1)d\\)','\\(a_1+nd\\)','\\(a_1\\cdot n\\)'],c:1,
+    e:'Si parte da \\(a_1\\) e si aggiunge la ragione \\(d\\) per \\(n-1\\) volte.'},
+   {q:'In una progressione geometrica il termine generale è:',
+    o:['\\(a_1+(n-1)q\\)','\\(a_1\\cdot q^{\\,n-1}\\)','\\(a_1\\cdot q\\cdot n\\)','\\(a_1^{\\,n}\\)'],c:1,
+    e:'Si parte da \\(a_1\\) e si moltiplica per la ragione \\(q\\) per \\(n-1\\) volte.'},
+   {q:'La somma dei primi \\(n\\) termini di una progressione aritmetica è:',
+    o:['\\(\\dfrac{(a_1+a_n)\\,n}{2}\\)','\\(a_1+a_n\\)','\\(n\\cdot a_1\\)','\\(\\dfrac{a_n}{n}\\)'],c:0,
+    e:'Media tra primo e ultimo termine, moltiplicata per il numero di termini.'},
+   {q:'Una successione in cui ogni termine si ottiene sommando sempre lo stesso numero è:',
+    o:['geometrica','aritmetica','costante','casuale'],c:1,
+    e:'Somma costante \\(\\Rightarrow\\) progressione aritmetica (differenze costanti).'},
+   {q:'La successione \\(2,6,18,54\\) è una progressione:',
+    o:['aritmetica di ragione 4','geometrica di ragione 3','aritmetica di ragione 3','geometrica di ragione 4'],c:1,
+    e:'Ogni termine è il triplo del precedente: geometrica con \\(q=3\\).'},
+   {q:'La ragione di una progressione geometrica è:',
+    o:['la differenza tra due termini consecutivi','il rapporto tra un termine e il precedente','il primo termine','la somma dei termini'],c:1,
+    e:'Nella geometrica conta il rapporto costante \\(q=\\dfrac{a_{n+1}}{a_n}\\).'}
+  ],
+  num:[
+   {q:'Progressione aritmetica con \\(a_1=4\\) e \\(d=3\\): quanto vale \\(a_5\\)?',a:16,tol:0.1,e:'\\(4+4\\cdot3=16\\).'},
+   {q:'Progressione geometrica con \\(a_1=1\\) e \\(q=2\\): quanto vale \\(a_8\\)?',a:128,tol:0.1,e:'\\(1\\cdot2^{7}=128\\).'},
+   {q:'Quanto vale la somma \\(1+2+3+\\dots+100\\)?',a:5050,tol:0.5,e:'\\(\\dfrac{(1+100)\\cdot100}{2}=5050\\).'},
+   {q:'Progressione aritmetica con \\(a_3=10\\) e \\(a_7=22\\): quanto vale la ragione \\(d\\)?',a:3,tol:0.1,e:'\\(d=\\dfrac{22-10}{7-3}=\\dfrac{12}{4}=3\\).'}
+  ]
+ },
+ des:{
+  theory:[
+   {q:'La media aritmetica di \\(n\\) valori è:',
+    o:['il valore centrale','la somma dei valori diviso \\(n\\)','il valore più frequente','il massimo meno il minimo'],c:1,
+    e:'\\(\\bar x=\\dfrac{x_1+\\dots+x_n}{n}\\).'},
+   {q:'La mediana è:',
+    o:['la media dei valori','il valore centrale dei dati ordinati','il valore più frequente','la somma diviso 2'],c:1,
+    e:'Ordinati i dati, è il valore che sta in mezzo (o la media dei due centrali).'},
+   {q:'La moda è:',
+    o:['il valore più frequente','il valore centrale','la media','il valore massimo'],c:0,
+    e:'La moda è il dato che compare il maggior numero di volte.'},
+   {q:'Il campo di variazione (range) è:',
+    o:['la media dei dati','la differenza tra massimo e minimo','la somma dei dati','il numero dei dati'],c:1,
+    e:'\\(\\text{range}=x_{\\max}-x_{\\min}\\).'},
+   {q:'La deviazione standard misura:',
+    o:['il valore centrale','la dispersione dei dati attorno alla media','il dato più frequente','il numero dei dati'],c:1,
+    e:'Indica quanto in media i dati si discostano dalla media.'},
+   {q:'Aggiungendo un valore molto più grande degli altri, l\'indice che cambia di più è:',
+    o:['la mediana','la media','la moda','il minimo'],c:1,
+    e:'La media risente dei valori estremi; la mediana resta stabile.'}
+  ],
+  num:[
+   {q:'Qual è la media di \\(10,20,30\\)?',a:20,tol:0.1,e:'\\(\\dfrac{60}{3}=20\\).'},
+   {q:'Qual è la mediana di \\(1,2,3,4,5,6\\)? (usa la virgola)',a:3.5,tol:0.05,e:'Media dei due centrali: \\(\\dfrac{3+4}{2}=3{,}5\\).'},
+   {q:'Qual è il campo di variazione di \\(3,8,15,6\\)?',a:12,tol:0.1,e:'\\(15-3=12\\).'},
+   {q:'Media pesata: 10 valori con media 5 e 10 valori con media 9. Media complessiva?',a:7,tol:0.1,e:'\\(\\dfrac{10\\cdot5+10\\cdot9}{20}=7\\).'}
+  ]
+ },
+ rad:{
+  theory:[
+   {q:'Il prodotto \\(a^m\\cdot a^n\\) è uguale a:',
+    o:['\\(a^{m+n}\\)','\\(a^{m\\cdot n}\\)','\\(a^{m-n}\\)','\\(2a^{mn}\\)'],c:0,
+    e:'Stessa base: si sommano gli esponenti.'},
+   {q:'La potenza di potenza \\((a^m)^n\\) è uguale a:',
+    o:['\\(a^{m+n}\\)','\\(a^{m\\cdot n}\\)','\\(a^{m^n}\\)','\\(a^{m-n}\\)'],c:1,
+    e:'Si moltiplicano gli esponenti.'},
+   {q:'La potenza \\(a^{-n}\\) è uguale a:',
+    o:['\\(-a^{n}\\)','\\(\\dfrac{1}{a^{n}}\\)','\\(a^{n}\\)','\\(0\\)'],c:1,
+    e:'Esponente negativo \\(=\\) reciproco: non è un numero negativo.'},
+   {q:'La scrittura \\(a^{1/2}\\) coincide con:',
+    o:['\\(\\dfrac{a}{2}\\)','\\(\\sqrt{a}\\)','\\(2a\\)','\\(a^2\\)'],c:1,
+    e:'L\'esponente \\(\\tfrac12\\) è la radice quadrata.'},
+   {q:'La radice \\(\\sqrt{a\\cdot b}\\) è uguale a:',
+    o:['\\(\\sqrt a+\\sqrt b\\)','\\(\\sqrt a\\cdot\\sqrt b\\)','\\(a\\sqrt b\\)','\\(\\sqrt{a}-\\sqrt{b}\\)'],c:1,
+    e:'La radice di un prodotto è il prodotto delle radici.'},
+   {q:'Quanto vale \\(a^{0}\\) (con \\(a\\neq0\\))?',
+    o:['0','1','\\(a\\)','indefinito'],c:1,
+    e:'Qualsiasi base non nulla elevata a zero dà 1.'}
+  ],
+  num:[
+   {q:'Quanto vale \\(3^{2}\\cdot3^{3}\\)?',a:243,tol:0.5,e:'\\(3^{5}=243\\).'},
+   {q:'Quanto vale \\(2^{-2}\\)? (usa la virgola)',a:0.25,tol:0.01,e:'\\(\\dfrac{1}{4}=0{,}25\\).'},
+   {q:'Quanto vale \\(\\sqrt{81}\\)?',a:9,tol:0.1,e:'\\(9^2=81\\).'},
+   {q:'Quanto vale \\(16^{3/4}\\)?',a:8,tol:0.1,e:'\\(\\left(\\sqrt[4]{16}\\right)^{3}=2^{3}=8\\).'}
+  ]
+ },
  ana:{
   theory:[
    {q:'La distanza tra i punti \\(A(x_A,y_A)\\) e \\(B(x_B,y_B)\\) è:',
@@ -3935,7 +4276,10 @@ const STRANDS={
   geo:{nome:'Geometria',                     sec:'geo'},
   gon:{nome:'Goniometria',                   sec:'gon'},
   sta:{nome:'Probabilità, dati e conteggio', sec:'sta'},
-  ana:{nome:'Geometria analitica',           sec:'ana'}
+  ana:{nome:'Geometria analitica',           sec:'ana'},
+  suc:{nome:'Successioni e progressioni',     sec:'suc'},
+  des:{nome:'Statistica descrittiva',         sec:'des'},
+  rad:{nome:'Radicali e potenze',             sec:'rad'}
 };
 
 const EXAM=[
@@ -4470,7 +4814,102 @@ const EXAM=[
   e:'\\(5=2\\cdot1+q\\Rightarrow q=3\\).'},
  {s:'ana',q:'La curva di equazione \\(y=x^2+1\\) rappresenta:',
   o:['una retta','una parabola','una circonferenza','un\'iperbole','una retta orizzontale'],c:1,
-  e:'La presenza di \\(x^2\\) con coefficiente non nullo indica una parabola (con vertice in \\((0,1)\\)).'}
+  e:'La presenza di \\(x^2\\) con coefficiente non nullo indica una parabola (con vertice in \\((0,1)\\)).'},
+
+ /* ================================================================== */
+ /*   SUCCESSIONI E PROGRESSIONI                                        */
+ /* ================================================================== */
+ {s:'suc',q:'Nella progressione aritmetica \\(3,7,11,15,\\dots\\) qual è la ragione?',
+  o:['3','4','5','7','2'],c:1,e:'La differenza costante è \\(7-3=4\\).'},
+ {s:'suc',q:'Progressione aritmetica con \\(a_1=2\\) e ragione \\(d=5\\): quanto vale \\(a_6\\)?',
+  o:['25','27','30','32','12'],c:1,e:'\\(a_6=2+(6-1)\\cdot5=2+25=27\\).'},
+ {s:'suc',q:'Il termine generale di una progressione aritmetica è:',
+  o:['\\(a_1\\cdot q^{n-1}\\)','\\(a_1+(n-1)d\\)','\\(a_1+nd\\)','\\(a_1\\cdot n\\)','\\(a_1-nd\\)'],c:1,
+  e:'Si somma la ragione \\(d\\) per \\(n-1\\) volte al primo termine.'},
+ {s:'suc',q:'Nella progressione \\(2,6,18,54,\\dots\\) qual è la ragione?',
+  o:['2','3','4','6','9'],c:1,e:'Ogni termine è il triplo del precedente: geometrica con \\(q=3\\).'},
+ {s:'suc',q:'Progressione geometrica con \\(a_1=3\\) e ragione \\(q=2\\): quanto vale \\(a_5\\)?',
+  o:['24','48','96','16','30'],c:1,e:'\\(a_5=3\\cdot2^{4}=3\\cdot16=48\\).'},
+ {s:'suc',q:'Quanto vale la somma \\(1+2+3+\\dots+100\\)?',
+  o:['5000','5050','10000','2550','1000'],c:1,e:'\\(\\dfrac{(1+100)\\cdot100}{2}=5050\\).'},
+ {s:'suc',q:'La somma dei primi \\(n\\) termini di una progressione aritmetica è:',
+  o:['\\(\\dfrac{(a_1+a_n)\\,n}{2}\\)','\\(a_1+a_n\\)','\\(n\\,a_1\\)','\\(a_1\\,q^{n}\\)','\\(\\dfrac{a_n}{n}\\)'],c:0,
+  e:'Media tra primo e ultimo termine per il numero di termini.'},
+ {s:'suc',q:'Una successione in cui ogni termine si ottiene sommando sempre lo stesso numero è:',
+  o:['geometrica','aritmetica','costante','casuale','armonica'],c:1,
+  e:'Somma costante \\(\\Rightarrow\\) progressione aritmetica.'},
+ {s:'suc',q:'Nella successione \\(1,2,4,8,16,\\dots\\) ogni termine è:',
+  o:['il precedente più 2','il doppio del precedente','il quadrato del precedente','il precedente più 1','la metà del precedente'],c:1,
+  e:'È geometrica di ragione 2: ogni termine è il doppio del precedente.'},
+ {s:'suc',q:'Progressione aritmetica con \\(a_1=10\\) e ragione \\(d=-2\\): quanto vale \\(a_5\\)?',
+  o:['0','2','4','\\(-2\\)','8'],c:1,e:'\\(a_5=10+4\\cdot(-2)=10-8=2\\).'},
+ {s:'suc',q:'Quanto vale la somma dei primi 10 numeri pari \\(2+4+6+\\dots+20\\)?',
+  o:['90','100','110','120','200'],c:2,e:'\\(\\dfrac{(2+20)\\cdot10}{2}=110\\).'},
+ {s:'suc',q:'Progressione geometrica con \\(a_1=1\\) e ragione \\(q=3\\): quanto vale \\(a_4\\)?',
+  o:['9','27','81','12','18'],c:1,e:'\\(a_4=1\\cdot3^{3}=27\\).'},
+
+ /* ================================================================== */
+ /*   STATISTICA DESCRITTIVA                                            */
+ /* ================================================================== */
+ {s:'des',q:'Qual è la media aritmetica dei valori \\(4,6,8,10\\)?',
+  o:['6','7','8','9','28'],c:1,e:'\\(\\dfrac{4+6+8+10}{4}=\\dfrac{28}{4}=7\\).'},
+ {s:'des',q:'Qual è la mediana dei valori \\(3,5,7,9,11\\)?',
+  o:['5','7','9','35','6'],c:1,e:'È il valore centrale dei cinque dati ordinati: 7.'},
+ {s:'des',q:'Qual è la moda dei valori \\(2,3,3,3,5,8\\)?',
+  o:['2','3','4','5','8'],c:1,e:'Il 3 è il valore più frequente.'},
+ {s:'des',q:'Qual è il campo di variazione dei valori \\(5,12,7,20,3\\)?',
+  o:['15','17','20','23','12'],c:1,e:'\\(20-3=17\\).'},
+ {s:'des',q:'Qual è la media dei due valori 6 e 10?',
+  o:['7','8','9','16','6'],c:1,e:'\\(\\dfrac{6+10}{2}=8\\).'},
+ {s:'des',q:'Qual è la mediana dei quattro valori \\(2,4,6,8\\)?',
+  o:['4','5','6','3','8'],c:1,e:'Con dati pari, media dei due centrali: \\(\\dfrac{4+6}{2}=5\\).'},
+ {s:'des',q:'La mediana di un insieme di dati è:',
+  o:['la somma diviso il numero dei dati','il valore centrale dei dati ordinati','il valore più frequente','la differenza tra massimo e minimo','il valore massimo'],c:1,
+  e:'Ordinati i dati, è quello che sta in mezzo.'},
+ {s:'des',q:'La moda di un insieme di dati è:',
+  o:['il valore centrale','il valore più frequente','la media','il range','il minimo'],c:1,
+  e:'È il dato che compare il maggior numero di volte.'},
+ {s:'des',q:'Qual è la media dei valori \\(4,4,4,10\\)?',
+  o:['5','5,5','6','4,5','7'],c:1,e:'\\(\\dfrac{4+4+4+10}{4}=\\dfrac{22}{4}=5{,}5\\).'},
+ {s:'des',q:'Se cinque numeri hanno media 8, la loro somma vale:',
+  o:['13','40','8','5','45'],c:1,e:'Somma \\(=\\) media \\(\\times\\) numero dati \\(=8\\cdot5=40\\).'},
+ {s:'des',q:'Qual è il campo di variazione dei valori \\(100,102,98,105,95\\)?',
+  o:['5','10','7','15','105'],c:1,e:'\\(105-95=10\\).'},
+ {s:'des',q:'Qual è la media pesata di tre voti pari a 8 e due voti pari a 3?',
+  o:['5','6','5,5','7','6,5'],c:1,e:'\\(\\dfrac{3\\cdot8+2\\cdot3}{5}=\\dfrac{30}{5}=6\\).'},
+
+ /* ================================================================== */
+ /*   RADICALI E POTENZE                                               */
+ /* ================================================================== */
+ {s:'rad',q:'Quanto vale \\(2^{3}\\cdot2^{4}\\)?',
+  o:['64','128','256','512','32'],c:1,e:'Stessa base: \\(2^{3+4}=2^{7}=128\\).'},
+ {s:'rad',q:'Quanto vale \\((2^{3})^{2}\\)?',
+  o:['32','64','128','256','12'],c:1,e:'Si moltiplicano gli esponenti: \\(2^{6}=64\\).'},
+ {s:'rad',q:'Quanto vale \\(\\sqrt{49}\\)?',
+  o:['6','7','8','24,5','9'],c:1,e:'\\(7^{2}=49\\).'},
+ {s:'rad',q:'Quanto vale \\(5^{-2}\\)?',
+  o:['\\(-25\\)','\\(\\dfrac{1}{25}\\)','25','\\(\\dfrac{1}{10}\\)','\\(-10\\)'],c:1,
+  e:'Esponente negativo: \\(5^{-2}=\\dfrac{1}{5^{2}}=\\dfrac{1}{25}\\).'},
+ {s:'rad',q:'Quanto vale \\(a^{0}\\) con \\(a\\neq0\\)?',
+  o:['0','1','\\(a\\)','indefinito','\\(-1\\)'],c:1,e:'Ogni base non nulla elevata a zero dà 1.'},
+ {s:'rad',q:'Quanto vale \\(\\dfrac{2^{10}}{2^{7}}\\)?',
+  o:['2','4','8','16','64'],c:2,e:'Si sottraggono gli esponenti: \\(2^{10-7}=2^{3}=8\\).'},
+ {s:'rad',q:'Quanto vale \\(8^{1/3}\\)?',
+  o:['2','3','4','\\(\\dfrac83\\)','24'],c:0,e:'\\(8^{1/3}=\\sqrt[3]{8}=2\\).'},
+ {s:'rad',q:'La radice \\(\\sqrt{a\\cdot b}\\) è uguale a:',
+  o:['\\(\\sqrt a+\\sqrt b\\)','\\(\\sqrt a\\cdot\\sqrt b\\)','\\(a\\sqrt b\\)','\\(ab\\)','\\(\\sqrt a-\\sqrt b\\)'],c:1,
+  e:'La radice di un prodotto è il prodotto delle radici.'},
+ {s:'rad',q:'Razionalizzando \\(\\dfrac{1}{\\sqrt2}\\) si ottiene:',
+  o:['\\(\\dfrac{\\sqrt2}{2}\\)','\\(\\dfrac{1}{2}\\)','\\(2\\sqrt2\\)','\\(\\sqrt2\\)','\\(\\dfrac{2}{\\sqrt2}\\)'],c:0,
+  e:'Si moltiplica sopra e sotto per \\(\\sqrt2\\): \\(\\dfrac{\\sqrt2}{2}\\).'},
+ {s:'rad',q:'Quanto vale \\(3^{-1}+3^{0}\\)?',
+  o:['\\(\\dfrac43\\)','\\(\\dfrac13\\)','1','2','\\(\\dfrac23\\)'],c:0,
+  e:'\\(\\dfrac13+1=\\dfrac43\\).'},
+ {s:'rad',q:'Quanto vale \\((0{,}1)^{-1}\\)?',
+  o:['10','0,1','\\(-10\\)','100','1'],c:0,e:'Il reciproco di \\(0{,}1=\\dfrac{1}{10}\\) è 10.'},
+ {s:'rad',q:'Semplificando \\(\\sqrt{72}\\) si ottiene:',
+  o:['\\(6\\sqrt2\\)','\\(8\\sqrt2\\)','\\(2\\sqrt{18}\\)','\\(36\\sqrt2\\)','12'],c:0,
+  e:'\\(\\sqrt{72}=\\sqrt{36\\cdot2}=6\\sqrt2\\).'}
 ];
 </script>
 <script>
@@ -4519,7 +4958,7 @@ function examStart(timed){
   examState.given=new Array(prova.length).fill(null);
   examState.flag=new Array(prova.length).fill(false);
   examState.timed=timed;
-  examState.left=EXAM_MINUTI*60;
+  examState.left=examState.items.length*60;   /* un minuto a quesito: scala coi filoni */
   examState.revFilter='all';
   if(examState.timer) clearInterval(examState.timer);
   if(timed){
@@ -4578,7 +5017,7 @@ function renderExamIntro(h){
     '<div class="callout"><div class="lbl">Un consiglio prima di cominciare</div>'+
       'Non fermarti sul quesito difficile: segnalo e vai avanti. Il tempo speso male sul numero 7 è tempo tolto al numero 30, che magari sapevi risolvere in venti secondi.</div>'+
     '<div class="ractions" style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.2rem">'+
-      '<button class="btn amber" data-act="start-timed">Inizia la prova cronometrata ('+EXAM_MINUTI+' minuti)</button>'+
+      '<button class="btn amber" data-act="start-timed">Inizia la prova cronometrata ('+perProva+' minuti)</button>'+
       '<button class="btn ghost" data-act="start-free">Inizia senza cronometro</button>'+
     '</div>'+
   '</div>';
@@ -4752,6 +5191,110 @@ function renderExamResult(h){
 
 <script>
 /* ==================================================================
+   SIM · PROGRESSIONI ARITMETICHE E GEOMETRICHE
+   ================================================================== */
+const sucSim=setupCanvas('sucCanvas',drawSuc);
+const sucType=document.getElementById('sucType');
+const sucA1=document.getElementById('sucA1'),sucD=document.getElementById('sucD'),sucQ=document.getElementById('sucQ'),sucN=document.getElementById('sucN');
+let sucMode='arit';
+function drawSuc(){
+  if(!sucSim||!sucSim.W) return;
+  const {ctx,W,H}=sucSim; ctx.clearRect(0,0,W,H);
+  const a1=+sucA1.value, N=+sucN.value;
+  document.getElementById('sucA1V').textContent=a1; document.getElementById('sucNV').textContent=N;
+  const terms=[];
+  if(sucMode==='arit'){ const d=+sucD.value; document.getElementById('sucDV').textContent=d; for(let i=0;i<N;i++) terms.push(a1+i*d); }
+  else { const q=+sucQ.value; document.getElementById('sucQV').textContent=q; for(let i=0;i<N;i++) terms.push(a1*Math.pow(q,i)); }
+  const padL=34,padR=14,padT=18,padB=30;
+  const maxV=Math.max(1,...terms), minV=Math.min(0,...terms);
+  const X=i=>padL+(N<=1?0:(i/(N-1))*(W-padL-padR));
+  const Y=v=>H-padB-(v-minV)/((maxV-minV)||1)*(H-padT-padB);
+  line(ctx,padL,Y(0),W-padR,Y(0),css('--line-strong'),1.4);
+  ctx.save();ctx.strokeStyle=css('--accent-soft');ctx.lineWidth=1.5;ctx.setLineDash([4,3]);ctx.beginPath();
+  terms.forEach((v,i)=>{ i?ctx.lineTo(X(i),Y(v)):ctx.moveTo(X(i),Y(v)); });ctx.stroke();ctx.restore();
+  terms.forEach((v,i)=>{ line(ctx,X(i),Y(0),X(i),Y(v),css('--line-strong'),1.4);
+    dot(ctx,X(i),Y(v),5,css('--accent'));
+    label(ctx,String(Math.round(v*100)/100),X(i),Y(v)-9,css('--accent2'),11,'center','bold');
+    label(ctx,'a'+(i+1),X(i),H-padB+16,css('--muted'),10,'center'); });
+  const an=terms[N-1], S=terms.reduce((a,b)=>a+b,0);
+  const fb=document.getElementById('sucFormula'), ro=document.getElementById('sucReadout'); if(!fb||!ro) return;
+  if(sucMode==='arit'){ const d=+sucD.value; fb.innerHTML='\\[ a_n=a_1+(n-1)d='+a1+'+(n-1)\\cdot('+d+') \\]'; }
+  else { const q=+sucQ.value; fb.innerHTML='\\[ a_n=a_1\\cdot q^{\\,n-1}='+a1+'\\cdot'+q+'^{\\,n-1} \\]'; }
+  ro.innerHTML='<span class="chip">termini <b>'+terms.map(v=>Math.round(v*100)/100).join(', ')+'</b></span>'+
+    '<span class="chip hl">\\(a_{'+N+'}=\\) <b>'+(Math.round(an*100)/100)+'</b></span>'+
+    '<span class="chip">\\(S_{'+N+'}=\\) <b>'+(Math.round(S*100)/100)+'</b></span>';
+  typesetEl(fb); typesetEl(ro);
+}
+function sucSetMode(m){ sucMode=m; const dC=document.getElementById('sucDCtrl'),qC=document.getElementById('sucQCtrl'); if(dC)dC.style.display=m==='arit'?'':'none'; if(qC)qC.style.display=m==='geom'?'':'none'; drawSuc(); }
+if(sucSim){ sucType.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ sucType.querySelectorAll('button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); sucSetMode(b.dataset.t); })); [sucA1,sucD,sucQ,sucN].forEach(el=>el&&el.addEventListener('input',drawSuc)); }
+
+/* ==================================================================
+   SIM · MEDIA CONTRO MEDIANA (statistica descrittiva)
+   ================================================================== */
+const desSim=setupCanvas('desCanvas',drawDes);
+const desX=document.getElementById('desX');
+function median(arr){ const a=arr.slice().sort((x,y)=>x-y); const n=a.length,m=Math.floor(n/2); return n%2?a[m]:(a[m-1]+a[m])/2; }
+function drawDes(){
+  if(!desSim||!desSim.W) return;
+  const {ctx,W,H}=desSim; ctx.clearRect(0,0,W,H);
+  const x=+desX.value; document.getElementById('desXV').textContent=x;
+  const data=[3,5,6,7,x];
+  const mean=data.reduce((a,b)=>a+b,0)/data.length, med=median(data);
+  const padL=28,padR=110,padT=16,padB=26;
+  const maxV=Math.max(20,...data);
+  const bw=(W-padL-padR)/data.length;
+  const Y=v=>H-padB-(v/maxV)*(H-padT-padB);
+  line(ctx,padL,Y(0),W-padR,Y(0),css('--line-strong'),1.4);
+  data.forEach((v,i)=>{ const bx=padL+bw*i+bw*0.2, cx=padL+bw*i+bw*0.5;
+    ctx.save();ctx.fillStyle=(i===4?css('--accent3'):css('--accent-soft'));ctx.globalAlpha=.85;ctx.fillRect(bx,Y(v),bw*0.6,Y(0)-Y(v));ctx.restore();
+    label(ctx,String(v),cx,Y(v)-6,css('--ink-soft'),11,'center','bold'); });
+  line(ctx,padL,Y(mean),W-padR,Y(mean),css('--accent'),2.2,[6,4]);
+  label(ctx,'media '+(Math.round(mean*100)/100),W-padR+6,Y(mean)+4,css('--accent'),12,'left','bold');
+  line(ctx,padL,Y(med),W-padR,Y(med),css('--accent2'),2.2,[2,3]);
+  label(ctx,'mediana '+(Math.round(med*100)/100),W-padR+6,Y(med)+4,css('--accent2'),12,'left','bold');
+  const ro=document.getElementById('desReadout'); if(!ro) return;
+  const range=Math.max(...data)-Math.min(...data);
+  ro.innerHTML='<span class="chip">dati ordinati <b>'+data.slice().sort((a,b)=>a-b).join(', ')+'</b></span>'+
+    '<span class="chip hl">media <b>'+(Math.round(mean*100)/100)+'</b></span>'+
+    '<span class="chip">mediana <b>'+(Math.round(med*100)/100)+'</b></span>'+
+    '<span class="chip">range <b>'+range+'</b></span>';
+}
+if(desSim){ desX.addEventListener('input',drawDes); }
+
+/* ==================================================================
+   SIM · LA FUNZIONE POTENZA y = x^n
+   ================================================================== */
+const radSim=setupCanvas('radCanvas',drawRad);
+const radN=document.getElementById('radN');
+function drawRad(){
+  if(!radSim||!radSim.W) return;
+  const {ctx,W,H}=radSim; ctx.clearRect(0,0,W,H);
+  const n=+radN.value; document.getElementById('radNV').textContent=fmt(n,1);
+  const xmin=0,xmax=3,ymin=0,ymax=9;
+  const padL=28,padR=14,padT=12,padB=22;
+  const X=x=>padL+(x-xmin)/(xmax-xmin)*(W-padL-padR);
+  const Y=y=>H-padB-(y-ymin)/(ymax-ymin)*(H-padT-padB);
+  for(let x=0;x<=3;x++) line(ctx,X(x),padT,X(x),H-padB,css('--line'),1);
+  for(let y=0;y<=9;y++) line(ctx,padL,Y(y),W-padR,Y(y),css('--line'),1);
+  line(ctx,X(0),Y(0),X(3),Y(0),css('--line-strong'),1.6);
+  line(ctx,X(0),Y(ymax),X(0),Y(0),css('--line-strong'),1.6);
+  [1,2,3].forEach(v=>label(ctx,String(v),X(v),Y(0)+11,css('--muted'),9,'center'));
+  [2,4,6,8].forEach(v=>label(ctx,String(v),X(0)-5,Y(v)+3,css('--muted'),9,'right'));
+  curve(ctx,x=>Math.pow(x,n),xmin,xmax,X,Y,css('--accent'),2.8,300,[ymin,ymax]);
+  dot(ctx,X(1),Y(1),5,css('--accent2')); label(ctx,'(1,1)',X(1)+7,Y(1)-6,css('--accent2'),11,'left','bold');
+  const fb=document.getElementById('radFormula'), ro=document.getElementById('radReadout'); if(!fb||!ro) return;
+  fb.innerHTML='\\[ y=x^{\\,'+fmt(n,1)+'} \\]';
+  const nn=fmt(n,1);
+  ro.innerHTML='<span class="chip">esponente \\(n=\\) <b>'+nn+'</b></span>'+
+    (Math.abs(n-0.5)<1e-9?'<span class="chip hl">\\(x^{1/2}=\\sqrt{x}\\)</span>':(Math.abs(n-1)<1e-9?'<span class="chip hl">retta \\(y=x\\)</span>':(Math.abs(n-2)<1e-9?'<span class="chip hl">parabola \\(y=x^2\\)</span>':'')))+
+    '<span class="chip">\\(2^{'+nn+'}=\\) <b>'+fmt(Math.pow(2,n),2)+'</b></span>';
+  typesetEl(fb); typesetEl(ro);
+}
+if(radSim){ radN.addEventListener('input',drawRad); }
+
+</script>
+<script>
+/* ==================================================================
    SIM · RETTE E PARABOLE NEL PIANO CARTESIANO
    ================================================================== */
 const anaSim = setupCanvas('anaCanvas', drawAna);
@@ -4839,11 +5382,11 @@ if(anaSim){
 /* ==================================================================
    INIZIALIZZAZIONE
    ================================================================== */
-['ins','alg','fun','geo','gon','sta','ana'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
+['ins','alg','fun','geo','gon','sta','ana','suc','des','rad'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
 renderExam();
 
 function drawAllSims(){
-  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat,drawAna]
+  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat,drawAna,drawSuc,drawDes,drawRad]
     .forEach(fn=>{ try{ fn && fn(); }catch(e){} });
 }
 window.addEventListener('load',()=>{
