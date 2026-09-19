@@ -334,6 +334,7 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
     <button data-sec="rag">Logica e comprensione</button>
     <button data-sec="fis">Fisica</button>
     <button data-sec="bio">Biologia</button>
+    <button data-sec="chi">Chimica</button>
     <button data-sec="exam" class="exam">Quiz finale</button>
   </div>
 </nav>
@@ -2175,6 +2176,68 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
 </section>
 
 <!-- ============================================================ -->
+<!-- ============= 14 · CHIMICA =============================== -->
+<!-- ============================================================ -->
+<section class="section" id="sec-chi">
+  <div class="subnav" data-group="chi">
+    <button data-sub="chi-teo" class="active">Teoria</button>
+    <button data-sub="chi-sim">Simulazione</button>
+    <button data-sub="chi-ese">Esercizi</button>
+    <button data-sub="chi-quiz">Test</button>
+  </div>
+  <div class="subpanel active" id="chi-teo">
+    <h2>Chimica</h2>
+    <p class="lead">Dall'<strong>atomo</strong> e dalla sua struttura alla <strong>tavola periodica</strong>, fino alla <strong>mole</strong> e alle reazioni. La chimica del test è fatta di conteggi precisi: protoni ed elettroni, elettroni di valenza, moli e coefficienti di bilanciamento.</p>
+    <div class="card">
+      <h3>L'atomo</h3>
+      <p>Un atomo ha un <strong>nucleo</strong> con <strong>protoni</strong> (carica +) e <strong>neutroni</strong> (neutri), attorno a cui si muovono gli <strong>elettroni</strong> (carica −).</p>
+      <div class="tbl-wrap"><table class="data">
+        <tr><th>Grandezza</th><th>Definizione</th></tr>
+        <tr><td>Numero atomico \(Z\)</td><td>numero di <strong>protoni</strong>: identifica l'elemento</td></tr>
+        <tr><td>Numero di massa \(A\)</td><td>protoni + neutroni: \(A=Z+N\)</td></tr>
+        <tr><td>Atomo neutro</td><td>elettroni \(=\) protoni \(=Z\)</td></tr>
+        <tr><td>Isotopi</td><td>stesso \(Z\), diverso numero di <strong>neutroni</strong></td></tr>
+      </table></div>
+      <p>Il numero di neutroni si ricava per differenza: \(N=A-Z\). Un atomo di sodio con \(A=23\) e \(Z=11\) ha quindi \(23-11=12\) neutroni.</p>
+    </div>
+    <div class="card">
+      <h3>Tavola periodica e legami</h3>
+      <p>Gli elementi sono ordinati per numero atomico crescente in <strong>periodi</strong> (righe) e <strong>gruppi</strong> (colonne). Gli elettroni del guscio più esterno sono gli <strong>elettroni di valenza</strong> e determinano il comportamento chimico. I <strong>gas nobili</strong> hanno il guscio esterno completo (l'<strong>ottetto</strong>, 8 elettroni; 2 per l'elio) e per questo sono inerti.</p>
+      <p>Gli altri atomi tendono a raggiungere l'ottetto legandosi:</p>
+      <ul>
+        <li>legame <strong>ionico</strong>: un atomo cede elettroni a un altro (metallo + non metallo, es. NaCl);</li>
+        <li>legame <strong>covalente</strong>: due atomi condividono elettroni (es. \(H_2O\));</li>
+        <li>legame <strong>metallico</strong>: gli elettroni sono liberi di muoversi tra gli ioni.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>La mole e le reazioni</h3>
+      <p>La <strong>mole</strong> è la quantità di sostanza che contiene un numero di particelle pari al <strong>numero di Avogadro</strong>, circa \(6{,}022\times10^{23}\). La <strong>massa molare</strong> \(M\) (in g/mol) è numericamente uguale alla massa atomica/molecolare, e lega massa e moli:</p>
+      <div class="formula-box">\[ n=\frac{m}{M} \qquad(\text{moli}=\text{grammi}\div\text{massa molare}) \]</div>
+      <p>Nelle reazioni chimiche la <strong>massa si conserva</strong> (Lavoisier): gli atomi non si creano né si distruggono, si riorganizzano. Per questo le equazioni si <strong>bilanciano</strong>, mettendo davanti alle formule i coefficienti giusti perché ogni elemento abbia lo stesso numero di atomi a sinistra e a destra:</p>
+      <div class="formula-box" style="text-align:center">\(2H_2 + O_2 \longrightarrow 2H_2O\)</div>
+      <div class="callout"><div class="lbl">Acidi e basi</div>Il <strong>pH</strong> misura l'acidità: \(pH=-\log[H^+]\). Una soluzione con \(pH&lt;7\) è <strong>acida</strong>, con \(pH=7\) <strong>neutra</strong>, con \(pH&gt;7\) <strong>basica</strong>. Se \([H^+]=10^{-3}\), allora \(pH=3\): acida.</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('chi','chi-sim')">Vai alla simulazione →</button></div>
+  </div>
+  <div class="subpanel" id="chi-sim">
+    <h2>Simulazione · Il modello atomico a gusci</h2>
+    <p class="lead">Scorri il numero atomico \(Z\) e osserva come si riempiono i gusci elettronici (2, poi 8, poi 8…). Gli elettroni sul guscio più esterno sono quelli di <strong>valenza</strong>: quando il guscio è pieno l'atomo è un <strong>gas nobile</strong>, stabile e inerte.</p>
+    <div class="sim">
+      <div class="controls">
+        <div class="ctrl"><label>numero atomico \(Z\) <span class="val" id="chiZV">6</span></label><input type="range" id="chiZ" min="1" max="20" value="6" step="1"></div>
+      </div>
+      <div class="canvas-wrap"><canvas id="chiCanvas" height="340"></canvas></div>
+      <div class="readout" id="chiReadout"></div>
+      <div class="hint-txt">Fermati su \(Z=10\) (neon) o \(Z=18\) (argon): il guscio esterno ha 8 elettroni, l'ottetto è completo — sono gas nobili. Il sodio (\(Z=11\)) ha invece un solo elettrone di valenza, che cede facilmente diventando ione \(Na^+\).</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('chi','chi-ese')">Passa agli esercizi →</button></div>
+  </div>
+  <div class="subpanel" id="chi-ese"><h2>Esercizi guidati</h2><p class="lead">Difficoltà crescente. Scrivi solo il numero richiesto (con la virgola se serve).</p><div id="chi-ese-list"></div></div>
+  <div class="subpanel" id="chi-quiz"><h2>Test · Chimica</h2><p class="lead">Una domanda alla volta, con esito immediato.</p><div class="quiz-wizard" id="chi-quizbox"></div></div>
+</section>
+
+<!-- ============================================================ -->
 <!-- ============= QUIZ RIEPILOGATIVO FINALE =================== -->
 <!-- ============================================================ -->
 <section class="section" id="sec-exam">
@@ -3400,6 +3463,40 @@ if(natSim){ [natP,natS,natE].forEach(el=>el.addEventListener('input',drawNat)); 
    ESERCIZI GUIDATI · DATI
    ================================================================== */
 const EXERCISES={
+ chi:[
+  {d:1,tag:'Protoni',
+   q:'Quanti protoni ha l\'atomo di carbonio, sapendo che il suo numero atomico è \\(Z=6\\)?',
+   ans:6,tol:0.5,hints:['Il numero atomico Z è proprio il numero di protoni.'],
+   sol:'Il numero atomico coincide con il numero di protoni: 6.'},
+  {d:1,tag:'Elettroni',
+   q:'Quanti elettroni ha un atomo neutro di ossigeno (\\(Z=8\\))?',
+   ans:8,tol:0.5,hints:['In un atomo neutro gli elettroni sono tanti quanti i protoni.'],
+   sol:'Atomo neutro: elettroni \\(=\\) protoni \\(=Z=8\\).'},
+  {d:1,tag:'Neutroni',
+   q:'Quanti neutroni ha un atomo con numero di massa \\(A=23\\) e numero atomico \\(Z=11\\)?',
+   ans:12,tol:0.5,hints:['\\(N=A-Z\\).','\\(23-11\\).'],
+   sol:'\\(N=A-Z=23-11=12\\).'},
+  {d:2,tag:'Moli',
+   q:'A quante moli corrispondono 36 g di acqua, sapendo che la massa molare dell\'acqua è 18 g/mol?',
+   ans:2,tol:0.05,hints:['\\(n=\\dfrac{m}{M}\\).','\\(\\dfrac{36}{18}\\).'],
+   sol:'\\(n=\\dfrac{36}{18}=2\\) mol.'},
+  {d:2,tag:'Massa da moli',
+   q:'Qual è la massa, in grammi, di 3 moli di carbonio (massa molare 12 g/mol)?',
+   ans:36,tol:0.5,hints:['\\(m=n\\cdot M\\).','\\(3\\cdot12\\).'],
+   sol:'\\(m=3\\cdot12=36\\) g.'},
+  {d:2,tag:'pH',
+   q:'Qual è il pH di una soluzione in cui \\([H^+]=10^{-3}\\ \\text{mol/L}\\)?',
+   ans:3,tol:0.1,hints:['\\(pH=-\\log[H^+]\\).','\\(-\\log(10^{-3})=3\\).'],
+   sol:'\\(pH=-\\log(10^{-3})=3\\): soluzione acida.'},
+  {d:3,tag:'Bilanciamento',
+   q:'Nel bilanciare la reazione \\(2H_2 + O_2 \\to \\underline{\\ \\ }\\,H_2O\\), quale coefficiente va davanti all\'acqua?',
+   ans:2,tol:0.5,hints:['A sinistra ci sono 4 atomi di H e 2 di O.','Servono 2 molecole di \\(H_2O\\) per avere 4 H e 2 O.'],
+   sol:'\\(2H_2+O_2\\to 2H_2O\\): il coefficiente è 2.'},
+  {d:3,tag:'Numero di Avogadro',
+   q:'Il numero di Avogadro si scrive \\(6{,}022\\times10^{n}\\). Quanto vale l\'esponente \\(n\\)?',
+   ans:23,tol:0.5,hints:['È dell\'ordine di \\(10^{23}\\).'],
+   sol:'\\(6{,}022\\times10^{23}\\): l\'esponente è 23.'}
+ ],
  bio:[
   {d:1,tag:'Cromosomi (cellula somatica)',
    q:'Quanti cromosomi contiene una cellula somatica (non sessuale) dell\'essere umano?',
@@ -4070,6 +4167,34 @@ function buildExercises(group){
    TEST PER SCHEDA · DATI
    ================================================================== */
 const QUIZ={
+ chi:{
+  theory:[
+   {q:'Il numero atomico \\(Z\\) di un elemento indica il numero di:',
+    o:['neutroni','protoni','elettroni di valenza','isotopi'],c:1,
+    e:'Z è il numero di protoni e identifica l\'elemento.'},
+   {q:'In un atomo elettricamente neutro il numero di elettroni è uguale a:',
+    o:['quello dei neutroni','quello dei protoni','la somma di protoni e neutroni','la metà dei protoni'],c:1,
+    e:'Cariche bilanciate: elettroni \\(=\\) protoni.'},
+   {q:'Gli isotopi di uno stesso elemento differiscono per il numero di:',
+    o:['protoni','elettroni','neutroni','cariche'],c:2,
+    e:'Stesso Z (stesso elemento), diverso numero di neutroni.'},
+   {q:'Una mole di una sostanza contiene un numero di particelle pari a:',
+    o:['1000','il numero di Avogadro (\\(\\approx6\\times10^{23}\\))','il numero atomico','la massa molare'],c:1,
+    e:'Circa \\(6{,}022\\times10^{23}\\) particelle.'},
+   {q:'Una soluzione con \\(pH<7\\) è:',
+    o:['basica','neutra','acida','satura'],c:2,
+    e:'pH minore di 7 indica acidità; uguale a 7 neutra, maggiore di 7 basica.'},
+   {q:'Bilanciando una reazione chimica si conserva:',
+    o:['il volume dei gas','il numero di atomi di ogni elemento','il numero di molecole','la temperatura'],c:1,
+    e:'La massa si conserva: gli atomi di ciascun elemento sono uguali nei due membri.'}
+  ],
+  num:[
+   {q:'Quanti protoni ha l\'azoto, sapendo che \\(Z=7\\)?',a:7,tol:0.5,e:'Il numero atomico è il numero di protoni: 7.'},
+   {q:'Quanti neutroni ha un atomo con \\(A=12\\) e \\(Z=6\\)?',a:6,tol:0.5,e:'\\(N=A-Z=12-6=6\\).'},
+   {q:'A quante moli corrispondono 44 g di \\(CO_2\\) (massa molare 44 g/mol)?',a:1,tol:0.05,e:'\\(n=44/44=1\\) mol.'},
+   {q:'Qual è il pH se \\([H^+]=10^{-5}\\ \\text{mol/L}\\)?',a:5,tol:0.1,e:'\\(pH=-\\log(10^{-5})=5\\).'}
+  ]
+ },
  bio:{
   theory:[
    {q:'L\'unità fondamentale di tutti gli esseri viventi è:',
@@ -4661,7 +4786,8 @@ const STRANDS={
   rad:{nome:'Radicali e potenze',             sec:'rad'},
   rag:{nome:'Logica e comprensione',          sec:'rag'},
   fis:{nome:'Fisica',                         sec:'fis'},
-  bio:{nome:'Biologia',                       sec:'bio'}
+  bio:{nome:'Biologia',                       sec:'bio'},
+  chi:{nome:'Chimica',                        sec:'chi'}
 };
 
 const EXAM=[
@@ -5386,7 +5512,35 @@ const EXAM=[
  {s:'bio',q:'Un individuo con due alleli uguali per un gene (per esempio AA oppure aa) si dice:',
   o:['eterozigote','omozigote','dominante','recessivo','ibrido'],c:1,e:'Alleli uguali → omozigote; alleli diversi (Aa) → eterozigote.'},
  {s:'bio',q:'Se in un DNA il 30% delle basi è adenina, quale percentuale è citosina?',
-  o:['30%','20%','70%','10%','40%'],c:1,e:'\\(A=T=30\\%\\) (60% in tutto); a C e G resta il 40%, cioè 20% ciascuna.'}
+  o:['30%','20%','70%','10%','40%'],c:1,e:'\\(A=T=30\\%\\) (60% in tutto); a C e G resta il 40%, cioè 20% ciascuna.'},
+
+ /* ================================================================== */
+ /*   CHIMICA                                                          */
+ /* ================================================================== */
+ {s:'chi',q:'Il numero atomico di un elemento indica il numero di:',
+  o:['neutroni','protoni','elettroni di valenza','isotopi','molecole'],c:1,e:'Il numero atomico Z è il numero di protoni e identifica l\'elemento.'},
+ {s:'chi',q:'In un atomo elettricamente neutro, gli elettroni sono tanti quanti:',
+  o:['i neutroni','i protoni','i protoni più i neutroni','la metà dei protoni','gli isotopi'],c:1,e:'Le cariche si bilanciano: elettroni = protoni.'},
+ {s:'chi',q:'Quanti protoni ha l\'atomo di carbonio (numero atomico \\(Z=6\\))?',
+  o:['6','12','8','14','4'],c:0,e:'Il numero di protoni coincide con Z: 6.'},
+ {s:'chi',q:'Quanti neutroni ha un atomo con numero di massa 23 e numero atomico 11?',
+  o:['11','12','23','34','1'],c:1,e:'\\(N=A-Z=23-11=12\\).'},
+ {s:'chi',q:'Gli isotopi di uno stesso elemento hanno lo stesso numero di protoni ma diverso numero di:',
+  o:['elettroni','protoni','neutroni','cariche','molecole'],c:2,e:'Cambia solo il numero di neutroni (e quindi la massa).'},
+ {s:'chi',q:'A quante moli corrispondono 36 g di acqua (massa molare 18 g/mol)?',
+  o:['0,5','1','2','18','36'],c:2,e:'\\(n=\\dfrac{m}{M}=\\dfrac{36}{18}=2\\) mol.'},
+ {s:'chi',q:'Il numero di Avogadro vale circa:',
+  o:['\\(6\\times10^{23}\\)','\\(6\\times10^{-23}\\)','\\(3{,}14\\)','\\(10^{6}\\)','\\(6\\times10^{2}\\)'],c:0,e:'Una mole contiene \\(\\approx6{,}022\\times10^{23}\\) particelle.'},
+ {s:'chi',q:'Una soluzione con \\(pH=3\\) è:',
+  o:['basica','neutra','acida','satura','gassosa'],c:2,e:'\\(pH<7\\Rightarrow\\) acida.'},
+ {s:'chi',q:'Una soluzione con \\(pH=7\\) (a 25 °C) è:',
+  o:['acida','neutra','basica','ionica','salina'],c:1,e:'\\(pH=7\\) indica una soluzione neutra, come l\'acqua pura.'},
+ {s:'chi',q:'Bilanciando la reazione \\(2H_2 + O_2 \\to \\underline{\\ \\ }\\,H_2O\\), il coefficiente dell\'acqua è:',
+  o:['1','2','3','4','0'],c:1,e:'\\(2H_2+O_2\\to 2H_2O\\): a sinistra 4 H e 2 O, come a destra.'},
+ {s:'chi',q:'Quanti elettroni di valenza ha il carbonio (gruppo 14 della tavola periodica)?',
+  o:['2','4','6','8','14'],c:1,e:'Gli elementi del gruppo 14 hanno 4 elettroni di valenza.'},
+ {s:'chi',q:'Nelle reazioni chimiche si conserva:',
+  o:['il volume','la massa','il numero di molecole','la temperatura','il colore'],c:1,e:'Legge di Lavoisier: la massa totale si conserva.'}
 ];
 </script>
 <script>
@@ -5895,6 +6049,36 @@ function drawBio(){
 function bioSet(which,g){ if(which===1)bioG1=g; else bioG2=g; drawBio(); }
 [[bioP1,1],[bioP2,2]].forEach(([seg,which])=>{ if(seg) seg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ seg.querySelectorAll('button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); bioSet(which,b.dataset.g); })); });
 
+/* ==================================================================
+   SIM · MODELLO ATOMICO A GUSCI (Bohr)
+   ================================================================== */
+const chiSim=setupCanvas('chiCanvas',drawChi);
+const chiZ=document.getElementById('chiZ');
+const CHI_ELEM=['','H','He','Li','Be','B','C','N','O','F','Ne','Na','Mg','Al','Si','P','S','Cl','Ar','K','Ca'];
+function chiShells(Z){ const cap=[2,8,8,2]; const sh=[]; let left=Z; for(let i=0;i<cap.length&&left>0;i++){ const e=Math.min(cap[i],left); sh.push(e); left-=e; } return sh; }
+function drawChi(){
+  if(!chiSim||!chiSim.W) return;
+  const {ctx,W,H}=chiSim; ctx.clearRect(0,0,W,H);
+  const Z=+chiZ.value; document.getElementById('chiZV').textContent=Z;
+  const sh=chiShells(Z), nsh=sh.length;
+  const cx=W/2, cy=H/2, rmax=Math.min(W*0.42,H/2-18);
+  for(let i=0;i<nsh;i++){
+    const r=rmax*(i+1)/nsh;
+    ctx.save(); ctx.beginPath(); ctx.arc(cx,cy,r,0,7); ctx.strokeStyle=css('--line-strong'); ctx.lineWidth=1.2; ctx.stroke(); ctx.restore();
+    const e=sh[i], outer=(i===nsh-1);
+    for(let k=0;k<e;k++){ const ang=-Math.PI/2 + k*2*Math.PI/e; dot(ctx,cx+r*Math.cos(ang),cy+r*Math.sin(ang),4.6, outer?css('--accent2'):css('--accent')); }
+  }
+  ctx.save(); ctx.beginPath(); ctx.arc(cx,cy,15,0,7); ctx.fillStyle=css('--accent'); ctx.fill(); ctx.restore();
+  label(ctx,String(Z),cx,cy+5,'#fff',14,'center','bold');
+  const val=sh[nsh-1], nobile=(nsh===1&&val===2)||val===8;
+  const ro=document.getElementById('chiReadout'); if(!ro) return;
+  ro.innerHTML='<span class="chip">elemento <b>'+(CHI_ELEM[Z]||'?')+'</b> (Z='+Z+')</span>'+
+    '<span class="chip">configurazione a gusci <b>'+sh.join('-')+'</b></span>'+
+    '<span class="chip hl">elettroni di valenza <b>'+val+'</b></span>'+
+    (nobile?'<span class="chip good">ottetto completo → gas nobile</span>':'');
+}
+if(chiSim){ chiZ.addEventListener('input',drawChi); }
+
 </script>
 <script>
 /* ==================================================================
@@ -5985,11 +6169,11 @@ if(anaSim){
 /* ==================================================================
    INIZIALIZZAZIONE
    ================================================================== */
-['ins','alg','fun','geo','gon','sta','ana','suc','des','rad','rag','fis','bio'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
+['ins','alg','fun','geo','gon','sta','ana','suc','des','rad','rag','fis','bio','chi'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
 renderExam();
 
 function drawAllSims(){
-  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat,drawAna,drawSuc,drawDes,drawRad,drawRag,drawFis,drawBio]
+  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat,drawAna,drawSuc,drawDes,drawRad,drawRag,drawFis,drawBio,drawChi]
     .forEach(fn=>{ try{ fn && fn(); }catch(e){} });
 }
 window.addEventListener('load',()=>{
