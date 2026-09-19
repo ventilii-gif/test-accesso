@@ -333,6 +333,7 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
     <button data-sec="rad">Radicali e potenze</button>
     <button data-sec="rag">Logica e comprensione</button>
     <button data-sec="fis">Fisica</button>
+    <button data-sec="bio">Biologia</button>
     <button data-sec="exam" class="exam">Quiz finale</button>
   </div>
 </nav>
@@ -2108,6 +2109,72 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
 </section>
 
 <!-- ============================================================ -->
+<!-- ============= 13 · BIOLOGIA ============================== -->
+<!-- ============================================================ -->
+<section class="section" id="sec-bio">
+  <div class="subnav" data-group="bio">
+    <button data-sub="bio-teo" class="active">Teoria</button>
+    <button data-sub="bio-sim">Simulazione</button>
+    <button data-sub="bio-ese">Esercizi</button>
+    <button data-sub="bio-quiz">Test</button>
+  </div>
+  <div class="subpanel active" id="bio-teo">
+    <h2>Biologia</h2>
+    <p class="lead">Dalla <strong>cellula</strong> — l'unità di tutti i viventi — al <strong>DNA</strong> che ne custodisce le istruzioni, fino alle <strong>leggi dell'ereditarietà</strong>. È la materia con più peso nei test sanitari: qui contano le idee chiare e i numeri giusti (46 cromosomi, appaiamento delle basi, rapporti di Mendel).</p>
+    <div class="card">
+      <h3>La cellula</h3>
+      <p>Tutti gli organismi sono fatti di cellule, e ogni cellula proviene da un'altra cellula. Si distinguono in due grandi tipi:</p>
+      <ul>
+        <li><strong>procariotiche</strong> (batteri): senza nucleo, il DNA è libero nel citoplasma;</li>
+        <li><strong>eucariotiche</strong> (animali, piante, funghi, protisti): con <strong>nucleo</strong> che racchiude il DNA e organuli specializzati.</li>
+      </ul>
+      <div class="tbl-wrap"><table class="data">
+        <tr><th>Organulo</th><th>Funzione</th></tr>
+        <tr><td>Nucleo</td><td>contiene il DNA e coordina l'attività cellulare</td></tr>
+        <tr><td>Mitocondri</td><td>producono energia (ATP) con la respirazione cellulare</td></tr>
+        <tr><td>Ribosomi</td><td>sintetizzano le proteine</td></tr>
+        <tr><td>Membrana cellulare</td><td>regola ciò che entra ed esce dalla cellula</td></tr>
+        <tr><td>Cloroplasti (piante)</td><td>svolgono la fotosintesi</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <h3>DNA, geni e sintesi delle proteine</h3>
+      <p>Il <strong>DNA</strong> è una doppia elica formata da quattro basi azotate: <strong>A</strong>denina, <strong>T</strong>imina, <strong>C</strong>itosina, <strong>G</strong>uanina. L'appaiamento è rigido — <strong>A con T</strong> e <strong>C con G</strong> — perciò le loro quantità sono uguali (regola di Chargaff): se l'adenina è il 30%, anche la timina è il 30%, e a citosina e guanina resta il 20% ciascuna.</p>
+      <div class="formula-box" style="text-align:center">DNA \(\longrightarrow\) RNA \(\longrightarrow\) proteine &nbsp;&nbsp;(il «dogma centrale»)</div>
+      <p>Un <strong>gene</strong> è un tratto di DNA che codifica una proteina; l'informazione è letta a gruppi di <strong>tre basi</strong> (i <strong>codoni</strong>). Nella nostra specie il DNA è organizzato in <strong>46 cromosomi</strong> (23 coppie) nelle cellule somatiche, e <strong>23</strong> nei gameti (cellule sessuali).</p>
+      <div class="callout"><div class="lbl">Mitosi e meiosi</div>La <strong>mitosi</strong> genera <strong>due</strong> cellule identiche alla madre (crescita e riparazione dei tessuti); la <strong>meiosi</strong> genera <strong>quattro</strong> cellule con <strong>metà</strong> dei cromosomi (i gameti), permettendo la riproduzione sessuata.</div>
+    </div>
+    <div class="card">
+      <h3>La genetica di Mendel</h3>
+      <p>Ogni carattere è governato da coppie di <strong>alleli</strong>, uno dal padre e uno dalla madre. Un allele <strong>dominante</strong> (A) si manifesta anche se presente in copia singola; uno <strong>recessivo</strong> (a) solo in coppia. Si distingue perciò il <strong>genotipo</strong> (gli alleli, es. Aa) dal <strong>fenotipo</strong> (il carattere visibile).</p>
+      <p>Incrociando due <strong>eterozigoti</strong> \(Aa\times Aa\), la prole segue rapporti fissi, che il quadrato di Punnett rende evidenti:</p>
+      <div class="formula-box" style="text-align:center">genotipi \(1\,AA:2\,Aa:1\,aa\) &nbsp;·&nbsp; fenotipi \(3\) dominante \(:1\) recessivo</div>
+      <p>Il carattere recessivo ricompare quindi nel <strong>25%</strong> della prole. Costruisci tu gli incroci nella simulazione.</p>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('bio','bio-sim')">Vai alla simulazione →</button></div>
+  </div>
+  <div class="subpanel" id="bio-sim">
+    <h2>Simulazione · Il quadrato di Punnett</h2>
+    <p class="lead">Scegli il genotipo dei due genitori per un carattere con allele dominante \(A\) e recessivo \(a\): la griglia combina i gameti e mostra la prole possibile, con i rapporti tra <strong>genotipi</strong> e <strong>fenotipi</strong>.</p>
+    <div class="sim">
+      <div class="controls">
+        <div class="ctrl"><label style="margin-bottom:.4rem">Genitore 1</label>
+          <div class="seg" id="bioP1"><button data-g="AA">AA</button><button data-g="Aa" class="active">Aa</button><button data-g="aa">aa</button></div></div>
+        <div class="ctrl"><label style="margin-bottom:.4rem">Genitore 2</label>
+          <div class="seg" id="bioP2"><button data-g="AA">AA</button><button data-g="Aa" class="active">Aa</button><button data-g="aa">aa</button></div></div>
+      </div>
+      <div class="canvas-wrap"><canvas id="bioCanvas" height="300"></canvas></div>
+      <div class="readout" id="bioReadout"></div>
+      <div class="legend"><span><i style="background:var(--accent)"></i> fenotipo dominante (almeno un A)</span><span><i style="background:var(--accent2)"></i> fenotipo recessivo (aa)</span></div>
+      <div class="hint-txt">Prova \(Aa\times Aa\): ritrovi il celebre \(3:1\). Poi \(Aa\times aa\): la prole si divide a metà (50% dominante, 50% recessivo). Con \(AA\times aa\) tutti i figli sono \(Aa\): dominanti nell'aspetto, ma portatori dell'allele recessivo.</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('bio','bio-ese')">Passa agli esercizi →</button></div>
+  </div>
+  <div class="subpanel" id="bio-ese"><h2>Esercizi guidati</h2><p class="lead">Difficoltà crescente. Quando la risposta è una percentuale scrivi solo il numero (ad esempio 25).</p><div id="bio-ese-list"></div></div>
+  <div class="subpanel" id="bio-quiz"><h2>Test · Biologia</h2><p class="lead">Una domanda alla volta, con esito immediato.</p><div class="quiz-wizard" id="bio-quizbox"></div></div>
+</section>
+
+<!-- ============================================================ -->
 <!-- ============= QUIZ RIEPILOGATIVO FINALE =================== -->
 <!-- ============================================================ -->
 <section class="section" id="sec-exam">
@@ -3333,6 +3400,40 @@ if(natSim){ [natP,natS,natE].forEach(el=>el.addEventListener('input',drawNat)); 
    ESERCIZI GUIDATI · DATI
    ================================================================== */
 const EXERCISES={
+ bio:[
+  {d:1,tag:'Cromosomi (cellula somatica)',
+   q:'Quanti cromosomi contiene una cellula somatica (non sessuale) dell\'essere umano?',
+   ans:46,tol:0.5,hints:['Sono organizzati in 23 coppie.','\\(23\\times2\\).'],
+   sol:'46 cromosomi, cioè 23 coppie.'},
+  {d:1,tag:'Cromosomi (gamete)',
+   q:'Quanti cromosomi contiene un gamete umano (spermatozoo o cellula uovo)?',
+   ans:23,tol:0.5,hints:['Il gamete ha la metà dei cromosomi di una cellula somatica.','\\(46/2\\).'],
+   sol:'23 cromosomi: la meiosi dimezza il corredo.'},
+  {d:1,tag:'Incrocio Aa × Aa',
+   q:'Incrociando due individui eterozigoti \\(Aa\\times Aa\\), quale percentuale della prole è omozigote recessiva (aa)?',
+   ans:25,tol:0.5,hints:['Costruisci il quadrato di Punnett: 4 caselle.','Una casella su quattro è aa.'],
+   sol:'1 casella su 4 è \\(aa\\): il 25%.'},
+  {d:2,tag:'Fenotipo dominante',
+   q:'Incrociando \\(Aa\\times Aa\\), quale percentuale della prole mostra il fenotipo dominante?',
+   ans:75,tol:0.5,hints:['Il fenotipo dominante compare con \\(AA\\) e con \\(Aa\\).','3 caselle su 4.'],
+   sol:'\\(AA\\) e \\(Aa\\) (3 caselle su 4) mostrano il carattere dominante: 75%.'},
+  {d:2,tag:'Regola di Chargaff',
+   q:'In una molecola di DNA il 30% delle basi è adenina. Quale percentuale è timina?',
+   ans:30,tol:0.5,hints:['L\'adenina si appaia sempre con la timina.','\\(A=T\\).'],
+   sol:'Per l\'appaiamento A-T, la timina è anch\'essa il 30%.'},
+  {d:2,tag:'Chargaff (citosina)',
+   q:'In un DNA il 30% delle basi è adenina. Quale percentuale è citosina?',
+   ans:20,tol:0.5,hints:['A e T sono il 30% ciascuna, quindi insieme il 60%. Restano C e G.','\\((100-60)/2\\).'],
+   sol:'\\(A=T=30\\%\\Rightarrow C+G=40\\%\\); essendo \\(C=G\\), la citosina è il 20%.'},
+  {d:3,tag:'Incrocio Aa × aa',
+   q:'Incrociando \\(Aa\\times aa\\), quale percentuale della prole mostra il carattere recessivo?',
+   ans:50,tol:0.5,hints:['I gameti sono A,a (primo genitore) e a,a (secondo).','Metà della prole è aa.'],
+   sol:'La prole è per metà \\(Aa\\) e per metà \\(aa\\): il 50% è recessivo.'},
+  {d:3,tag:'Il codice genetico',
+   q:'Da quante basi azotate è formato un codone, l\'unità di lettura del codice genetico?',
+   ans:3,tol:0.5,hints:['Ogni codone specifica un amminoacido.','Sono basi lette a gruppi di…'],
+   sol:'3 basi: ogni codone (tripletta) codifica un amminoacido.'}
+ ],
  fis:[
   {d:1,tag:'Moto uniforme',
    q:'Un\'auto viaggia a velocità costante di 10 m/s per 5 secondi. Quanti metri percorre?',
@@ -3969,6 +4070,34 @@ function buildExercises(group){
    TEST PER SCHEDA · DATI
    ================================================================== */
 const QUIZ={
+ bio:{
+  theory:[
+   {q:'L\'unità fondamentale di tutti gli esseri viventi è:',
+    o:['la molecola','la cellula','il tessuto','l\'atomo'],c:1,
+    e:'Ogni organismo è formato da cellule, e ogni cellula deriva da un\'altra cellula.'},
+   {q:'Nel DNA l\'adenina si appaia sempre con:',
+    o:['la citosina','la guanina','la timina','un\'altra adenina'],c:2,
+    e:'Appaiamento fisso: A con T, C con G.'},
+   {q:'Una cellula somatica umana contiene:',
+    o:['23 cromosomi','46 cromosomi','92 cromosomi','44 cromosomi'],c:1,
+    e:'46 cromosomi, cioè 23 coppie; i gameti ne hanno 23.'},
+   {q:'La sintesi delle proteine avviene nei:',
+    o:['mitocondri','ribosomi','lisosomi','cloroplasti'],c:1,
+    e:'I ribosomi assemblano gli amminoacidi in proteine.'},
+   {q:'Incrociando due eterozigoti \\(Aa\\times Aa\\), il rapporto fenotipico è:',
+    o:['1:1','2:1','3:1','9:3:3:1'],c:2,
+    e:'3 individui con carattere dominante ogni 1 con carattere recessivo.'},
+   {q:'La meiosi produce:',
+    o:['due cellule identiche alla madre','quattro cellule con metà dei cromosomi','una sola cellula','due cellule identiche tra loro'],c:1,
+    e:'Quattro gameti, ciascuno con metà del corredo cromosomico.'}
+  ],
+  num:[
+   {q:'Incrociando \\(Aa\\times Aa\\), quale percentuale della prole è omozigote dominante (AA)? (solo il numero)',a:25,tol:0.5,e:'1 casella su 4 è AA: 25%.'},
+   {q:'Quanti cromosomi ha un gamete umano?',a:23,tol:0.5,e:'La metà di 46.'},
+   {q:'Quante cellule figlie produce una mitosi?',a:2,tol:0.5,e:'Due cellule identiche alla cellula madre.'},
+   {q:'In un DNA il 20% delle basi è guanina. Quale percentuale è citosina? (solo il numero)',a:20,tol:0.5,e:'C si appaia con G, quindi \\(C=G=20\\%\\).'}
+  ]
+ },
  fis:{
   theory:[
    {q:'La velocità media di un corpo è definita come:',
@@ -4531,7 +4660,8 @@ const STRANDS={
   des:{nome:'Statistica descrittiva',         sec:'des'},
   rad:{nome:'Radicali e potenze',             sec:'rad'},
   rag:{nome:'Logica e comprensione',          sec:'rag'},
-  fis:{nome:'Fisica',                         sec:'fis'}
+  fis:{nome:'Fisica',                         sec:'fis'},
+  bio:{nome:'Biologia',                       sec:'bio'}
 };
 
 const EXAM=[
@@ -5226,7 +5356,37 @@ const EXAM=[
  {s:'fis',q:'Qual è il lavoro compiuto da una forza di 10 N che sposta un corpo di 4 m nella propria direzione?',
   o:['2,5 J','40 J','14 J','400 J','10 J'],c:1,e:'\\(L=F\\,s=10\\cdot4=40\\) J.'},
  {s:'fis',q:'In caduta libera da fermo (\\(g\\approx9{,}8\\ \\text{m/s}^2\\)), qual è la velocità dopo 2 secondi?',
-  o:['9,8 m/s','19,6 m/s','4,9 m/s','2 m/s','39,2 m/s'],c:1,e:'\\(v=g\\,t=9{,}8\\cdot2=19{,}6\\) m/s.'}
+  o:['9,8 m/s','19,6 m/s','4,9 m/s','2 m/s','39,2 m/s'],c:1,e:'\\(v=g\\,t=9{,}8\\cdot2=19{,}6\\) m/s.'},
+
+ /* ================================================================== */
+ /*   BIOLOGIA                                                         */
+ /* ================================================================== */
+ {s:'bio',q:'Qual è l\'unità fondamentale di tutti gli esseri viventi?',
+  o:['la molecola','la cellula','il tessuto','l\'organo','l\'atomo'],c:1,e:'Ogni organismo è formato da cellule, e ogni cellula deriva da un\'altra cellula.'},
+ {s:'bio',q:'Quanti cromosomi contiene una cellula somatica umana?',
+  o:['23','44','46','48','92'],c:2,e:'46 cromosomi, cioè 23 coppie.'},
+ {s:'bio',q:'Quanti cromosomi contiene un gamete umano?',
+  o:['23','46','22','44','48'],c:0,e:'23: la meiosi dimezza il corredo cromosomico.'},
+ {s:'bio',q:'Nel DNA l\'adenina si appaia con:',
+  o:['la citosina','la guanina','la timina','l\'uracile','un\'altra adenina'],c:2,e:'Appaiamento fisso A-T (e C-G).'},
+ {s:'bio',q:'Incrociando due eterozigoti \\(Aa\\times Aa\\), quale percentuale della prole mostra il carattere recessivo?',
+  o:['0%','25%','50%','75%','100%'],c:1,e:'Una casella su 4 del quadrato di Punnett è \\(aa\\): 25%.'},
+ {s:'bio',q:'Incrociando \\(Aa\\times Aa\\), qual è il rapporto fenotipico atteso (dominante : recessivo)?',
+  o:['1:1','2:1','3:1','1:2:1','9:3:3:1'],c:2,e:'Tre individui dominanti (AA, Aa, Aa) ogni recessivo (aa).'},
+ {s:'bio',q:'In quale organulo cellulare avviene la sintesi delle proteine?',
+  o:['nei mitocondri','nei ribosomi','nel nucleo','nei lisosomi','nei cloroplasti'],c:1,e:'I ribosomi assemblano gli amminoacidi in proteine.'},
+ {s:'bio',q:'In quale organulo la cellula produce principalmente energia (ATP)?',
+  o:['nei ribosomi','nei mitocondri','nel nucleo','nella membrana','nei vacuoli'],c:1,e:'I mitocondri sono la «centrale energetica» della cellula.'},
+ {s:'bio',q:'La mitosi produce:',
+  o:['due cellule identiche alla cellula madre','quattro cellule tutte diverse','una sola cellula','quattro cellule con metà dei cromosomi','due cellule con metà dei cromosomi'],c:0,
+  e:'Due cellule figlie geneticamente identiche alla madre.'},
+ {s:'bio',q:'La meiosi produce:',
+  o:['due cellule identiche','quattro cellule con metà dei cromosomi','una sola cellula','due cellule con metà dei cromosomi','quattro cellule identiche alla madre'],c:1,
+  e:'Quattro gameti, ciascuno con metà del corredo cromosomico.'},
+ {s:'bio',q:'Un individuo con due alleli uguali per un gene (per esempio AA oppure aa) si dice:',
+  o:['eterozigote','omozigote','dominante','recessivo','ibrido'],c:1,e:'Alleli uguali → omozigote; alleli diversi (Aa) → eterozigote.'},
+ {s:'bio',q:'Se in un DNA il 30% delle basi è adenina, quale percentuale è citosina?',
+  o:['30%','20%','70%','10%','40%'],c:1,e:'\\(A=T=30\\%\\) (60% in tutto); a C e G resta il 40%, cioè 20% ciascuna.'}
 ];
 </script>
 <script>
@@ -5700,6 +5860,41 @@ function drawFis(){
 }
 if(fisSim){ [fisV0,fisA,fisT].forEach(el=>el&&el.addEventListener('input',drawFis)); }
 
+/* ==================================================================
+   SIM · QUADRATO DI PUNNETT (genetica mendeliana)
+   ================================================================== */
+const bioSim=setupCanvas('bioCanvas',drawBio);
+const bioP1=document.getElementById('bioP1'), bioP2=document.getElementById('bioP2');
+let bioG1='Aa', bioG2='Aa';
+function drawBio(){
+  if(!bioSim||!bioSim.W) return;
+  const {ctx,W,H}=bioSim; ctx.clearRect(0,0,W,H);
+  const g1=[bioG1[0],bioG1[1]], g2=[bioG2[0],bioG2[1]];
+  const colDom=css('--accent'), colRec=css('--accent2');
+  const cell=Math.min(96,(H-70)/2,(W-140)/2);
+  const gx=W/2-cell, gy=52;
+  for(let c=0;c<2;c++) label(ctx,g1[c],gx+cell*(c+0.5),gy-12,colDom,17,'center','bold');
+  for(let r=0;r<2;r++) label(ctx,g2[r],gx-14,gy+cell*(r+0.5)+6,colRec,17,'right','bold');
+  label(ctx,'gameti del Genitore 1 →',gx+cell,gy-32,css('--muted'),11,'center');
+  const counts={AA:0,Aa:0,aa:0};
+  for(let r=0;r<2;r++) for(let c=0;c<2;c++){
+    const a=g1[c], b=g2[r];
+    const geno=(a==='A'&&b==='A')?'AA':((a==='a'&&b==='a')?'aa':'Aa');
+    counts[geno]++;
+    const x=gx+c*cell, y=gy+r*cell, col=(geno==='aa')?colRec:colDom;
+    ctx.save(); ctx.fillStyle=col; ctx.globalAlpha=.16; ctx.fillRect(x,y,cell,cell); ctx.restore();
+    ctx.save(); ctx.strokeStyle=css('--line-strong'); ctx.lineWidth=1.6; ctx.strokeRect(x,y,cell,cell); ctx.restore();
+    label(ctx,geno,x+cell/2,y+cell/2+7,col,20,'center','bold');
+  }
+  const dom=counts.AA+counts.Aa, rec=counts.aa;
+  const ro=document.getElementById('bioReadout'); if(!ro) return;
+  ro.innerHTML='<span class="chip">genitori <b>'+bioG1+' × '+bioG2+'</b></span>'+
+    '<span class="chip">genotipi <b>'+counts.AA+' AA · '+counts.Aa+' Aa · '+counts.aa+' aa</b></span>'+
+    '<span class="chip hl">fenotipi <b>'+(dom/4*100)+'% dominante · '+(rec/4*100)+'% recessivo</b></span>';
+}
+function bioSet(which,g){ if(which===1)bioG1=g; else bioG2=g; drawBio(); }
+[[bioP1,1],[bioP2,2]].forEach(([seg,which])=>{ if(seg) seg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ seg.querySelectorAll('button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); bioSet(which,b.dataset.g); })); });
+
 </script>
 <script>
 /* ==================================================================
@@ -5790,11 +5985,11 @@ if(anaSim){
 /* ==================================================================
    INIZIALIZZAZIONE
    ================================================================== */
-['ins','alg','fun','geo','gon','sta','ana','suc','des','rad','rag','fis'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
+['ins','alg','fun','geo','gon','sta','ana','suc','des','rad','rag','fis','bio'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
 renderExam();
 
 function drawAllSims(){
-  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat,drawAna,drawSuc,drawDes,drawRad,drawRag,drawFis]
+  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat,drawAna,drawSuc,drawDes,drawRad,drawRag,drawFis,drawBio]
     .forEach(fn=>{ try{ fn && fn(); }catch(e){} });
 }
 window.addEventListener('load',()=>{
