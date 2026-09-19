@@ -327,6 +327,7 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
     <button data-sec="geo">Geometria</button>
     <button data-sec="gon">Goniometria</button>
     <button data-sec="sta">Probabilità e dati</button>
+    <button data-sec="ana">Geometria analitica</button>
     <button data-sec="exam" class="exam">Quiz finale</button>
   </div>
 </nav>
@@ -367,7 +368,7 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
       <span class="pill go" data-goto="gon">5 · Goniometria e trigonometria</span>
       <span class="pill go" data-goto="sta">6 · Probabilità, dati e conteggio</span>
     </div>
-    <p>Ogni filone ha quattro momenti: <strong>Teoria</strong> essenziale, con le formule che servono davvero e i tranelli tipici; <strong>Simulazione</strong> interattiva in cui muovi tu i parametri e vedi la formula reagire; <strong>Esercizi</strong> a difficoltà crescente con indizi che compaiono solo quando li chiedi; <strong>Test</strong> a risposta multipla con correzione immediata. Alla fine ti aspetta il <strong>Quiz finale</strong>: trentasei quesiti misti sui sei filoni, cronometrabili come all'esame, dove le risposte compaiono solo alla consegna.</p>
+    <p>Ogni filone ha quattro momenti: <strong>Teoria</strong> essenziale, con le formule che servono davvero e i tranelli tipici; <strong>Simulazione</strong> interattiva in cui muovi tu i parametri e vedi la formula reagire; <strong>Esercizi</strong> a difficoltà crescente con indizi che compaiono solo quando li chiedi; <strong>Test</strong> a risposta multipla con correzione immediata. Alla fine ti aspetta il <strong>Quiz finale</strong>: un'ampia selezione di quesiti misti su tutti i filoni, cronometrabili come all'esame, dove le risposte compaiono solo alla consegna.</p>
   </div>
 
   <div class="card">
@@ -1703,6 +1704,129 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
   </div>
 </section>
 <!-- ============================================================ -->
+<!-- ============= 7 · GEOMETRIA ANALITICA ==================== -->
+<!-- ============================================================ -->
+<section class="section" id="sec-ana">
+  <div class="subnav" data-group="ana">
+    <button data-sub="ana-teo" class="active">Teoria</button>
+    <button data-sub="ana-sim">Simulazione</button>
+    <button data-sub="ana-ese">Esercizi</button>
+    <button data-sub="ana-quiz">Test</button>
+  </div>
+
+  <!-- ---- TEORIA ---- -->
+  <div class="subpanel active" id="ana-teo">
+    <h2>Geometria analitica</h2>
+    <p class="lead">L'idea di Cartesio: dare a ogni punto del piano <strong>due numeri</strong> — le coordinate — e trasformare così i problemi di geometria in problemi di <strong>equazioni</strong>. Una retta diventa un'equazione di primo grado, una parabola una di secondo: riconoscerle a colpo d'occhio è già metà del lavoro.</p>
+
+    <div class="card">
+      <h3>Punti nel piano: distanza e punto medio</h3>
+      <p>Dati due punti \(A(x_A,y_A)\) e \(B(x_B,y_B)\), due formule risolvono la maggior parte dei quesiti: la <strong>distanza</strong> (è Pitagora applicato alle differenze di coordinate) e il <strong>punto medio</strong> (la media delle coordinate).</p>
+      <div class="formula-box">\[ \overline{AB}=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}, \qquad M=\left(\frac{x_A+x_B}{2},\;\frac{y_A+y_B}{2}\right) \]</div>
+      <div class="callout"><div class="lbl">Un caso che torna sempre</div>La distanza di un punto \(P(x,y)\) dall'origine è \(\sqrt{x^2+y^2}\): il punto \((3,4)\) dista \(5\), il punto \((5,12)\) dista \(13\). Sono i triangoli pitagorici travestiti da coordinate.</div>
+    </div>
+
+    <div class="card">
+      <h3>La retta</h3>
+      <p>Ogni retta non verticale si scrive nella <strong>forma esplicita</strong></p>
+      <div class="formula-box">\[ y=mx+q \]</div>
+      <p>dove \(m\) è il <strong>coefficiente angolare</strong> — la pendenza, cioè di quanto sale \(y\) quando \(x\) aumenta di 1 — e \(q\) è l'<strong>ordinata all'origine</strong>, il punto \((0,q)\) in cui la retta taglia l'asse \(y\).</p>
+      <div class="svgfig">
+        <svg viewBox="0 0 340 230">
+          <line x1="20" y1="190" x2="320" y2="190" stroke="var(--line-strong)" stroke-width="1.5"/>
+          <line x1="170" y1="15" x2="170" y2="215" stroke="var(--line-strong)" stroke-width="1.5"/>
+          <line x1="60" y1="205" x2="300" y2="65" stroke="var(--accent)" stroke-width="2.6"/>
+          <circle cx="170" cy="140" r="4.5" fill="var(--accent2)"/>
+          <text x="146" y="134" font-size="13" fill="var(--accent2)" font-weight="bold">q</text>
+          <line x1="170" y1="140" x2="230" y2="140" stroke="var(--accent3)" stroke-width="1.6" stroke-dasharray="4 3"/>
+          <line x1="230" y1="140" x2="230" y2="105" stroke="var(--good)" stroke-width="1.6" stroke-dasharray="4 3"/>
+          <text x="193" y="155" font-size="11" fill="var(--accent3)">1</text>
+          <text x="235" y="127" font-size="11" fill="var(--good)" font-weight="bold">m</text>
+          <text x="286" y="58" font-size="12" fill="var(--accent)" font-weight="bold">y = mx + q</text>
+          <text x="309" y="184" font-size="11" fill="var(--muted)">x</text>
+          <text x="176" y="25" font-size="11" fill="var(--muted)">y</text>
+          <text x="176" y="184" font-size="11" fill="var(--muted)">O</text>
+        </svg>
+        <div class="figcap">La retta \(y=mx+q\): \(q\) è l'altezza a cui taglia l'asse \(y\); \(m\) dice di quanto sale ogni volta che \(x\) avanza di 1.</div>
+      </div>
+      <h4>Il coefficiente angolare da due punti</h4>
+      <div class="formula-box">\[ m=\frac{y_B-y_A}{x_B-x_A} \]</div>
+      <h4>Parallele e perpendicolari</h4>
+      <div class="tbl-wrap"><table class="data">
+        <tr><th>Relazione tra due rette</th><th>Condizione sui coefficienti angolari</th></tr>
+        <tr><td><strong>parallele</strong></td><td class="c">\(m_1=m_2\) (stessa pendenza)</td></tr>
+        <tr><td><strong>perpendicolari</strong></td><td class="c">\(m_1\cdot m_2=-1\), cioè \(m_2=-\dfrac{1}{m_1}\)</td></tr>
+      </table></div>
+      <div class="callout warn"><div class="lbl">L'errore tipico</div>La perpendicolare non ha coefficiente \(-m\), ma l'<strong>antireciproco</strong> \(-\dfrac1m\): a una retta con \(m=2\) è perpendicolare quella con \(m=-\dfrac12\), non \(m=-2\).</div>
+    </div>
+
+    <div class="card">
+      <h3>La parabola</h3>
+      <p>La parabola con asse verticale ha equazione</p>
+      <div class="formula-box">\[ y=ax^2+bx+c \qquad (a\neq0) \]</div>
+      <ul>
+        <li>la <strong>concavità</strong> è rivolta verso l'alto se \(a&gt;0\), verso il basso se \(a&lt;0\);</li>
+        <li>l'ascissa del <strong>vertice</strong> (e dell'asse di simmetria) è \(x_V=-\dfrac{b}{2a}\); l'ordinata si trova sostituendo, \(y_V=f(x_V)\);</li>
+        <li>il termine \(c\) è l'ordinata del punto in cui la parabola taglia l'asse \(y\), cioè \((0,c)\);</li>
+        <li>le intersezioni con l'asse \(x\) sono le soluzioni di \(ax^2+bx+c=0\): due, una sola (\(\Delta=0\), vertice sull'asse) o nessuna, secondo il segno del discriminante.</li>
+      </ul>
+      <div class="callout"><div class="lbl">Dove l'hai già incontrata</div>Nel quesito del recinto (100 m di rete su tre lati) l'area \(A=-\dfrac{x^2}{2}+33x\) è una parabola con la concavità verso il basso: l'area massima è proprio l'<strong>ordinata del vertice</strong>. La geometria analitica è lo strumento che trasforma «trova il massimo» in «trova il vertice».</div>
+    </div>
+
+    <div class="next-hint"><button class="btn primary" onclick="goSub('ana','ana-sim')">Vai alla simulazione →</button></div>
+  </div>
+
+  <!-- ---- SIMULAZIONE ---- -->
+  <div class="subpanel" id="ana-sim">
+    <h2>Simulazione · Rette e parabole nel piano</h2>
+    <p class="lead">Muovi i parametri e guarda la curva rispondere. Sulla <strong>retta</strong> cambia la pendenza \(m\) e l'intercetta \(q\); sulla <strong>parabola</strong> i coefficienti \(a,b,c\), e osserva vertice, asse di simmetria e intersezioni con gli assi spostarsi di conseguenza.</p>
+    <div class="sim">
+      <div class="controls">
+        <div class="ctrl" style="flex:1 1 100%">
+          <label style="margin-bottom:.4rem">Curva</label>
+          <div class="seg" id="anaType">
+            <button data-m="retta" class="active">Retta \(y=mx+q\)</button>
+            <button data-m="parab">Parabola \(y=ax^2+bx+c\)</button>
+          </div>
+        </div>
+        <div class="ctrl" id="anaRettaCtrl" style="flex:1 1 100%">
+          <div class="controls" style="margin:0">
+            <div class="ctrl"><label>pendenza \(m\) <span class="val" id="anaMV">1</span></label><input type="range" id="anaM" min="-4" max="4" value="1" step="0.5"></div>
+            <div class="ctrl"><label>intercetta \(q\) <span class="val" id="anaQV">2</span></label><input type="range" id="anaQ" min="-6" max="6" value="2" step="0.5"></div>
+          </div>
+        </div>
+        <div class="ctrl" id="anaParabCtrl" style="flex:1 1 100%;display:none">
+          <div class="controls" style="margin:0">
+            <div class="ctrl"><label>\(a\) <span class="val" id="anaAV">1</span></label><input type="range" id="anaA" min="-2" max="2" value="1" step="0.5"></div>
+            <div class="ctrl"><label>\(b\) <span class="val" id="anaBV">-4</span></label><input type="range" id="anaB" min="-6" max="6" value="-4" step="1"></div>
+            <div class="ctrl"><label>\(c\) <span class="val" id="anaCV">3</span></label><input type="range" id="anaC" min="-6" max="6" value="3" step="1"></div>
+          </div>
+        </div>
+      </div>
+      <div class="canvas-wrap"><canvas id="anaCanvas" height="340"></canvas></div>
+      <div class="formula-box" id="anaFormula" style="text-align:center"></div>
+      <div class="readout" id="anaReadout"></div>
+      <div class="hint-txt">Sulla parabola, porta \(a\) verso lo zero: la curva si «apre» sempre di più fino a somigliare a una retta. Con \(a=1,\;b=-4,\;c=3\) ritrovi \(y=x^2-4x+3\): vertice \((2,-1)\) e intersezioni con l'asse \(x\) in \(1\) e \(3\).</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('ana','ana-ese')">Passa agli esercizi →</button></div>
+  </div>
+
+  <!-- ---- ESERCIZI ---- -->
+  <div class="subpanel" id="ana-ese">
+    <h2>Esercizi guidati</h2>
+    <p class="lead">Difficoltà crescente. Quando la risposta è una coordinata o un coefficiente, scrivi il numero (con la virgola se serve, ad esempio \(-0{,}5\)).</p>
+    <div id="ana-ese-list"></div>
+  </div>
+
+  <!-- ---- TEST ---- -->
+  <div class="subpanel" id="ana-quiz">
+    <h2>Test · Geometria analitica</h2>
+    <p class="lead">Una domanda alla volta, con esito immediato. Un disegno veloce degli assi aiuta a controllare quasi ogni risposta.</p>
+    <div class="quiz-wizard" id="ana-quizbox"></div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
 <!-- ============= QUIZ RIEPILOGATIVO FINALE =================== -->
 <!-- ============================================================ -->
 <section class="section" id="sec-exam">
@@ -2928,6 +3052,48 @@ if(natSim){ [natP,natS,natE].forEach(el=>el.addEventListener('input',drawNat)); 
    ESERCIZI GUIDATI · DATI
    ================================================================== */
 const EXERCISES={
+ ana:[
+  {d:1,tag:'Distanza tra due punti',
+   q:'Qual è la distanza tra i punti \\(A(1,2)\\) e \\(B(4,6)\\)?',
+   ans:5,tol:0.05,
+   hints:['Distanza \\(=\\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}\\).','Le differenze sono \\(3\\) e \\(4\\): \\(\\sqrt{9+16}\\).'],
+   sol:'\\(\\sqrt{(4-1)^2+(6-2)^2}=\\sqrt{9+16}=\\sqrt{25}=5\\).'},
+  {d:1,tag:'Punto medio',
+   q:'Qual è l\'ascissa del punto medio del segmento di estremi \\(A(-2,3)\\) e \\(B(4,7)\\)?',
+   ans:1,tol:0.05,
+   hints:['L\'ascissa del punto medio è la media delle ascisse.','\\(\\dfrac{-2+4}{2}\\).'],
+   sol:'\\(x_M=\\dfrac{-2+4}{2}=1\\) (l\'ordinata sarebbe \\(\\dfrac{3+7}{2}=5\\)).'},
+  {d:1,tag:'Coefficiente angolare',
+   q:'Qual è il coefficiente angolare della retta passante per \\(A(1,2)\\) e \\(B(3,8)\\)?',
+   ans:3,tol:0.05,
+   hints:['\\(m=\\dfrac{y_B-y_A}{x_B-x_A}\\).','\\(\\dfrac{8-2}{3-1}\\).'],
+   sol:'\\(m=\\dfrac{8-2}{3-1}=\\dfrac{6}{2}=3\\).'},
+  {d:2,tag:'Retta per un punto',
+   q:'La retta \\(y=2x+q\\) passa per il punto \\((1,5)\\). Quanto vale \\(q\\)?',
+   ans:3,tol:0.05,
+   hints:['Sostituisci le coordinate del punto nell\'equazione.','\\(5=2\\cdot1+q\\).'],
+   sol:'\\(5=2+q\\Rightarrow q=3\\).'},
+  {d:2,tag:'Rette perpendicolari',
+   q:'Qual è il coefficiente angolare di una retta perpendicolare a \\(y=2x+1\\)? (usa i decimali, es. \\(-0{,}5\\))',
+   ans:-0.5,tol:0.02,
+   hints:['Per la perpendicolarità \\(m_1\\cdot m_2=-1\\).','\\(m_2=-\\dfrac{1}{m_1}=-\\dfrac12\\).'],
+   sol:'\\(m_2=-\\dfrac{1}{2}=-0{,}5\\) (l\'antireciproco di 2).'},
+  {d:2,tag:'Vertice: ascissa',
+   q:'Qual è l\'ascissa del vertice della parabola \\(y=x^2-4x+3\\)?',
+   ans:2,tol:0.05,
+   hints:['\\(x_V=-\\dfrac{b}{2a}\\).','Qui \\(a=1,\\ b=-4\\): \\(x_V=-\\dfrac{-4}{2}\\).'],
+   sol:'\\(x_V=-\\dfrac{-4}{2\\cdot1}=2\\).'},
+  {d:2,tag:'Vertice: ordinata',
+   q:'Qual è l\'ordinata del vertice della parabola \\(y=x^2-4x+3\\)?',
+   ans:-1,tol:0.05,
+   hints:['Prima l\'ascissa: \\(x_V=2\\). Poi sostituisci nella parabola.','\\(y_V=2^2-4\\cdot2+3\\).'],
+   sol:'\\(y_V=4-8+3=-1\\): il vertice è \\((2,-1)\\).'},
+  {d:3,tag:'Parabola e asse x',
+   q:'La parabola \\(y=x^2-6x+8\\) interseca l\'asse \\(x\\) in due punti: quanto vale la somma delle loro ascisse?',
+   ans:6,tol:0.05,
+   hints:['Le ascisse sono le soluzioni di \\(x^2-6x+8=0\\).','Per Viète la somma delle radici è \\(-\\dfrac{b}{a}\\), senza risolvere.'],
+   sol:'Somma \\(=-\\dfrac{-6}{1}=6\\) (le radici sono 2 e 4).'}
+ ],
  ins:[
   {d:1,tag:'Percentuale semplice',
    q:'In una classe di 25 studenti il 40% pratica uno sport. Quanti sono gli studenti sportivi?',
@@ -3352,6 +3518,38 @@ function buildExercises(group){
    TEST PER SCHEDA · DATI
    ================================================================== */
 const QUIZ={
+ ana:{
+  theory:[
+   {q:'La distanza tra i punti \\(A(x_A,y_A)\\) e \\(B(x_B,y_B)\\) è:',
+    o:['\\(|x_B-x_A|+|y_B-y_A|\\)','\\(\\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}\\)','\\((x_B-x_A)^2+(y_B-y_A)^2\\)','\\(\\sqrt{x_B^2+y_B^2}\\)'],c:1,
+    e:'È il teorema di Pitagora applicato alle differenze delle coordinate.'},
+   {q:'Due rette sono parallele quando i loro coefficienti angolari:',
+    o:['sono opposti','sono uguali','hanno prodotto \\(-1\\)','sono reciproci'],c:1,
+    e:'Stessa pendenza \\(\\Rightarrow\\) stesso \\(m\\): \\(m_1=m_2\\).'},
+   {q:'Due rette sono perpendicolari quando:',
+    o:['\\(m_1=m_2\\)','\\(m_1\\cdot m_2=-1\\)','\\(m_1+m_2=0\\)','\\(m_1\\cdot m_2=1\\)'],c:1,
+    e:'La perpendicolarità richiede coefficienti angolari antireciproci: \\(m_2=-\\tfrac{1}{m_1}\\).'},
+   {q:'L\'ascissa del vertice della parabola \\(y=ax^2+bx+c\\) è:',
+    o:['\\(-\\dfrac{b}{2a}\\)','\\(\\dfrac{b}{2a}\\)','\\(-\\dfrac{b}{a}\\)','\\(\\dfrac{c}{a}\\)'],c:0,
+    e:'\\(x_V=-\\dfrac{b}{2a}\\); l\'ordinata si ottiene sostituendo.'},
+   {q:'La parabola \\(y=ax^2+bx+c\\) ha la concavità rivolta verso l\'alto quando:',
+    o:['\\(a&lt;0\\)','\\(a&gt;0\\)','\\(a=0\\)','\\(b&gt;0\\)'],c:1,
+    e:'Il verso della concavità dipende dal segno di \\(a\\): verso l\'alto se \\(a&gt;0\\).'},
+   {q:'La retta \\(y=mx+q\\) interseca l\'asse \\(y\\) nel punto:',
+    o:['\\((q,0)\\)','\\((0,q)\\)','\\((0,m)\\)','\\((m,q)\\)'],c:1,
+    e:'Sull\'asse \\(y\\) è \\(x=0\\), quindi \\(y=q\\): il punto è \\((0,q)\\).'}
+  ],
+  num:[
+   {q:'Qual è la distanza tra i punti \\((0,0)\\) e \\((6,8)\\)?',a:10,tol:0.1,
+    e:'\\(\\sqrt{6^2+8^2}=\\sqrt{100}=10\\).'},
+   {q:'Qual è il coefficiente angolare della retta per \\((1,1)\\) e \\((4,7)\\)?',a:2,tol:0.1,
+    e:'\\(m=\\dfrac{7-1}{4-1}=\\dfrac63=2\\).'},
+   {q:'Qual è l\'ascissa del vertice della parabola \\(y=x^2-2x-3\\)?',a:1,tol:0.1,
+    e:'\\(x_V=-\\dfrac{-2}{2}=1\\).'},
+   {q:'Per quale valore di \\(q\\) la retta \\(y=-x+q\\) passa per \\((2,5)\\)?',a:7,tol:0.1,
+    e:'\\(5=-2+q\\Rightarrow q=7\\).'}
+  ]
+ },
  ins:{
   theory:[
    {q:'Due categorie in cui una stessa persona può rientrare contemporaneamente si rappresentano meglio con:',
@@ -3736,7 +3934,8 @@ const STRANDS={
   fun:{nome:'Funzioni, esponenziali e logaritmi', sec:'fun'},
   geo:{nome:'Geometria',                     sec:'geo'},
   gon:{nome:'Goniometria',                   sec:'gon'},
-  sta:{nome:'Probabilità, dati e conteggio', sec:'sta'}
+  sta:{nome:'Probabilità, dati e conteggio', sec:'sta'},
+  ana:{nome:'Geometria analitica',           sec:'ana'}
 };
 
 const EXAM=[
@@ -4231,7 +4430,47 @@ const EXAM=[
   e:'Valore atteso: \\(10\\cdot0{,}2+0\\cdot0{,}8=2\\) €.'},
  {s:'sta',q:'In un\'indagine su 200 persone, 50 preferiscono il tè. Che percentuale del campione preferisce il tè?',
   o:['20%','25%','30%','50%','15%'],c:1,
-  e:'\\(\\dfrac{50}{200}=0{,}25=25\\%\\).'}
+  e:'\\(\\dfrac{50}{200}=0{,}25=25\\%\\).'},
+
+ /* ================================================================== */
+ /*   GEOMETRIA ANALITICA                                              */
+ /* ================================================================== */
+ {s:'ana',q:'Qual è la distanza tra i punti \\(A(1,2)\\) e \\(B(4,6)\\)?',
+  o:['5','7','\\(\\sqrt7\\)','25','\\(\\sqrt5\\)'],c:0,
+  e:'\\(\\sqrt{(4-1)^2+(6-2)^2}=\\sqrt{9+16}=\\sqrt{25}=5\\).'},
+ {s:'ana',q:'Qual è il punto medio del segmento di estremi \\(A(2,4)\\) e \\(B(6,10)\\)?',
+  o:['\\((4,7)\\)','\\((8,14)\\)','\\((2,3)\\)','\\((4,6)\\)','\\((3,7)\\)'],c:0,
+  e:'Media delle coordinate: \\(\\left(\\dfrac{2+6}{2},\\dfrac{4+10}{2}\\right)=(4,7)\\).'},
+ {s:'ana',q:'Qual è il coefficiente angolare della retta passante per \\(A(0,1)\\) e \\(B(2,5)\\)?',
+  o:['1','2','3','\\(\\tfrac12\\)','4'],c:1,
+  e:'\\(m=\\dfrac{5-1}{2-0}=\\dfrac42=2\\).'},
+ {s:'ana',q:'Una retta parallela a \\(y=3x-1\\) ha coefficiente angolare:',
+  o:['\\(-3\\)','\\(\\tfrac13\\)','3','\\(-\\tfrac13\\)','1'],c:2,
+  e:'Rette parallele hanno lo stesso coefficiente angolare: \\(m=3\\).'},
+ {s:'ana',q:'Una retta perpendicolare a \\(y=2x+5\\) ha coefficiente angolare:',
+  o:['2','\\(-2\\)','\\(\\tfrac12\\)','\\(-\\tfrac12\\)','\\(-5\\)'],c:3,
+  e:'Antireciproco: \\(m_2=-\\dfrac{1}{2}\\), perché \\(m_1\\cdot m_2=-1\\).'},
+ {s:'ana',q:'La retta \\(y=mx+q\\) interseca l\'asse \\(y\\) nel punto:',
+  o:['\\((q,0)\\)','\\((0,q)\\)','\\((0,m)\\)','\\((m,0)\\)','\\((0,0)\\)'],c:1,
+  e:'Sull\'asse \\(y\\) si ha \\(x=0\\), quindi \\(y=q\\): il punto è \\((0,q)\\).'},
+ {s:'ana',q:'Qual è l\'ascissa del vertice della parabola \\(y=x^2-6x+5\\)?',
+  o:['3','6','\\(-3\\)','5','\\(-6\\)'],c:0,
+  e:'\\(x_V=-\\dfrac{-6}{2\\cdot1}=3\\).'},
+ {s:'ana',q:'La parabola \\(y=-2x^2+3x-1\\) ha la concavità rivolta:',
+  o:['verso l\'alto','verso il basso','a destra','a sinistra','dipende da \\(x\\)'],c:1,
+  e:'Il coefficiente di \\(x^2\\) è negativo (\\(a=-2\\)): concavità verso il basso.'},
+ {s:'ana',q:'In quali punti dell\'asse \\(x\\) (ascisse) la parabola \\(y=x^2-5x+6\\) lo interseca?',
+  o:['2 e 3','\\(-2\\) e \\(-3\\)','1 e 6','5 e 6','1 e 5'],c:0,
+  e:'\\(x^2-5x+6=0\\Rightarrow (x-2)(x-3)=0\\): ascisse 2 e 3.'},
+ {s:'ana',q:'Qual è la distanza del punto \\((5,12)\\) dall\'origine?',
+  o:['13','17','\\(\\sqrt{17}\\)','12','\\(\\sqrt7\\)'],c:0,
+  e:'\\(\\sqrt{5^2+12^2}=\\sqrt{169}=13\\): il classico triangolo 5-12-13.'},
+ {s:'ana',q:'Per quale valore di \\(q\\) la retta \\(y=2x+q\\) passa per il punto \\((1,5)\\)?',
+  o:['3','5','\\(-3\\)','7','1'],c:0,
+  e:'\\(5=2\\cdot1+q\\Rightarrow q=3\\).'},
+ {s:'ana',q:'La curva di equazione \\(y=x^2+1\\) rappresenta:',
+  o:['una retta','una parabola','una circonferenza','un\'iperbole','una retta orizzontale'],c:1,
+  e:'La presenza di \\(x^2\\) con coefficiente non nullo indica una parabola (con vertice in \\((0,1)\\)).'}
 ];
 </script>
 <script>
@@ -4325,7 +4564,7 @@ function renderExamIntro(h){
   h.innerHTML=
   '<div class="exam-intro">'+
     '<h2 style="margin-top:0">Quiz riepilogativo finale</h2>'+
-    '<p class="lead">'+perProva+' quesiti misti sui sei filoni, cinque alternative ciascuno, come al test vero. '+
+    '<p class="lead">'+perProva+' quesiti misti sui '+filoni.length+' filoni, cinque alternative ciascuno, come al test vero. '+
     'Ogni prova <strong>estrae quesiti diversi</strong> da un archivio di '+banca+': ripetendo il quiz non ritroverai sempre le stesse domande. '+
     'Qui <strong>non vedrai alcun esito durante la prova</strong>: le risposte corrette, le spiegazioni e il punteggio compaiono solo alla consegna. '+
     'È il modo giusto per misurarti — all\'esame nessuno ti dirà se hai "indovinato".</p>'+
@@ -4513,13 +4752,98 @@ function renderExamResult(h){
 
 <script>
 /* ==================================================================
+   SIM · RETTE E PARABOLE NEL PIANO CARTESIANO
+   ================================================================== */
+const anaSim = setupCanvas('anaCanvas', drawAna);
+const anaType=document.getElementById('anaType');
+const anaM=document.getElementById('anaM'), anaQ=document.getElementById('anaQ');
+const anaA=document.getElementById('anaA'), anaB=document.getElementById('anaB'), anaC=document.getElementById('anaC');
+let anaMode='retta';
+function drawAna(){
+  if(!anaSim || !anaSim.W) return;
+  const {ctx,W,H}=anaSim; ctx.clearRect(0,0,W,H);
+  const xmin=-8,xmax=8,ymin=-8,ymax=8;
+  const padL=26,padR=14,padT=12,padB=20;
+  const X=x=>padL+(x-xmin)/(xmax-xmin)*(W-padL-padR);
+  const Y=y=>H-padB-(y-ymin)/(ymax-ymin)*(H-padT-padB);
+  for(let x=xmin;x<=xmax;x++) line(ctx,X(x),padT,X(x),H-padB,css('--line'),1);
+  for(let y=ymin;y<=ymax;y++) line(ctx,padL,Y(y),W-padR,Y(y),css('--line'),1);
+  line(ctx,X(xmin),Y(0),X(xmax),Y(0),css('--line-strong'),1.6);
+  line(ctx,X(0),Y(ymax),X(0),Y(ymin),css('--line-strong'),1.6);
+  [-6,-4,-2,2,4,6].forEach(v=>{ label(ctx,String(v),X(v),Y(0)+11,css('--muted'),9,'center'); label(ctx,String(v),X(0)-5,Y(v)+3,css('--muted'),9,'right'); });
+  const fb=document.getElementById('anaFormula'), ro=document.getElementById('anaReadout');
+  if(!fb||!ro) return;
+  if(anaMode==='retta'){
+    const m=+anaM.value, q=+anaQ.value;
+    document.getElementById('anaMV').textContent=fmt(m,1);
+    document.getElementById('anaQV').textContent=fmt(q,1);
+    const f=x=>m*x+q;
+    line(ctx, X(xmin),Y(f(xmin)), X(xmax),Y(f(xmax)), css('--accent'),2.8);
+    dot(ctx,X(0),Y(q),6,css('--accent2'));
+    if(m!==0){ const xz=-q/m; if(xz>=xmin&&xz<=xmax) dot(ctx,X(xz),Y(0),6,css('--good')); }
+    fb.innerHTML='\\[ y = '+fmt(m,1)+'x '+(q>=0?'+\\;'+fmt(q,1):'-\\;'+fmt(-q,1))+' \\]';
+    let html='<span class="chip">coeff. angolare \\(m=\\) <b>'+fmt(m,1)+'</b></span>'+
+      '<span class="chip">intercetta \\(q=\\) <b>'+fmt(q,1)+'</b> → punto \\((0,\\,'+fmt(q,1)+')\\)</span>'+
+      '<span class="chip '+(m>0?'good':(m<0?'bad':''))+'">'+(m>0?'crescente':(m<0?'decrescente':'costante (orizzontale)'))+'</span>';
+    if(m!==0) html+='<span class="chip hl">taglia l\'asse \\(x\\) in \\(x='+fmt(-q/m,2)+'\\)</span>';
+    ro.innerHTML=html;
+  } else {
+    const a=+anaA.value, b=+anaB.value, c=+anaC.value;
+    document.getElementById('anaAV').textContent=fmt(a,1);
+    document.getElementById('anaBV').textContent=fmt(b,1);
+    document.getElementById('anaCV').textContent=fmt(c,1);
+    const f=x=>a*x*x+b*x+c;
+    if(a===0){
+      line(ctx, X(xmin),Y(f(xmin)), X(xmax),Y(f(xmax)), css('--accent'),2.8);
+    } else {
+      curve(ctx,f,xmin,xmax,X,Y,css('--accent'),2.8,320,[ymin,ymax]);
+    }
+    let vx=0,vy=c;
+    if(a!==0){ vx=-b/(2*a); vy=f(vx);
+      if(vx>=xmin&&vx<=xmax&&vy>=ymin&&vy<=ymax){ dot(ctx,X(vx),Y(vy),6,css('--accent2')); ring(ctx,X(vx),Y(vy),9,css('--accent2'),1.5); }
+      line(ctx,X(vx),Y(ymax),X(vx),Y(ymin),css('--accent2'),1,[5,4]);
+    }
+    dot(ctx,X(0),Y(c),5,css('--accent3'));
+    const D=b*b-4*a*c;
+    fb.innerHTML='\\[ y = '+fmt(a,1)+'x^2 '+(b>=0?'+\\;'+fmt(b,1):'-\\;'+fmt(-b,1))+'x '+(c>=0?'+\\;'+fmt(c,1):'-\\;'+fmt(-c,1))+' \\]';
+    let html='<span class="chip '+(a>0?'good':(a<0?'bad':''))+'">concavità '+(a>0?'verso l\'alto':(a<0?'verso il basso':'nulla: è una retta'))+'</span>';
+    if(a!==0){
+      html+='<span class="chip hl">vertice \\(V=('+fmt(vx,2)+',\\;'+fmt(vy,2)+')\\)</span>';
+      if(D>1e-9){ const x1=(-b-Math.sqrt(D))/(2*a), x2=(-b+Math.sqrt(D))/(2*a);
+        [x1,x2].forEach(r=>{ if(r>=xmin&&r<=xmax) dot(ctx,X(r),Y(0),5,css('--good')); });
+        html+='<span class="chip good">2 intersezioni con l\'asse \\(x\\)</span>'; }
+      else if(Math.abs(D)<=1e-9){ if(vx>=xmin&&vx<=xmax) dot(ctx,X(vx),Y(0),5,css('--good')); html+='<span class="chip">tangente all\'asse \\(x\\) (\\(\\Delta=0\\))</span>'; }
+      else html+='<span class="chip bad">nessuna intersezione con l\'asse \\(x\\) (\\(\\Delta&lt;0\\))</span>';
+    }
+    ro.innerHTML=html;
+  }
+  typesetEl(fb); typesetEl(ro);
+}
+function anaSetMode(mode){
+  anaMode=mode;
+  const r=document.getElementById('anaRettaCtrl'), pb=document.getElementById('anaParabCtrl');
+  if(r) r.style.display = mode==='retta'?'':'none';
+  if(pb) pb.style.display = mode==='parab'?'':'none';
+  drawAna();
+}
+if(anaSim){
+  anaType.querySelectorAll('button').forEach(bt=>bt.addEventListener('click',()=>{
+    anaType.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+    bt.classList.add('active'); anaSetMode(bt.dataset.m);
+  }));
+  [anaM,anaQ,anaA,anaB,anaC].forEach(el=>el && el.addEventListener('input',drawAna));
+}
+</script>
+
+<script>
+/* ==================================================================
    INIZIALIZZAZIONE
    ================================================================== */
-['ins','alg','fun','geo','gon','sta'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
+['ins','alg','fun','geo','gon','sta','ana'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
 renderExam();
 
 function drawAllSims(){
-  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat]
+  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat,drawAna]
     .forEach(fn=>{ try{ fn && fn(); }catch(e){} });
 }
 window.addEventListener('load',()=>{
