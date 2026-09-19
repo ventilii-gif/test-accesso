@@ -331,6 +331,7 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
     <button data-sec="suc">Successioni</button>
     <button data-sec="des">Statistica</button>
     <button data-sec="rad">Radicali e potenze</button>
+    <button data-sec="rag">Logica e comprensione</button>
     <button data-sec="exam" class="exam">Quiz finale</button>
   </div>
 </nav>
@@ -1982,6 +1983,69 @@ table.data td.c,table.data th.c{text-align:center;font-variant-numeric:tabular-n
 </section>
 
 <!-- ============================================================ -->
+<!-- ============= 11 · LOGICA E COMPRENSIONE ================= -->
+<!-- ============================================================ -->
+<section class="section" id="sec-rag">
+  <div class="subnav" data-group="rag">
+    <button data-sub="rag-teo" class="active">Teoria</button>
+    <button data-sub="rag-sim">Simulazione</button>
+    <button data-sub="rag-ese">Esercizi</button>
+    <button data-sub="rag-quiz">Test</button>
+  </div>
+  <div class="subpanel active" id="rag-teo">
+    <h2>Logica e comprensione</h2>
+    <p class="lead">Qui non contano le formule ma il <strong>ragionamento</strong>: capire che cosa segue davvero da certe premesse e che cosa no. È la parte del test in cui si perdono più punti per fretta — e quella in cui, con due o tre regole, si recuperano più in fretta.</p>
+    <div class="card">
+      <h3>Quantificatori e negazioni</h3>
+      <p>Le parole «tutti», «qualche», «nessuno» sono trappole classiche, soprattutto quando vanno negate. La regola è una sola: la negazione di un'affermazione <strong>universale</strong> è <strong>esistenziale</strong>, e viceversa.</p>
+      <div class="tbl-wrap"><table class="data">
+        <tr><th>Affermazione</th><th>La sua negazione corretta</th></tr>
+        <tr><td>Tutti gli X sono Y</td><td>Almeno un X <strong>non</strong> è Y</td></tr>
+        <tr><td>Nessun X è Y</td><td>Almeno un X <strong>è</strong> Y</td></tr>
+        <tr><td>Qualche X è Y</td><td>Nessun X è Y</td></tr>
+      </table></div>
+      <div class="callout warn"><div class="lbl">L'errore da evitare</div>La negazione di «tutti i gatti sono neri» <strong>non</strong> è «nessun gatto è nero»: basta <strong>un solo</strong> gatto non nero per smentirla. La negazione giusta è «almeno un gatto non è nero».</div>
+    </div>
+    <div class="card">
+      <h3>«Se… allora»: implicazione, necessario, sufficiente</h3>
+      <p>Dall'implicazione «se A allora B» si può dedurre con certezza <strong>una sola</strong> cosa in più: la sua <strong>contronominale</strong> «se non B, allora non A». Le altre due «scorciatoie» sono errori con un nome.</p>
+      <div class="tbl-wrap"><table class="data">
+        <tr><th>Da «se A allora B» e…</th><th>Si può concludere?</th></tr>
+        <tr><td>… A è vero</td><td class="c" style="color:var(--good)">sì: B è vero</td></tr>
+        <tr><td>… B è falso</td><td class="c" style="color:var(--good)">sì: A è falso (contronominale)</td></tr>
+        <tr><td>… B è vero</td><td class="c" style="color:var(--bad)">no (affermare il conseguente)</td></tr>
+        <tr><td>… A è falso</td><td class="c" style="color:var(--bad)">no (negare l'antecedente)</td></tr>
+      </table></div>
+      <p>Legata a questo c'è la coppia <strong>necessario / sufficiente</strong>. In «se A allora B», A è <em>sufficiente</em> per B (basta A perché ci sia B), e B è <em>necessario</em> per A (senza B non c'è A). Esempio: essere pari è <strong>necessario</strong> ma non <strong>sufficiente</strong> per essere divisibile per 4 — 6 è pari ma non multiplo di 4.</p>
+      <div class="callout"><div class="lbl">Serie e comprensione</div>Nei quesiti di <strong>serie numeriche</strong> cerca la regola che lega un termine al successivo (si somma? si moltiplica? sono quadrati o fattoriali?). Nella <strong>comprensione del testo</strong>, distingui ciò che il brano <em>afferma</em> da ciò che tu <em>supponi</em>: la risposta giusta è sempre quella che si può ricavare <strong>solo dal testo</strong>, senza aggiungere nulla.</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('rag','rag-sim')">Vai alla simulazione →</button></div>
+  </div>
+  <div class="subpanel" id="rag-sim">
+    <h2>Simulazione · Diagrammi di Eulero-Venn</h2>
+    <p class="lead">I sillogismi si risolvono con un disegno, non a parole. Scegli la relazione tra due insiemi \(A\) e \(B\): il diagramma mostra come si dispongono, e sotto trovi ciò che si può concludere <strong>con certezza</strong> e l'errore in cui è facile cadere.</p>
+    <div class="sim">
+      <div class="controls">
+        <div class="ctrl" style="flex:1 1 100%"><label style="margin-bottom:.4rem">Relazione tra gli insiemi</label>
+          <div class="seg" id="ragType">
+            <button data-r="tuttiAB" class="active">Tutti gli A sono B</button>
+            <button data-r="nessuno">Nessun A è B</button>
+            <button data-r="qualche">Qualche A è B</button>
+            <button data-r="tuttiBA">Tutti i B sono A</button>
+          </div>
+        </div>
+      </div>
+      <div class="canvas-wrap"><canvas id="ragCanvas" height="300"></canvas></div>
+      <div class="readout" id="ragReadout"></div>
+      <div class="hint-txt">Prova «Tutti gli A sono B»: il cerchio A sta <strong>dentro</strong> B. Da qui si legge subito la contronominale — un punto fuori da B è per forza fuori anche da A — mentre «tutti i B sono A» è falso, perché in B c'è spazio che A non occupa.</div>
+    </div>
+    <div class="next-hint"><button class="btn primary" onclick="goSub('rag','rag-ese')">Passa agli esercizi →</button></div>
+  </div>
+  <div class="subpanel" id="rag-ese"><h2>Esercizi guidati</h2><p class="lead">Serie numeriche e ragionamento: trova la regola e scrivi il numero che completa la sequenza.</p><div id="rag-ese-list"></div></div>
+  <div class="subpanel" id="rag-quiz"><h2>Test · Logica e comprensione</h2><p class="lead">Una domanda alla volta, con esito immediato.</p><div class="quiz-wizard" id="rag-quizbox"></div></div>
+</section>
+
+<!-- ============================================================ -->
 <!-- ============= QUIZ RIEPILOGATIVO FINALE =================== -->
 <!-- ============================================================ -->
 <section class="section" id="sec-exam">
@@ -3207,6 +3271,40 @@ if(natSim){ [natP,natS,natE].forEach(el=>el.addEventListener('input',drawNat)); 
    ESERCIZI GUIDATI · DATI
    ================================================================== */
 const EXERCISES={
+ rag:[
+  {d:1,tag:'Serie: +3',
+   q:'Completa la serie: \\(3,\\;6,\\;9,\\;12,\\;\\dots\\) Qual è il numero successivo?',
+   ans:15,tol:0.05,hints:['Guarda di quanto cresce ogni volta.','Si aggiunge sempre 3.'],
+   sol:'Ogni termine cresce di 3: dopo 12 viene 15.'},
+  {d:1,tag:'Serie: ×2',
+   q:'Completa la serie: \\(2,\\;4,\\;8,\\;16,\\;\\dots\\) Qual è il numero successivo?',
+   ans:32,tol:0.05,hints:['Non si somma: si moltiplica.','Ogni termine è il doppio del precedente.'],
+   sol:'Ogni termine è il doppio: dopo 16 viene 32.'},
+  {d:1,tag:'Serie: quadrati',
+   q:'Completa la serie: \\(1,\\;4,\\;9,\\;16,\\;\\dots\\) Qual è il numero successivo?',
+   ans:25,tol:0.05,hints:['Sono i quadrati dei numeri interi.','\\(1^2,2^2,3^2,4^2,\\dots\\)'],
+   sol:'Sono i quadrati: dopo \\(4^2=16\\) viene \\(5^2=25\\).'},
+  {d:2,tag:'Serie: Fibonacci',
+   q:'Completa la serie: \\(1,\\;1,\\;2,\\;3,\\;5,\\;8,\\;\\dots\\) Qual è il numero successivo?',
+   ans:13,tol:0.05,hints:['Ogni numero dipende dai due precedenti.','Si sommano gli ultimi due: \\(5+8\\).'],
+   sol:'Successione di Fibonacci: \\(5+8=13\\).'},
+  {d:2,tag:'Serie: differenze crescenti',
+   q:'Completa la serie: \\(2,\\;6,\\;12,\\;20,\\;30,\\;\\dots\\) Qual è il numero successivo?',
+   ans:42,tol:0.05,hints:['Guarda le differenze tra termini consecutivi: 4, 6, 8, 10…','La differenza successiva è 12: \\(30+12\\).'],
+   sol:'Le differenze crescono di 2 (4,6,8,10,12): \\(30+12=42\\).'},
+  {d:2,tag:'Codice alfabetico',
+   q:'Se \\(A=1,\\;B=2,\\;C=3,\\;\\dots\\) (ogni lettera vale la sua posizione), quanto vale la somma delle lettere della parola BAC?',
+   ans:6,tol:0.05,hints:['Sostituisci ogni lettera con il suo numero.','\\(B+A+C=2+1+3\\).'],
+   sol:'\\(2+1+3=6\\).'},
+  {d:3,tag:'Serie: fattoriali',
+   q:'Completa la serie: \\(1,\\;2,\\;6,\\;24,\\;120,\\;\\dots\\) Qual è il numero successivo?',
+   ans:720,tol:0.5,hints:['Ogni termine si moltiplica per un numero sempre più grande: ×2, ×3, ×4, ×5…','Il prossimo passo è ×6: \\(120\\cdot6\\).'],
+   sol:'Sono i fattoriali: \\(120\\cdot6=720\\) (cioè \\(6!\\)).'},
+  {d:3,tag:'Ragionamento (proporzioni)',
+   q:'Se 3 gatti catturano 3 topi in 3 minuti, quanti gatti servono per catturare 100 topi in 100 minuti?',
+   ans:3,tol:0.05,hints:['Quanti topi cattura UN gatto in 3 minuti? Uno.','In 100 minuti un gatto cattura molti più topi: non servono 100 gatti.'],
+   sol:'Un gatto cattura 1 topo ogni 3 minuti, quindi in 100 minuti ne cattura circa 33. Bastano <strong>3 gatti</strong> (33×3 ≈ 100). Il ritmo non cambia col numero di topi.'}
+ ],
  suc:[
   {d:1,tag:'Ragione aritmetica',
    q:'Nella progressione \\(2,5,8,11,\\dots\\) qual è la ragione (la differenza costante)?',
@@ -3775,6 +3873,34 @@ function buildExercises(group){
    TEST PER SCHEDA · DATI
    ================================================================== */
 const QUIZ={
+ rag:{
+  theory:[
+   {q:'La negazione di «tutti gli X sono Y» è:',
+    o:['nessun X è Y','almeno un X non è Y','tutti gli X non sono Y','qualche X è Y'],c:1,
+    e:'La negazione di un\'affermazione universale è esistenziale: basta un controesempio.'},
+   {q:'Da «tutti gli A sono B» e «x non è B» si conclude che:',
+    o:['x è A','x non è A','x è B','non si può concludere nulla'],c:1,
+    e:'È la contronominale: se \\(A\\Rightarrow B\\), allora \\(\\lnot B\\Rightarrow\\lnot A\\).'},
+   {q:'Da «se piove la strada è bagnata» e «la strada è bagnata» si conclude che:',
+    o:['sicuramente piove','non necessariamente piove','non piove','pioverà presto'],c:1,
+    e:'Affermare il conseguente non è valido: la strada può essere bagnata per altri motivi.'},
+   {q:'«Nessun A è B» equivale logicamente a:',
+    o:['tutti gli A sono B','nessun B è A','qualche A è B','tutti i B sono A'],c:1,
+    e:'La relazione «nessuno» è simmetrica: se A e B sono disgiunti, lo sono anche B e A.'},
+   {q:'Che un numero sia pari è, per essere divisibile per 4, una condizione:',
+    o:['necessaria e sufficiente','necessaria ma non sufficiente','sufficiente ma non necessaria','né necessaria né sufficiente'],c:1,
+    e:'Ogni multiplo di 4 è pari (necessaria), ma 6 è pari e non multiplo di 4 (non sufficiente).'},
+   {q:'La negazione di «qualche studente è promosso» è:',
+    o:['tutti gli studenti sono promossi','nessuno studente è promosso','qualche studente non è promosso','molti studenti sono promossi'],c:1,
+    e:'La negazione di «esiste almeno uno» è «non ne esiste nessuno».'}
+  ],
+  num:[
+   {q:'Completa la serie \\(5,10,20,40,\\dots\\): qual è il numero successivo?',a:80,tol:0.5,e:'Ogni termine è il doppio: \\(40\\cdot2=80\\).'},
+   {q:'Completa la serie \\(1,3,6,10,15,\\dots\\) (numeri triangolari): qual è il successivo?',a:21,tol:0.5,e:'Le differenze crescono di 1 (2,3,4,5,6): \\(15+6=21\\).'},
+   {q:'Se 5 macchine producono 5 pezzi in 5 minuti, in quanti minuti 100 macchine producono 100 pezzi?',a:5,tol:0.5,e:'Ogni macchina fa 1 pezzo in 5 minuti: il tempo resta 5 minuti.'},
+   {q:'Completa la serie \\(100,50,25,\\dots\\): qual è il numero successivo? (usa la virgola)',a:12.5,tol:0.05,e:'Si dimezza ogni volta: \\(25:2=12{,}5\\).'}
+  ]
+ },
  suc:{
   theory:[
    {q:'In una progressione aritmetica il termine generale è:',
@@ -4279,7 +4405,8 @@ const STRANDS={
   ana:{nome:'Geometria analitica',           sec:'ana'},
   suc:{nome:'Successioni e progressioni',     sec:'suc'},
   des:{nome:'Statistica descrittiva',         sec:'des'},
-  rad:{nome:'Radicali e potenze',             sec:'rad'}
+  rad:{nome:'Radicali e potenze',             sec:'rad'},
+  rag:{nome:'Logica e comprensione',          sec:'rag'}
 };
 
 const EXAM=[
@@ -4909,7 +5036,42 @@ const EXAM=[
   o:['10','0,1','\\(-10\\)','100','1'],c:0,e:'Il reciproco di \\(0{,}1=\\dfrac{1}{10}\\) è 10.'},
  {s:'rad',q:'Semplificando \\(\\sqrt{72}\\) si ottiene:',
   o:['\\(6\\sqrt2\\)','\\(8\\sqrt2\\)','\\(2\\sqrt{18}\\)','\\(36\\sqrt2\\)','12'],c:0,
-  e:'\\(\\sqrt{72}=\\sqrt{36\\cdot2}=6\\sqrt2\\).'}
+  e:'\\(\\sqrt{72}=\\sqrt{36\\cdot2}=6\\sqrt2\\).'},
+
+ /* ================================================================== */
+ /*   LOGICA E COMPRENSIONE                                            */
+ /* ================================================================== */
+ {s:'rag',q:'Qual è la corretta negazione di «tutti i gatti sono neri»?',
+  o:['nessun gatto è nero','almeno un gatto non è nero','tutti i gatti sono bianchi','qualche gatto è nero','pochi gatti sono neri'],c:1,
+  e:'La negazione di «tutti» è «almeno uno no»: basta un gatto non nero per smentirla.'},
+ {s:'rag',q:'Sapendo che «tutti gli avvocati sono laureati» e che «Marco non è laureato», si conclude che:',
+  o:['Marco è un avvocato','Marco non è un avvocato','Marco è laureato','non si può concludere nulla','Marco è un giudice'],c:1,
+  e:'Contronominale: se avvocato \\(\\Rightarrow\\) laureato, allora non laureato \\(\\Rightarrow\\) non avvocato.'},
+ {s:'rag',q:'Da «se studio, passo l\'esame» e «ho passato l\'esame» si può concludere che:',
+  o:['ho sicuramente studiato','non necessariamente ho studiato','non ho studiato','ho studiato molto','l\'esame era facile'],c:1,
+  e:'Affermare il conseguente non è valido: posso aver passato l\'esame anche senza studiare.'},
+ {s:'rag',q:'Completa la serie: \\(2,\\;4,\\;6,\\;8,\\;\\dots\\)',
+  o:['9','10','12','16','11'],c:1,e:'Numeri pari: si aggiunge 2, quindi 10.'},
+ {s:'rag',q:'Completa la serie: \\(1,\\;2,\\;4,\\;8,\\;16,\\;\\dots\\)',
+  o:['24','30','32','20','64'],c:2,e:'Ogni termine è il doppio: \\(16\\cdot2=32\\).'},
+ {s:'rag',q:'«Nessun pesce è un mammifero» equivale a:',
+  o:['tutti i pesci sono mammiferi','nessun mammifero è un pesce','qualche pesce è un mammifero','tutti i mammiferi sono pesci','non si può dire nulla'],c:1,
+  e:'La relazione «nessuno» è simmetrica.'},
+ {s:'rag',q:'Qual è la corretta negazione di «qualche X è Y»?',
+  o:['tutti gli X sono Y','nessun X è Y','qualche X non è Y','tutti gli Y sono X','almeno un X è Y'],c:1,
+  e:'La negazione di «esiste almeno uno» è «non ne esiste nessuno».'},
+ {s:'rag',q:'Completa la serie: \\(3,\\;9,\\;27,\\;81,\\;\\dots\\)',
+  o:['162','243','108','324','729'],c:1,e:'Ogni termine è il triplo: \\(81\\cdot3=243\\).'},
+ {s:'rag',q:'Quale dei seguenti numeri NON è primo?',
+  o:['2','3','4','5','7'],c:2,e:'Il 4 è divisibile per 2, quindi non è primo; gli altri lo sono.'},
+ {s:'rag',q:'Completa la serie: \\(1,\\;4,\\;9,\\;16,\\;25,\\;\\dots\\)',
+  o:['30','35','36','49','40'],c:2,e:'Sono i quadrati: dopo \\(5^2=25\\) viene \\(6^2=36\\).'},
+ {s:'rag',q:'Che un numero sia pari è, perché sia divisibile per 4, una condizione:',
+  o:['necessaria e sufficiente','necessaria ma non sufficiente','sufficiente ma non necessaria','né necessaria né sufficiente','impossibile da stabilire'],c:1,
+  e:'Ogni multiplo di 4 è pari (necessaria), ma 6 è pari e non divisibile per 4 (non sufficiente).'},
+ {s:'rag',q:'Se oggi è lunedì, che giorno della settimana sarà tra 100 giorni?',
+  o:['martedì','mercoledì','giovedì','lunedì','venerdì'],c:1,
+  e:'\\(100=14\\cdot7+2\\): avanzano 2 giorni oltre le settimane intere, quindi da lunedì si arriva a mercoledì.'}
 ];
 </script>
 <script>
@@ -5292,6 +5454,44 @@ function drawRad(){
 }
 if(radSim){ radN.addEventListener('input',drawRad); }
 
+/* ==================================================================
+   SIM · DIAGRAMMI DI EULERO-VENN (sillogismi)
+   ================================================================== */
+const ragSim=setupCanvas('ragCanvas',drawRag);
+const ragType=document.getElementById('ragType');
+let ragRel='tuttiAB';
+function drawRag(){
+  if(!ragSim||!ragSim.W) return;
+  const {ctx,W,H}=ragSim; ctx.clearRect(0,0,W,H);
+  const cy=H*0.5, colA=css('--accent'), colB=css('--accent3');
+  function disc(cx,cyy,r,col){ ctx.save(); ctx.beginPath(); ctx.arc(cx,cyy,r,0,7); ctx.fillStyle=col; ctx.globalAlpha=.15; ctx.fill(); ctx.globalAlpha=1; ctx.lineWidth=2.6; ctx.strokeStyle=col; ctx.stroke(); ctx.restore(); }
+  const R=Math.min(W*0.18,H*0.26);
+  let ro='';
+  if(ragRel==='tuttiAB'){
+    disc(W*0.5,cy,R*1.7,colB); disc(W*0.5,cy+R*0.55,R*0.8,colA);
+    label(ctx,'B',W*0.5,cy-R*1.7+18,colB,16,'center','bold'); label(ctx,'A',W*0.5,cy+R*0.55+5,colA,15,'center','bold');
+    ro='<span class="chip good">Valido: se un elemento non è B, non è nemmeno A (contronominale)</span>'+
+       '<span class="chip bad">Non valido: «tutti i B sono A»</span>';
+  } else if(ragRel==='tuttiBA'){
+    disc(W*0.5,cy,R*1.7,colA); disc(W*0.5,cy+R*0.55,R*0.8,colB);
+    label(ctx,'A',W*0.5,cy-R*1.7+18,colA,16,'center','bold'); label(ctx,'B',W*0.5,cy+R*0.55+5,colB,15,'center','bold');
+    ro='<span class="chip good">Valido: ogni B è anche A; se non è A, non è B</span>'+
+       '<span class="chip bad">Non valido: «tutti gli A sono B»</span>';
+  } else if(ragRel==='nessuno'){
+    disc(W*0.31,cy,R,colA); disc(W*0.69,cy,R,colB);
+    label(ctx,'A',W*0.31,cy-R-7,colA,16,'center','bold'); label(ctx,'B',W*0.69,cy-R-7,colB,16,'center','bold');
+    ro='<span class="chip good">Valido: «nessun B è A» (la relazione è simmetrica)</span>'+
+       '<span class="chip bad">Non valido: «qualche A è B»</span>';
+  } else {
+    disc(W*0.42,cy,R,colA); disc(W*0.58,cy,R,colB);
+    label(ctx,'A',W*0.42-R,cy-R-7,colA,16,'center','bold'); label(ctx,'B',W*0.58+R,cy-R-7,colB,16,'center','bold');
+    ro='<span class="chip good">Valido: «qualche B è A» (esiste almeno un elemento in comune)</span>'+
+       '<span class="chip bad">Non valido: «tutti gli A sono B» oppure «nessun A è B»</span>';
+  }
+  const rr=document.getElementById('ragReadout'); if(rr) rr.innerHTML=ro;
+}
+if(ragSim){ ragType.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ ragType.querySelectorAll('button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); ragRel=b.dataset.r; drawRag(); })); }
+
 </script>
 <script>
 /* ==================================================================
@@ -5382,11 +5582,11 @@ if(anaSim){
 /* ==================================================================
    INIZIALIZZAZIONE
    ================================================================== */
-['ins','alg','fun','geo','gon','sta','ana','suc','des','rad'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
+['ins','alg','fun','geo','gon','sta','ana','suc','des','rad','rag'].forEach(g=>{ buildExercises(g); buildQuiz(g); });
 renderExam();
 
 function drawAllSims(){
-  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat,drawAna,drawSuc,drawDes,drawRad]
+  [drawVenn,drawCat,drawTri,drawTang,drawFk,drawLog,drawRec,drawTan,drawArea,drawCirc,drawEq,drawHist,drawNat,drawAna,drawSuc,drawDes,drawRad,drawRag]
     .forEach(fn=>{ try{ fn && fn(); }catch(e){} });
 }
 window.addEventListener('load',()=>{
