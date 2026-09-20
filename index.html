@@ -4639,12 +4639,12 @@ const MSG_NO=['Non ci siamo ancora, ma stai ragionando bene.','Capita: guarda la
               'Quasi! Rileggi con calma:','Nessun problema, si impara così:','Non è quella giusta, ma niente panico:',
               'Sbagliata — ed è un\'ottima notizia: adesso non la sbaglierai più.'];
 
+const QUIZ_PER_SCHEDA=12;   /* domande estratte a caso, dal banco del filone, per ogni Test di scheda */
 const quizState={};
 function buildQuiz(group){
-  const Q=QUIZ[group];
-  if(!Q) return;
-  const items=Q.theory.map(t=>shuffleMC(Object.assign({type:'mc'},t)))
-    .concat(Q.num.map(n=>Object.assign({type:'num'},n)));
+  const bank=EXAM.filter(q=>q.s===group);
+  if(!bank.length) return;
+  const items=sampleN(bank, QUIZ_PER_SCHEDA).map(q=>shuffleMC(Object.assign({type:'mc'},q)));
   quizState[group]={cur:0, items, answered:new Array(items.length).fill(null)};
   renderQuiz(group);
 }
@@ -4659,7 +4659,7 @@ function renderQuiz(group){
   const submitted = !!(a && a.submitted);
   let h='';
   h+='<div class="quiz-top">'+
-     '<div class="quiz-count">Domanda '+(st.cur+1)+' di '+n+' · '+(it.type==='mc'?'teoria':'numerico')+'</div>'+
+     '<div class="quiz-count">Domanda '+(st.cur+1)+' di '+n+'</div>'+
      '<div class="quiz-progress"><span style="width:'+Math.round((st.cur+1)/n*100)+'%"></span></div></div>';
   h+='<div class="quiz-card"><div class="qt">'+it.q+'</div>';
   if(it.type==='mc'){
@@ -5560,14 +5560,15 @@ const examState={
   revFilter:'all'
 };
 const EXAM_MINUTI=45;
-const EXAM_TOTALE=36;   /* il quiz finale è SEMPRE di 36 quesiti, col cronometro */
+const EXAM_TOTALE=32;   /* il quiz finale è SEMPRE di 32 quesiti, col cronometro */
 const host=()=>document.getElementById('examHost');
 
 /* Estrazione casuale senza rimpiazzo. La prova è sempre di EXAM_TOTALE quesiti
-   (36), distribuiti nel modo più uniforme possibile tra i filoni presenti:
-   aggiungendo nuovi filoni la prova NON si allunga, cambia solo quanti quesiti
-   toccano a ciascuno. L'archivio resta molto più ampio dei 36 mostrati, quindi
-   ripetendo il quiz non si ritrovano sempre le stesse domande. */
+   (32), distribuiti nel modo più uniforme possibile tra i filoni presenti e poi
+   MESCOLATI tra loro: aggiungendo nuovi filoni la prova NON si allunga, cambia
+   solo quanti quesiti toccano a ciascuno. L'archivio resta molto più ampio dei
+   32 mostrati, quindi ripetendo il quiz non si ritrovano sempre le stesse
+   domande. Durante la prova non si indica a quale filone appartiene un quesito. */
 function sampleN(arr,n){
   const a=arr.slice();
   for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i];a[i]=a[j];a[j]=t; }
@@ -5590,6 +5591,7 @@ function examDraw(){
   const {filoni,count}=examPerFilone();
   const out=[];
   filoni.forEach(k=>{ sampleN(EXAM.filter(q=>q.s===k), count[k]).forEach(q=>out.push(q)); });
+  for(let i=out.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=out[i];out[i]=out[j];out[j]=t; }  /* mescola gli ambiti */
   return out;
 }
 
@@ -5601,7 +5603,9 @@ function examStart(timed){
   examState.given=new Array(prova.length).fill(null);
   examState.flag=new Array(prova.length).fill(false);
   examState.timed=timed;
-  examState.left=EXAM_MINUTI*60;   /* tempo fisso: 45 minuti per i 36 quesiti */
+  examState.left=EXAM_MINUTI*60;   /* tempo fisso: 45 minuti per i 32 quesiti */
+  examState.startTime=Date.now();  /* per calcolare il tempo effettivamente impiegato */
+  examState.elapsed=0;
   examState.revFilter='all';
   if(examState.timer) clearInterval(examState.timer);
   if(timed){
@@ -5617,12 +5621,11 @@ function examStart(timed){
   }
   renderExam();
 }
-function examClockTxt(){
-  const s=Math.max(0,examState.left);
-  return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
-}
+function mmss(s){ s=Math.max(0,Math.round(s)); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+function examClockTxt(){ return mmss(examState.left); }
 function examFinish(scaduto){
   if(examState.timer){ clearInterval(examState.timer); examState.timer=null; }
+  examState.elapsed = examState.startTime ? Math.round((Date.now()-examState.startTime)/1000) : 0;
   examState.phase='done';
   examState.scaduto=!!scaduto;
   renderExam();
@@ -5637,26 +5640,22 @@ function renderExam(){
 
 /* ------------------------- schermata iniziale ------------------------- */
 function renderExamIntro(h){
-  const {filoni,count}=examPerFilone();
-  const perProva=EXAM_TOTALE;                     /* la prova è sempre di 36 quesiti */
+  const perProva=EXAM_TOTALE;                     /* la prova è sempre di 32 quesiti */
   const banca=EXAM.length;                        /* archivio complessivo */
-  let pills='';
-  filoni.forEach(k=>{ pills+='<span class="pill">'+STRANDS[k].nome+' · '+count[k]+'</span>'; });
 
   h.innerHTML=
   '<div class="exam-intro">'+
     '<h2 style="margin-top:0">Quiz riepilogativo finale</h2>'+
-    '<p class="lead">'+perProva+' quesiti misti sui '+filoni.length+' filoni, cinque alternative ciascuno, come al test vero. '+
-    'Ogni prova <strong>estrae quesiti diversi</strong> da un archivio di '+banca+': ripetendo il quiz non ritroverai sempre le stesse domande. '+
-    'Qui <strong>non vedrai alcun esito durante la prova</strong>: le risposte corrette, le spiegazioni e il punteggio compaiono solo alla consegna. '+
-    'È il modo giusto per misurarti — all\'esame nessuno ti dirà se hai "indovinato".</p>'+
+    '<p class="lead">'+perProva+' quesiti a scelta multipla, <strong>mescolati e presi da tutte le materie</strong>, come al test vero. '+
+    'Durante la prova <strong>non è indicato a quale materia o argomento</strong> appartiene ciascuna domanda: sta a te riconoscerlo. '+
+    'Ogni prova <strong>estrae quesiti diversi</strong> da un archivio di '+banca+', quindi ripetendola non ritroverai sempre le stesse domande. '+
+    'Non vedrai alcun esito durante la prova: risposte corrette, spiegazioni, punteggio e <strong>tempo impiegato</strong> compaiono solo alla consegna.</p>'+
     '<div class="exam-rules">'+
       '<div class="exam-rule"><b>Navigazione libera</b>Puoi saltare un quesito e tornarci dopo: usa la griglia numerata in fondo.</div>'+
       '<div class="exam-rule"><b>Segna i dubbi</b>Il pulsante «da rivedere» marca i quesiti su cui vuoi tornare prima di consegnare.</div>'+
       '<div class="exam-rule"><b>Punteggio realistico</b>Oltre alle risposte esatte vedrai il punteggio in stile test: +1 esatta, −0,25 errata, 0 non data.</div>'+
       '<div class="exam-rule"><b>Analisi per filone</b>Alla fine scoprirai quali argomenti riprendere, filone per filone.</div>'+
     '</div>'+
-    '<div class="pill-row">'+pills+'</div>'+
     '<div class="callout"><div class="lbl">Un consiglio prima di cominciare</div>'+
       'Non fermarti sul quesito difficile: segnalo e vai avanti. Il tempo speso male sul numero 7 è tempo tolto al numero 30, che magari sapevi risolvere in venti secondi.</div>'+
     '<div class="ractions" style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.2rem">'+
@@ -5684,7 +5683,6 @@ function renderExamQuestion(h){
        '<div class="quiz-count">Quesito '+(i+1)+' di '+n+'</div>'+
        '<div class="quiz-progress"><span style="width:'+Math.round((i+1)/n*100)+'%"></span></div></div>';
   s+='<div class="quiz-card">'+
-       '<div class="exam-strand">'+STRANDS[it.s].nome+'</div>'+
        '<div class="qt">'+it.q+'</div><div class="mc-opts">';
   const lettere=['A','B','C','D','E'];
   it.o.forEach((o,j)=>{
@@ -5770,6 +5768,8 @@ function renderExamResult(h){
     '<div class="rmsg">'+msg+'</div>'+
     '<div class="rsub">Esatte '+esatte+' · errate '+errate+' · non date '+omesse+
       ' — punteggio in stile test: <strong>'+fmt(punti,2)+'</strong> su '+n+'</div>'+
+    '<div class="rsub">Tempo impiegato: <strong>'+mmss(examState.elapsed||0)+'</strong>'+
+      (examState.timed?' (limite '+EXAM_MINUTI+' min)':' · senza cronometro')+'</div>'+
     '<div class="strandbars">'+bars+'</div>'+
     (perF[debole] && perF[debole].ok/perF[debole].tot<1
       ? '<p class="rsub" style="margin-top:1rem">Filone da riprendere per primo: <strong>'+STRANDS[debole].nome+'</strong>. '+
